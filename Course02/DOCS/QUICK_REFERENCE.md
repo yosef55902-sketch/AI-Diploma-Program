@@ -12,7 +12,7 @@ A quick guide for students - print this or keep it open!
 python --version  # Need 3.9+
 
 # 2. Install libraries
-pip install -r requirements.txt
+pip install -r ../../requirements.txt
 
 # 3. Verify installation
 pip check
@@ -51,7 +51,7 @@ pip check
 
 ### Installation
 ```bash
-pip install -r requirements.txt
+pip install -r ../../requirements.txt
 pip check
 ```
 
@@ -78,7 +78,7 @@ jupyter notebook
 
 | Problem | Solution |
 |---------|----------|
-| "No module named 'numpy'" | Run: `pip install -r requirements.txt` |
+| "No module named 'numpy'" | Run: `pip install -r ../../requirements.txt` |
 | "Python version too old" | Install Python 3.10+ from python.org |
 | "Libraries conflict" | Use virtual environment (see INSTALLATION_GUIDE.md) |
 | "Can't open .ipynb file" | Install Jupyter: `pip install jupyter` |
@@ -93,7 +93,7 @@ jupyter notebook
 | `README.md` | Course overview and structure |
 | `INSTALLATION_GUIDE.md` | Installation problems or detailed setup |
 | `STUDENT_PROGRESS_CHECKLIST.md` | Track your progress |
-| `requirements.txt` | Installing libraries |
+| `../../requirements.txt` | Installing libraries |
 
 ---
 

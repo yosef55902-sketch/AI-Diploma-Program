@@ -189,7 +189,7 @@ def main():
         return 0
     else:
         print("\n⚠️  SOME CHECKS FAILED. Please review errors above.")
-        print("\n💡 TIP: Run 'pip install -r requirements.txt' to install missing libraries.")
+        print("\n💡 TIP: Run 'pip install -r ../../requirements.txt' to install missing libraries.")
         return 1
 
 

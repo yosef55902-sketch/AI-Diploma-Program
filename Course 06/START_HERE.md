@@ -1,6 +1,6 @@
 # 🎓 START HERE - Welcome Students! | ابدأ من هنا - مرحباً بالطلاب!
 
-## 👋 Welcome to Machine Learning Algorithms and Applications | مرحباً بك في دورة خوارزميات تعلم الآلة والتطبيقات
+## 👋 Welcome to Ethics of Artificial Intelligence Course | مرحباً بك في دورة أخلاقيات الذكاء الاصطناعي
 
 **If you're a new student, READ THIS FIRST!**  
 **إذا كنت طالباً جديداً، اقرأ هذا أولاً!**
@@ -18,19 +18,13 @@ Follow these steps in order. Don't skip any!
 ### Step 1: Check Prerequisites | الخطوة 1: تحقق من المتطلبات الأساسية
 
 **Before starting this course, you should have:**
-- [ ] **Python 3.8 or higher** (Python 3.10 or 3.11 recommended)
+
+- [ ] **Python 3.8 or higher** installed on your computer
 - [ ] **Basic Python programming knowledge**: Variables, data types, functions, classes
-- [ ] **Familiarity with NumPy and Pandas** (will be covered, but prior knowledge helps)
+- [ ] **Understanding of AI/ML concepts** (helpful but not required)
+- [ ] **Interest in ethical considerations** of technology
 
-**If you're new to Python:**  
-⚠️ Complete a Python basics course first! This course assumes you know Python fundamentals.
-
----
-
-### Step 2: Check Python Version | الخطوة 2: تحقق من إصدار بايثون
-
-Open your terminal/command prompt and type:
-
+**Check Python version:**
 ```bash
 python --version
 ```
@@ -42,9 +36,9 @@ Install Python 3.10 or 3.11 from [python.org](https://www.python.org/downloads/)
 
 ---
 
-### Step 3: Install Libraries | الخطوة 3: تثبيت المكتبات
+### Step 2: Install Libraries | الخطوة 2: تثبيت المكتبات
 
-**Follow the installation guide:** See `DOCS/` folder for detailed instructions.
+**Follow the installation guide:** Open `DOCS/INSTALLATION_GUIDE.md` and follow the instructions.
 
 **Quick method (if you're comfortable with terminal):**
 
@@ -68,34 +62,37 @@ pip install -r ../requirements.txt
 pip check
 ```
 
-**If you see errors:** Check `DOCS/` folder for troubleshooting guides.
+**If you see errors:** Read `DOCS/INSTALLATION_GUIDE.md` for troubleshooting.
 
 ---
 
-### Step 4: Read the Course Overview | الخطوة 4: اقرأ نظرة عامة على الدورة
+### Step 3: Read the Course Overview | الخطوة 3: اقرأ نظرة عامة على الدورة
 
 **Open and read:** `README.md`
 
 This file explains:
 - What this course covers
-- The 5 course units
-- The learning path
+- The learning path through 5 units
+- What each unit teaches
 - How units connect to each other
 
 **Don't skip this!** It's only 5-10 minutes to read and will save you hours of confusion later.
 
 ---
 
-### Step 5: Start with Unit 1 | الخطوة 5: ابدأ بالوحدة 1
+### Step 4: Start with Unit 1 | الخطوة 4: ابدأ بالوحدة 1
 
-**Open:** `unit1-data-processing/examples/01_data_loading_exploration.ipynb`
+**Open:** `unit1-ethics-foundations/README.md`
 
-**Why Unit 1 FIRST?**
-- All machine learning starts with data
-- You need to understand data preprocessing before building models
-- This unit teaches you the foundation for all other units
+**Why this unit FIRST?**
+- Establishes foundational ethical principles
+- Introduces key ethical frameworks
+- Provides context for all other units
+- You need to understand ethics foundations BEFORE analyzing specific AI ethics issues
 
-**Don't jump ahead!** Each unit builds on the previous one.
+**Then start with:** `unit1-ethics-foundations/examples/01_ethical_frameworks.ipynb`
+
+**Don't jump ahead to other units!** Each unit builds on the previous one.
 
 ---
 
@@ -106,17 +103,17 @@ This file explains:
 ```
 1. ✅ Check Prerequisites (Python 3.8+)
    ↓
-2. ✅ Install Libraries (Step 3 above)
+2. ✅ Install Libraries (Step 2 above)
    ↓
-3. 📓 Unit 1: Basic Data Processing Methods and Regression
+3. 📓 Unit 1: Foundations of AI Ethics
    ↓
-4. 📓 Unit 2: Advanced Regression Techniques and Model Evaluation
+4. 📓 Unit 2: Bias, Justice, and Discrimination
    ↓
-5. 📓 Unit 3: Advanced Classification Techniques and Model Evaluation
+5. 📓 Unit 3: Privacy and Security
    ↓
-6. 📓 Unit 4: Clustering and Dimensionality Reduction
+6. 📓 Unit 4: Transparency and Accountability
    ↓
-7. 📓 Unit 5: Model Selection and Boosting
+7. 📓 Unit 5: Governance and Regulations
 ```
 
 **Important:** Each unit builds on the previous one. Don't skip units!
@@ -134,22 +131,22 @@ Use this checklist to track your progress:
 - [ ] Read this START_HERE.md file
 
 ### Units
-- [ ] **Unit 1**: Basic Data Processing Methods and Regression
-- [ ] **Unit 2**: Advanced Regression Techniques and Model Evaluation
-- [ ] **Unit 3**: Advanced Classification Techniques and Model Evaluation
-- [ ] **Unit 4**: Clustering and Dimensionality Reduction
-- [ ] **Unit 5**: Model Selection and Boosting
+- [ ] **Unit 1**: Foundations of AI Ethics
+- [ ] **Unit 2**: Bias, Justice, and Discrimination
+- [ ] **Unit 3**: Privacy and Security
+- [ ] **Unit 4**: Transparency and Accountability
+- [ ] **Unit 5**: Governance and Regulations
 
 **For detailed progress tracking, use:** `STUDENT_PROGRESS_CHECKLIST.md`
 
 ---
 
-## 🆘 Need Help? | تحتاج مساعدة؟
+## 🆘 Need Help? | تحتاج مساعدة?
 
 ### Common Issues:
 
-**Problem:** "No module named 'pandas'" or "No module named 'numpy'"  
-**Solution:** You haven't installed libraries. Go back to Step 3.
+**Problem:** "No module named 'pandas'" or "No module named 'fairlearn'"  
+**Solution:** You haven't installed libraries. Go back to Step 2.
 
 **Problem:** "Python version too old"  
 **Solution:** Install Python 3.10 or 3.11 from python.org
@@ -161,7 +158,7 @@ Use this checklist to track your progress:
 3. Read the README.md in each unit folder
 
 **Problem:** "Libraries conflict with each other"  
-**Solution:** Use virtual environment (see Step 3)
+**Solution:** Use virtual environment (see Step 2)
 
 ---
 
@@ -174,15 +171,13 @@ Use this checklist to track your progress:
 | `START_HERE.md` | **This file** - First thing to read | **Day 1, before anything else** |
 | `README.md` | Course overview and structure | After reading START_HERE |
 | `STUDENT_PROGRESS_CHECKLIST.md` | Track your progress | Throughout the course |
-| `../requirements.txt` | List of libraries to install | During installation (Step 3) |
-| `unit1-data-processing/` | Unit 1 materials | Start here after setup |
-| `unit2-regression/` | Unit 2 materials | After completing Unit 1 |
-| `unit3-classification/` | Unit 3 materials | After completing Unit 2 |
-| `unit4-clustering/` | Unit 4 materials | After completing Unit 3 |
-| `unit5-model-selection/` | Unit 5 materials | After completing Unit 4 |
+| `../requirements.txt` | List of libraries to install | During installation (Step 2) |
+| `unit1-ethics-foundations/README.md` | Unit 1 overview | Before starting Unit 1 |
+| `unit2-bias-justice/` | Unit 2 materials | After completing Unit 1 |
+| `unit3-privacy-security/` | Unit 3 materials | After completing Unit 2 |
+| `unit4-transparency-accountability/` | Unit 4 materials | After completing Unit 3 |
+| `unit5-governance-regulations/` | Unit 5 materials | After completing Unit 4 |
 | `DOCS/` | Documentation and guides | When you need help |
-| `QUIZZES/` | Course quizzes | After completing each unit |
-| `ASSESSMENTS/` | Assessment rubrics | For instructors/self-assessment |
 
 ---
 
@@ -191,9 +186,10 @@ Use this checklist to track your progress:
 **For students who want the shortest path:**
 
 1. ✅ Check Python version (3.8+)
-2. ✅ Install libraries: `pip install -r ../requirements.txt`
-3. ✅ Read `README.md` (5 minutes)
-4. ✅ Open `unit1-data-processing/examples/01_data_loading_exploration.ipynb` and start learning!
+2. ✅ Install Python 3.10+ if needed
+3. ✅ Install libraries: `pip install -r ../requirements.txt`
+4. ✅ Read `README.md` (5 minutes)
+5. ✅ Open `unit1-ethics-foundations/examples/01_ethical_frameworks.ipynb` and start learning!
 
 **That's it!** Everything else is in the unit folders.
 
@@ -202,11 +198,10 @@ Use this checklist to track your progress:
 ## 💡 Tips for Success | نصائح للنجاح
 
 1. **Don't rush:** Each unit builds on the previous one
-2. **Practice:** Complete all exercises in each unit
-3. **Experiment:** Try modifying the code examples
-4. **Take notes:** Write down concepts you find difficult
-5. **Review:** Before starting a new unit, review the previous one
-6. **Use solutions:** Check solutions only after attempting exercises yourself
+2. **Think critically:** Ethics requires careful consideration
+3. **Read case studies:** Real-world examples help understanding
+4. **Practice:** Complete all exercises in each unit
+5. **Discuss:** Ethics benefits from discussion and different perspectives
 
 ---
 
@@ -214,7 +209,7 @@ Use this checklist to track your progress:
 
 If you've completed all steps above, you're ready!
 
-**Next action:** Open `unit1-data-processing/examples/01_data_loading_exploration.ipynb` and begin your machine learning journey!
+**Next action:** Open `unit1-ethics-foundations/examples/01_ethical_frameworks.ipynb` and begin your AI ethics journey!
 
 **Good luck!** 🚀  
 **حظاً موفقاً!** 🚀
@@ -222,6 +217,6 @@ If you've completed all steps above, you're ready!
 ---
 
 **Last Updated:** 2025  
-**Course:** AIAT 114 - Machine Learning Algorithms and Applications  
+**Course:** AIAT 116 - Ethics of Artificial Intelligence  
 **Language Support:** Arabic & English
 

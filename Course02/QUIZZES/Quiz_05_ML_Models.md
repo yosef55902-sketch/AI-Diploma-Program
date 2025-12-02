@@ -17,7 +17,6 @@ What is supervised learning?
 - C) Learning from rewards
 - D) Learning randomly
 
-**Answer: B**
 
 ### Question 2 (5 points)
 What is the difference between classification and regression?
@@ -26,12 +25,10 @@ What is the difference between classification and regression?
 - C) They're the same
 - D) Classification is faster
 
-**Answer: A**
 
 ### Question 3 (10 points)
 What is the purpose of splitting data into training and testing sets?
 
-**Answer:**
 - To evaluate model performance on unseen data
 - To prevent overfitting
 - To ensure the model generalizes well
@@ -47,7 +44,6 @@ Linear regression is used for:
 - C) Clustering
 - D) Visualization
 
-**Answer: B**
 
 ### Question 5 (10 points)
 Complete the code to train a linear regression model:
@@ -59,7 +55,6 @@ model.______(X_train, y_train)
 predictions = model.______(X_test)
 ```
 
-**Answer: `fit`, `predict`**
 
 ### Question 6 (5 points)
 What does the coefficient in linear regression represent?
@@ -68,7 +63,6 @@ What does the coefficient in linear regression represent?
 - C) The error
 - D) The prediction
 
-**Answer: B**
 
 ---
 
@@ -81,7 +75,6 @@ Logistic regression is used for:
 - C) Clustering
 - D) Visualization
 
-**Answer: B**
 
 ### Question 8 (5 points)
 What is the output range of logistic regression?
@@ -90,7 +83,6 @@ What is the output range of logistic regression?
 - C) 0 to 100
 - D) -1 to 1
 
-**Answer: B**
 
 ### Question 9 (5 points)
 What is the sigmoid function used for in logistic regression?
@@ -99,7 +91,6 @@ What is the sigmoid function used for in logistic regression?
 - C) To calculate errors
 - D) To visualize data
 
-**Answer: B**
 
 ---
 
@@ -112,7 +103,6 @@ Decision trees split data based on:
 - C) The first feature
 - D) The last feature
 
-**Answer: B**
 
 ### Question 11 (5 points)
 What is a leaf node in a decision tree?
@@ -121,7 +111,6 @@ What is a leaf node in a decision tree?
 - C) A split point
 - D) A feature
 
-**Answer: B**
 
 ### Question 12 (5 points)
 What is overfitting in decision trees?
@@ -130,7 +119,6 @@ What is overfitting in decision trees?
 - C) Model is too slow
 - D) Model doesn't work
 
-**Answer: B**
 
 ---
 
@@ -143,7 +131,6 @@ KNN classifies based on:
 - C) Random neighbors
 - D) All neighbors equally
 
-**Answer: A**
 
 ### Question 14 (5 points)
 What does k represent in KNN?
@@ -152,7 +139,6 @@ What does k represent in KNN?
 - C) The number of classes
 - D) The number of samples
 
-**Answer: B**
 
 ### Question 15 (5 points)
 If k is too small in KNN, what happens?
@@ -161,7 +147,6 @@ If k is too small in KNN, what happens?
 - C) Model is slower
 - D) Nothing changes
 
-**Answer: B**
 
 ---
 
@@ -174,7 +159,6 @@ What is accuracy?
 - C) Number of predictions
 - D) Training time
 
-**Answer: A**
 
 ### Question 17 (5 points)
 What is the purpose of a confusion matrix?
@@ -183,7 +167,6 @@ What is the purpose of a confusion matrix?
 - C) To train models
 - D) To split data
 
-**Answer: A**
 
 ### Question 18 (5 points)
 What is cross-validation used for?
@@ -192,30 +175,8 @@ What is cross-validation used for?
 - C) To visualize data
 - D) To split data once
 
-**Answer: B**
 
 ---
-
-## Answer Key Summary
-
-1. B - Learning with labeled data
-2. A - Classification predicts categories, regression predicts numbers
-3. See answer description
-4. B - Regression (predicting continuous values)
-5. `fit`, `predict`
-6. B - The slope (how much y changes for each unit change in x)
-7. B - Binary classification
-8. B - 0 to 1 (probabilities)
-9. B - To convert outputs to probabilities between 0 and 1
-10. B - Features that best separate classes
-11. B - A final decision/classification
-12. B - Model memorizes training data and doesn't generalize
-13. A - The most common class among k nearest neighbors
-14. B - The number of nearest neighbors to consider
-15. B - Model is sensitive to noise
-16. A - Percentage of correct predictions
-17. A - To visualize classification performance
-18. B - To better estimate model performance
 
 ---
 

@@ -22,7 +22,6 @@ What is the main purpose of Grid Search?
 - C) To find the best model architecture
 - D) To find the best dataset
 
-**Answer:** A
 
 ---
 
@@ -33,7 +32,6 @@ What is the main advantage of Random Search over Grid Search?
 - C) It always finds the best solution
 - D) It doesn't require cross-validation
 
-**Answer:** B
 
 ---
 
@@ -44,7 +42,6 @@ What is the main idea behind boosting?
 - C) To reduce the number of features
 - D) To increase the number of samples
 
-**Answer:** A
 
 ---
 
@@ -55,7 +52,6 @@ What is the difference between bagging and boosting?
 - C) There is no difference
 - D) Bagging is for regression, boosting is for classification
 
-**Answer:** A
 
 ---
 
@@ -66,7 +62,6 @@ What is XGBoost?
 - C) A clustering algorithm
 - D) A dimensionality reduction technique
 
-**Answer:** A
 
 ---
 
@@ -149,7 +144,6 @@ X, y = make_classification(
 ### Question 8 (5 points)
 Explain the difference between Grid Search and Random Search. When would you use each?
 
-**Answer:**
 - **Grid Search:**
   - Tries all combinations of hyperparameters
   - Guaranteed to find best combination in search space
@@ -169,7 +163,6 @@ Explain the difference between Grid Search and Random Search. When would you use
 ### Question 9 (5 points)
 You have a model that performs well on training data but poorly on test data. You've already tried regularization. What other techniques from this unit could you use to improve generalization?
 
-**Answer:**
 - **Hyperparameter Tuning:**
   1. Use Grid Search or Random Search to find optimal hyperparameters
   2. Use cross-validation to get better performance estimates
@@ -190,7 +183,6 @@ You have a model that performs well on training data but poorly on test data. Yo
 ### Question 10 (5 points)
 Compare Gradient Boosting and XGBoost. What are the advantages of XGBoost?
 
-**Answer:**
 - **Gradient Boosting:**
   - Sequential training of weak learners
   - Each learner corrects previous errors

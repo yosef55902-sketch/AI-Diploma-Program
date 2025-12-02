@@ -17,7 +17,6 @@ What is the range of probability values?
 - C) -1 to 1
 - D) 0 to 100
 
-**Answer: B**
 
 ### Question 2 (5 points)
 If P(A) = 0.3, what is P(not A)?
@@ -26,12 +25,10 @@ If P(A) = 0.3, what is P(not A)?
 - C) 1.3
 - D) 0
 
-**Answer: B**
 
 ### Question 3 (10 points)
 Calculate: If you flip a coin twice, what is the probability of getting two heads?
 
-**Answer: 0.25 (or 1/4)**
 
 ### Question 4 (5 points)
 What does P(A and B) represent?
@@ -40,7 +37,6 @@ What does P(A and B) represent?
 - C) Probability of A given B
 - D) Probability of not A
 
-**Answer: B**
 
 ---
 
@@ -53,7 +49,6 @@ Bayes' theorem is used for:
 - C) Finding averages
 - D) Sorting data
 
-**Answer: B**
 
 ### Question 6 (10 points)
 Given:
@@ -63,7 +58,6 @@ Given:
 
 Calculate P(Rain | Cloudy) using Bayes' theorem.
 
-**Answer: P(Rain | Cloudy) = (0.8 × 0.3) / ((0.8 × 0.3) + (0.2 × 0.7)) = 0.24 / 0.38 ≈ 0.632**
 
 ### Question 7 (5 points)
 What is the prior probability in Bayesian inference?
@@ -72,12 +66,10 @@ What is the prior probability in Bayesian inference?
 - C) Conditional probability
 - D) Joint probability
 
-**Answer: B**
 
 ### Question 8 (10 points)
 Explain in one sentence: What does Bayesian inference allow us to do?
 
-**Answer: Update our beliefs about an event based on new evidence**
 
 ---
 
@@ -90,7 +82,6 @@ Decision making under uncertainty means:
 - C) Making random decisions
 - D) Not making decisions
 
-**Answer: B**
 
 ### Question 10 (10 points)
 Given two options:
@@ -99,7 +90,6 @@ Given two options:
 
 Calculate expected value for each option. Which has higher expected value?
 
-**Answer:**
 - Option A: 0.8 × $100 = $80
 - Option B: 0.5 × $200 = $100
 - Option B has higher expected value
@@ -111,7 +101,6 @@ What is expected value?
 - C) The maximum outcome
 - D) The minimum outcome
 
-**Answer: B**
 
 ---
 
@@ -124,7 +113,6 @@ Monte Carlo simulation:
 - C) Only works for small problems
 - D) Doesn't use randomness
 
-**Answer: B**
 
 ### Question 13 (10 points)
 Why is Monte Carlo simulation useful?
@@ -133,7 +121,6 @@ Why is Monte Carlo simulation useful?
 - C) It's always accurate
 - D) It doesn't need computers
 
-**Answer: B**
 
 ### Question 14 (5 points)
 In Monte Carlo simulation, more samples generally lead to:
@@ -142,26 +129,8 @@ In Monte Carlo simulation, more samples generally lead to:
 - C) Same accuracy
 - D) Slower computation
 
-**Answer: B**
 
 ---
-
-## Answer Key Summary
-
-1. B - 0 to 1
-2. B - 0.7
-3. 0.25 (or 1/4)
-4. B - Probability of both A and B happening
-5. B - Updating beliefs based on evidence
-6. ≈ 0.632 (see calculation)
-7. B - Initial probability before evidence
-8. See answer description
-9. B - Making decisions with incomplete or uncertain information
-10. Option B ($100 > $80)
-11. B - The average outcome weighted by probabilities
-12. B - Uses random sampling to estimate probabilities
-13. B - It can handle complex problems that are hard to solve analytically
-14. B - More accurate results
 
 ---
 

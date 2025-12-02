@@ -42,7 +42,7 @@ This course connects Python programming fundamentals with core AI concepts. Each
 ├── 📄 README.md                        📖 This file
 ├── 📄 START_HERE.md                    ⭐ READ THIS FIRST!
 ├── 📄 STUDENT_PROGRESS_CHECKLIST.md    ✅ Track progress
-├── 📄 requirements.txt                 📦 Dependencies
+├── 📄 ../requirements.txt              📦 Dependencies (in root directory)
 │
 ├── 📓 NOTEBOOKS/                        📚 All Course Notebooks (6)
 ├── 📖 DOCS/                             📄 Documentation (10 files)

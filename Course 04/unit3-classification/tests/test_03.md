@@ -22,7 +22,6 @@ What is the main difference between regression and classification?
 - C) There is no difference
 - D) Regression uses neural networks, classification uses trees
 
-**Answer:** A
 
 ---
 
@@ -33,7 +32,6 @@ Which algorithm uses a sigmoid function to output probabilities?
 - C) K-Nearest Neighbors
 - D) Support Vector Machine
 
-**Answer:** B
 
 ---
 
@@ -44,7 +42,6 @@ What does precision measure?
 - C) The proportion of actual positives that are correctly identified
 - D) The harmonic mean of precision and recall
 
-**Answer:** B
 
 ---
 
@@ -55,7 +52,6 @@ What does recall measure?
 - C) The proportion of actual positives that are correctly identified
 - D) The harmonic mean of precision and recall
 
-**Answer:** C
 
 ---
 
@@ -66,7 +62,6 @@ In a confusion matrix, what does True Positive (TP) represent?
 - C) Incorrectly predicted negative cases
 - D) Incorrectly predicted positive cases
 
-**Answer:** B
 
 ---
 
@@ -150,7 +145,6 @@ X, y = make_classification(
 ### Question 8 (5 points)
 Explain when you would use precision vs recall. Give a real-world example for each.
 
-**Answer:**
 - **Precision:** Use when false positives are costly. Example: Email spam detection - we don't want to mark important emails as spam.
 - **Recall:** Use when false negatives are costly. Example: Medical diagnosis - we don't want to miss detecting a disease.
 
@@ -161,7 +155,6 @@ Explain when you would use precision vs recall. Give a real-world example for ea
 ### Question 9 (5 points)
 You have a classification model with 95% accuracy, but when you check the confusion matrix, you see it predicts class 0 for 98% of cases. What is the problem, and how would you fix it?
 
-**Answer:**
 - **Problem:** Class imbalance - the model is biased towards the majority class
 - **Solutions:**
   1. Use class weights to balance the classes
@@ -174,7 +167,6 @@ You have a classification model with 95% accuracy, but when you check the confus
 ### Question 10 (5 points)
 Compare Decision Trees and Random Forest. What are the advantages and disadvantages of each?
 
-**Answer:**
 - **Decision Trees:**
   - Advantages: Easy to interpret, no feature scaling needed, handles non-linear relationships
   - Disadvantages: Prone to overfitting, sensitive to small data changes, can be unstable

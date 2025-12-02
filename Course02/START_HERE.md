@@ -66,7 +66,7 @@ source venv/bin/activate
 pip install --upgrade pip
 
 # 4. Install all libraries
-pip install -r requirements.txt
+pip install -r ../requirements.txt
 
 # 5. Verify installation
 pip check
@@ -180,7 +180,7 @@ Use this checklist to track your progress:
 | `START_HERE.md` | **This file** - First thing to read | **Day 1, before anything else** |
 | `README.md` | Course overview and structure | After reading START_HERE |
 | `DOCS/INSTALLATION_GUIDE.md` | Detailed installation instructions | When installing libraries |
-| `requirements.txt` | List of libraries to install | During installation (Step 3) |
+| `../requirements.txt` | List of libraries to install | During installation (Step 3) |
 | `NOTEBOOKS/00_Python_Libraries_for_AI.ipynb` | Learn Python libraries | **First notebook to open** |
 | `NOTEBOOKS/01_Introduction_Search_Algorithms.ipynb` | Search algorithms | After completing Notebook 00 |
 | `NOTEBOOKS/02_Knowledge_Representation.ipynb` | Knowledge systems | After completing Notebook 01 |
@@ -196,7 +196,7 @@ Use this checklist to track your progress:
 
 1. ✅ Check prerequisites (Python PE1 & PE2 completed)
 2. ✅ Install Python 3.10+ if needed
-3. ✅ Install libraries: `pip install -r requirements.txt`
+3. ✅ Install libraries: `pip install -r ../requirements.txt`
 4. ✅ Read `README.md` (5 minutes)
 5. ✅ Open `00_Python_Libraries_for_AI.ipynb` and start learning!
 

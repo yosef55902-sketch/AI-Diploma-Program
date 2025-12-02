@@ -17,7 +17,6 @@ What is the main purpose of Grid Search?
 - C) To find the best model architecture
 - D) To find the best dataset
 
-**Answer:** A
 
 ---
 
@@ -28,7 +27,6 @@ What is the main advantage of Random Search over Grid Search?
 - C) It always finds the best solution
 - D) It doesn't require cross-validation
 
-**Answer:** B
 
 ---
 
@@ -39,7 +37,6 @@ What is cross-validation used for in hyperparameter tuning?
 - C) To reduce overfitting
 - D) To handle missing values
 
-**Answer:** B
 
 ---
 
@@ -50,7 +47,6 @@ What is a learning curve used for?
 - C) To choose the best learning rate
 - D) All of the above
 
-**Answer:** D
 
 ---
 
@@ -63,7 +59,6 @@ What is the main idea behind boosting?
 - C) To reduce the number of features
 - D) To increase the number of samples
 
-**Answer:** A
 
 ---
 
@@ -74,7 +69,6 @@ What is the difference between bagging and boosting?
 - C) There is no difference
 - D) Bagging is for regression, boosting is for classification
 
-**Answer:** A
 
 ---
 
@@ -85,7 +79,6 @@ What is Gradient Boosting?
 - C) A method that uses only decision trees
 - D) A method that doesn't use cross-validation
 
-**Answer:** B
 
 ---
 
@@ -96,7 +89,6 @@ What is XGBoost?
 - C) A clustering algorithm
 - D) A dimensionality reduction technique
 
-**Answer:** A
 
 ---
 
@@ -109,7 +101,6 @@ What is a Voting Classifier?
 - C) A classifier that doesn't use training data
 - D) A classifier that only works with binary classification
 
-**Answer:** B
 
 ---
 
@@ -120,22 +111,11 @@ What is stacking?
 - C) Using only one model
 - D) Reducing the number of features
 
-**Answer:** B
 
 ---
 
 ## Answer Key | مفتاح الإجابات
 
-1. A - To find the best hyperparameters by trying all combinations
-2. B - It's faster and can find good solutions with fewer iterations
-3. B - To get a more reliable estimate of model performance for each hyperparameter set
-4. D - All of the above
-5. A - To combine multiple weak learners into a strong learner
-6. A - Bagging trains models in parallel, boosting trains sequentially
-7. B - A method that trains models sequentially, each correcting the previous one's errors
-8. A - An optimized implementation of gradient boosting
-9. B - A classifier that combines predictions from multiple models
-10. B - Using a meta-learner to combine predictions from multiple base models
 
 ---
 

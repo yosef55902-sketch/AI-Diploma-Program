@@ -22,7 +22,6 @@ What does R² (R-squared) measure?
 - C) The mean squared error
 - D) The residual sum of squares
 
-**Answer:** B
 
 ---
 
@@ -33,7 +32,6 @@ In linear regression, what does the coefficient represent?
 - C) The error term
 - D) The correlation coefficient
 
-**Answer:** B
 
 ---
 
@@ -44,7 +42,6 @@ What is overfitting?
 - C) Model performs well on both training and test data
 - D) Model has too few parameters
 
-**Answer:** A
 
 ---
 
@@ -55,7 +52,6 @@ Which evaluation metric is most sensitive to outliers in regression?
 - C) R² Score
 - D) Accuracy
 
-**Answer:** B
 
 ---
 
@@ -66,7 +62,6 @@ When would you use polynomial regression instead of linear regression?
 - C) When you have categorical features
 - D) When you have missing values
 
-**Answer:** B
 
 ---
 
@@ -105,7 +100,6 @@ import matplotlib.pyplot as plt
 # Your code here
 ```
 
-**Answer:**
 ```python
 # TODO 1: Split into X and y
 X = df.drop('target', axis=1)
@@ -177,7 +171,6 @@ def find_best_polynomial_degree(X_train, y_train, X_test, y_test):
     pass
 ```
 
-**Answer:**
 ```python
 def find_best_polynomial_degree(X_train, y_train, X_test, y_test):
     results = {}
@@ -223,7 +216,6 @@ Write code to analyze residuals:
 2. Plot histogram of residuals
 3. Plot residuals vs predicted values
 
-**Answer:**
 ```python
 # Calculate residuals
 residuals = y_test - y_pred
@@ -265,7 +257,6 @@ A student trained a linear regression model and got:
 
 Explain what this indicates and suggest solutions.
 
-**Answer:**
 This indicates **overfitting**:
 - The model learned the training data too well (high training R²)
 - But fails to generalize to new data (low test R²)
@@ -288,7 +279,6 @@ Explain the difference between:
 
 Give examples of when to use each.
 
-**Answer:**
 
 1. **Simple Linear Regression:**
    - One feature, one target
@@ -306,14 +296,6 @@ Give examples of when to use each.
    - Use: Curved relationships, when linear doesn't fit
 
 ---
-
-## Answer Key Summary
-
-**Part 1:** 15 points (5 questions × 3 points)
-**Part 2:** 25 points (Questions 6-8)
-**Part 3:** 10 points (Questions 9-10)
-
-**Total: 50 points**
 
 ---
 

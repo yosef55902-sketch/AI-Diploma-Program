@@ -1,0 +1,171 @@
+# ============================================================================
+# AI Diploma Program - Consolidated Requirements
+# ============================================================================
+# This file consolidates all requirements from:
+# - Course 02: Python Libraries for AI
+# - Course 03: Mathematics and Probabilities for Machine Learning
+# - Course 04: Machine Learning Algorithms and Applications
+# - Course 05: Scalable Data Science
+# - Course 06: Ethics of Artificial Intelligence
+# ============================================================================
+# Python 3.9+ required
+# ============================================================================
+
+# ============================================================================
+# CORE DATA PROCESSING
+# ============================================================================
+pandas>=2.0.0,<3.0.0          # Data manipulation and analysis (All courses)
+numpy>=1.24.0,<2.0.0          # Linear algebra, arrays, numerical operations (All courses)
+scipy>=1.10.0,<2.0.0         # Scientific computing, optimization, statistics (All courses)
+
+# ============================================================================
+# MACHINE LEARNING
+# ============================================================================
+scikit-learn>=1.3.0,<2.0.0   # Machine learning algorithms (All courses)
+
+# Advanced Machine Learning (Course 04)
+xgboost>=2.0.0               # Gradient boosting framework
+lightgbm>=4.0.0              # Light gradient boosting machine
+
+# ============================================================================
+# VISUALIZATION
+# ============================================================================
+matplotlib>=3.7.0,<4.0.0     # Plotting and visualization (All courses)
+seaborn>=0.12.0,<1.0.0       # Statistical visualizations (All courses)
+plotly>=5.17.0               # Interactive visualizations (Courses 05, 06)
+
+# ============================================================================
+# DISTRIBUTED COMPUTING (Course 05)
+# ============================================================================
+dask>=2023.8.0               # Distributed computing
+dask[dataframe]>=2023.8.0    # Distributed DataFrames
+
+# ============================================================================
+# AI FAIRNESS AND BIAS DETECTION (Course 06)
+# ============================================================================
+fairlearn>=0.9.0             # Fairness assessment and mitigation
+aif360>=0.5.0                # AI Fairness 360 toolkit
+
+# ============================================================================
+# EXPLAINABLE AI (XAI) (Course 06)
+# ============================================================================
+shap>=0.42.0                 # SHAP values for model interpretability
+lime>=0.2.0                  # Local Interpretable Model-agnostic Explanations
+
+# ============================================================================
+# PRIVACY-PRESERVING TECHNIQUES (Course 06)
+# ============================================================================
+diffprivlib>=0.6.0           # Differential privacy library
+
+# ============================================================================
+# GRAPH OPERATIONS (Course 02)
+# ============================================================================
+networkx>=3.0,<4.0.0         # Graph operations and network analysis
+
+# ============================================================================
+# SYMBOLIC MATHEMATICS (Course 03)
+# ============================================================================
+sympy>=1.12.0                # Symbolic mathematics
+
+# ============================================================================
+# STATISTICS (Course 03)
+# ============================================================================
+statsmodels>=0.14.0          # Statistical modeling and inference
+
+# ============================================================================
+# JUPYTER NOTEBOOK SUPPORT
+# ============================================================================
+jupyter>=1.0.0               # Jupyter notebook (All courses)
+jupyterlab>=4.0.0            # JupyterLab (Course 03)
+notebook>=7.0.0              # Jupyter notebook server (Courses 02, 05)
+ipython>=8.12.0              # Enhanced interactive Python shell (All courses)
+ipykernel>=6.25.0            # IPython kernel for Jupyter (Courses 02, 03)
+ipywidgets>=8.0.0            # Interactive widgets (Course 03)
+
+# ============================================================================
+# DATA HANDLING
+# ============================================================================
+openpyxl>=3.1.0              # For Excel files (Courses 04, 05, 06)
+
+# ============================================================================
+# DATA QUALITY AND EXPLORATION
+# ============================================================================
+missingno>=0.5.2             # Missing data visualization (Course 05)
+ydata-profiling>=4.0.0       # Modern data profiling (Course 05)
+pandas-profiling>=3.6.0      # Data exploration (Courses 04, 06) - Legacy, prefer ydata-profiling
+
+# ============================================================================
+# UTILITIES
+# ============================================================================
+tqdm>=4.65.0,<5.0.0          # Progress bars (Course 02)
+requests>=2.31.0,<3.0.0      # API calls (Course 02)
+joblib>=1.3.0,<2.0.0         # Model saving (Course 02)
+
+# ============================================================================
+# PRESENTATION AND DOCUMENT PROCESSING
+# ============================================================================
+python-pptx>=0.6.21          # For extracting content from PowerPoint files (Course 06)
+
+# ============================================================================
+# CRYPTOGRAPHY (Course 06)
+# ============================================================================
+cryptography>=41.0.0         # For encryption and data protection
+
+# ============================================================================
+# CODE QUALITY AND TESTING (Course 03)
+# ============================================================================
+black>=23.0.0                # Code formatting
+pylint>=2.17.0               # Code linting
+pytest>=7.4.0                # Testing framework
+
+# ============================================================================
+# DOCUMENTATION (Course 03)
+# ============================================================================
+sphinx>=7.0.0                # Documentation generator
+
+# ============================================================================
+# OPTIONAL / ADVANCED PACKAGES (Commented out - install only if needed)
+# ============================================================================
+
+# Deep Learning (optional - requires significant resources)
+# tensorflow>=2.13.0         # Google's deep learning framework
+# torch>=2.0.0               # PyTorch - Facebook's deep learning framework
+
+# Computer Vision (optional)
+# opencv-python>=4.8.0       # Computer vision library
+# pillow>=10.0.0             # Image processing
+
+# Natural Language Processing (optional)
+# nltk>=3.8.0                # Natural Language Toolkit
+# spacy>=3.6.0               # Modern NLP library
+
+# NVIDIA RAPIDS (Course 05 - GPU acceleration, install separately via conda)
+# Note: RAPIDS packages (cudf, cuml, cuPy) should be installed separately
+# via conda or pip according to your CUDA version. See installation guide:
+# https://rapids.ai/start.html
+#
+# Example conda installation:
+# conda create -n rapids-env -c rapidsai -c conda-forge -c nvidia cudf=23.08 cuml=23.08 python=3.10 cudatoolkit=11.8
+#
+# Or via pip (limited GPU support):
+# pip install cudf-cu11 cuml-cu11 --extra-index-url=https://pypi.nvidia.com
+
+# ============================================================================
+# INSTALLATION NOTES
+# ============================================================================
+# 1. Recommended: Use a virtual environment
+#    python3 -m venv venv
+#    source venv/bin/activate  # On Windows: venv\Scripts\activate
+#
+# 2. Install all requirements:
+#    pip install --upgrade pip
+#    pip install -r requirements.txt
+#
+# 3. Verify installation:
+#    pip check
+#    python -c "import pandas, numpy, matplotlib, sklearn; print('All libraries imported successfully!')"
+#
+# 4. For Course 05 (Scalable Data Science), if you need GPU acceleration,
+#    install NVIDIA RAPIDS separately (see comments above)
+# ============================================================================
+

@@ -17,7 +17,6 @@ What is optimization?
 - C) Sorting data
 - D) Visualizing data
 
-**Answer: A**
 
 ### Question 2 (5 points)
 What is an objective function?
@@ -26,7 +25,6 @@ What is an objective function?
 - C) A variable
 - D) A parameter
 
-**Answer: A**
 
 ### Question 3 (10 points)
 Give an example of an optimization problem (real-world or mathematical).
@@ -47,7 +45,6 @@ Gradient descent is used to:
 - C) Sort data
 - D) Visualize functions
 
-**Answer: B**
 
 ### Question 5 (5 points)
 What is a learning rate in gradient descent?
@@ -56,7 +53,6 @@ What is a learning rate in gradient descent?
 - C) The number of iterations
 - D) The initial value
 
-**Answer: B**
 
 ### Question 6 (10 points)
 If learning rate is too high in gradient descent, what happens?
@@ -65,7 +61,6 @@ If learning rate is too high in gradient descent, what happens?
 - C) Algorithm stops working
 - D) Nothing changes
 
-**Answer: B**
 
 ### Question 7 (10 points)
 What does the gradient represent?
@@ -74,7 +69,6 @@ What does the gradient represent?
 - C) The current value
 - D) The final value
 
-**Answer: B**
 
 ---
 
@@ -87,7 +81,6 @@ Genetic algorithms are inspired by:
 - C) Mathematics
 - D) Chemistry
 
-**Answer: B**
 
 ### Question 9 (5 points)
 In genetic algorithms, what is a chromosome?
@@ -96,7 +89,6 @@ In genetic algorithms, what is a chromosome?
 - C) A function
 - D) A parameter
 
-**Answer: A**
 
 ### Question 10 (5 points)
 What is crossover in genetic algorithms?
@@ -105,12 +97,10 @@ What is crossover in genetic algorithms?
 - C) Selecting best solutions
 - D) Initializing population
 
-**Answer: A**
 
 ### Question 11 (10 points)
 List the main steps of a genetic algorithm.
 
-**Answer:**
 1. Initialize population
 2. Evaluate fitness
 3. Select parents
@@ -129,7 +119,6 @@ Simulated annealing is inspired by:
 - C) Mathematics
 - D) Chemistry
 
-**Answer: B**
 
 ### Question 13 (5 points)
 What is the temperature parameter in simulated annealing?
@@ -138,7 +127,6 @@ What is the temperature parameter in simulated annealing?
 - C) The best solution value
 - D) The number of iterations
 
-**Answer: A**
 
 ### Question 14 (5 points)
 As temperature decreases in simulated annealing:
@@ -147,7 +135,6 @@ As temperature decreases in simulated annealing:
 - C) Nothing changes
 - D) Algorithm stops
 
-**Answer: B**
 
 ---
 
@@ -160,7 +147,6 @@ Which SciPy module is used for optimization?
 - C) `scipy.linalg`
 - D) `scipy.spatial`
 
-**Answer: B**
 
 ### Question 16 (5 points)
 What is the advantage of using SciPy's optimization functions?
@@ -169,28 +155,8 @@ What is the advantage of using SciPy's optimization functions?
 - C) They're easier to understand
 - D) They don't need parameters
 
-**Answer: B**
 
 ---
-
-## Answer Key Summary
-
-1. A - Finding the best solution
-2. A - A function to minimize or maximize
-3. See sample answers
-4. B - Find minimum values
-5. B - The step size for each iteration
-6. B - Algorithm may overshoot and diverge
-7. B - The direction of steepest descent
-8. B - Biology (evolution)
-9. A - A solution representation
-10. A - Combining parts of two solutions
-11. See answer list
-12. B - Physics (metal cooling)
-13. A - Controls how often we accept worse solutions
-14. B - Algorithm accepts fewer worse solutions
-15. B - `scipy.optimize`
-16. B - They're well-tested and production-ready
 
 ---
 

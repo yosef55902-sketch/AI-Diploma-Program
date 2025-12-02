@@ -17,7 +17,6 @@ What is the main difference between regression and classification?
 - C) There is no difference
 - D) Regression uses neural networks, classification uses trees
 
-**Answer:** A
 
 ---
 
@@ -28,7 +27,6 @@ Which algorithm uses a sigmoid function to output probabilities?
 - C) K-Nearest Neighbors
 - D) Support Vector Machine
 
-**Answer:** B
 
 ---
 
@@ -39,7 +37,6 @@ What is the main advantage of Decision Trees?
 - C) They work best with large datasets
 - D) They don't require feature scaling
 
-**Answer:** B
 
 ---
 
@@ -50,7 +47,6 @@ What does SVM (Support Vector Machine) try to find?
 - C) The average of all features
 - D) The correlation between features
 
-**Answer:** A
 
 ---
 
@@ -63,7 +59,6 @@ What does accuracy measure?
 - C) The proportion of actual positives that are correctly identified
 - D) The harmonic mean of precision and recall
 
-**Answer:** A
 
 ---
 
@@ -74,7 +69,6 @@ What is precision?
 - C) The proportion of actual positives that are correctly identified
 - D) The harmonic mean of precision and recall
 
-**Answer:** B
 
 ---
 
@@ -85,7 +79,6 @@ What is recall?
 - C) The proportion of actual positives that are correctly identified
 - D) The harmonic mean of precision and recall
 
-**Answer:** C
 
 ---
 
@@ -96,7 +89,6 @@ What does F1-score represent?
 - C) The proportion of actual positives that are correctly identified
 - D) The harmonic mean of precision and recall
 
-**Answer:** D
 
 ---
 
@@ -109,7 +101,6 @@ In a confusion matrix, what does True Positive (TP) represent?
 - C) Incorrectly predicted negative cases
 - D) Incorrectly predicted positive cases
 
-**Answer:** B
 
 ---
 
@@ -120,22 +111,11 @@ What does AUC (Area Under Curve) measure in ROC analysis?
 - C) The precision of the model
 - D) The recall of the model
 
-**Answer:** B
 
 ---
 
 ## Answer Key | مفتاح الإجابات
 
-1. A - Regression predicts continuous values, classification predicts categories
-2. B - Logistic Regression
-3. B - They are easy to interpret and visualize
-4. A - The best decision boundary that maximizes the margin
-5. A - The proportion of correctly classified instances
-6. B - The proportion of positive predictions that are correct
-7. C - The proportion of actual positives that are correctly identified
-8. D - The harmonic mean of precision and recall
-9. B - Correctly predicted positive cases
-10. B - The model's ability to distinguish between classes
 
 ---
 

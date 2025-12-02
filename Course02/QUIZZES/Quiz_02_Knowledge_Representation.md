@@ -17,7 +17,6 @@ What is a knowledge graph?
 - C) A database
 - D) A search algorithm
 
-**Answer: B**
 
 ### Question 2 (5 points)
 In a knowledge graph, nodes represent:
@@ -26,7 +25,6 @@ In a knowledge graph, nodes represent:
 - C) Rules
 - D) Facts
 
-**Answer: B**
 
 ### Question 3 (5 points)
 In a knowledge graph, edges represent:
@@ -35,7 +33,6 @@ In a knowledge graph, edges represent:
 - C) Rules
 - D) Facts
 
-**Answer: B**
 
 ### Question 4 (10 points)
 Create a simple knowledge graph with 3 entities and 2 relationships. Draw it.
@@ -51,7 +48,6 @@ Which library is commonly used for knowledge graphs in Python?
 - C) NetworkX
 - D) SciPy
 
-**Answer: C**
 
 ---
 
@@ -64,7 +60,6 @@ What is a rule in a rule-based system?
 - C) A node
 - D) An edge
 
-**Answer: B**
 
 ### Question 7 (5 points)
 Forward chaining:
@@ -73,7 +68,6 @@ Forward chaining:
 - C) Works randomly
 - D) Doesn't use rules
 
-**Answer: B**
 
 ### Question 8 (5 points)
 Backward chaining:
@@ -82,7 +76,6 @@ Backward chaining:
 - C) Works randomly
 - D) Doesn't use rules
 
-**Answer: B**
 
 ### Question 9 (10 points)
 Given the rules:
@@ -92,7 +85,6 @@ Given the rules:
 And the fact: "it is raining"
 What can we conclude?
 
-**Answer: "take umbrella"**
 
 ---
 
@@ -105,7 +97,6 @@ What is a semantic network?
 - C) A neural network
 - D) A database
 
-**Answer: B**
 
 ### Question 11 (5 points)
 In semantic networks, inheritance means:
@@ -114,7 +105,6 @@ In semantic networks, inheritance means:
 - C) Deleting nodes
 - D) Changing relationships
 
-**Answer: A**
 
 ### Question 12 (10 points)
 Draw a semantic network showing:
@@ -123,7 +113,6 @@ Draw a semantic network showing:
 - Cat (child of Animal)
 - Has property: "has fur"
 
-**Answer: Students should draw inheritance hierarchy**
 
 ### Question 13 (5 points)
 What Python concept is similar to inheritance in semantic networks?
@@ -132,7 +121,6 @@ What Python concept is similar to inheritance in semantic networks?
 - C) Functions
 - D) Dictionaries
 
-**Answer: B**
 
 ---
 
@@ -149,7 +137,6 @@ G.add_______("City")
 G.add_______("Person", "City", relation="lives_in")
 ```
 
-**Answer: `node`, `node`, `edge`**
 
 ### Question 15 (10 points)
 Write code to represent a simple rule: "IF temperature > 30 THEN it is hot"
@@ -163,24 +150,6 @@ def check_temperature(temp):
 ```
 
 ---
-
-## Answer Key Summary
-
-1. B - A way to represent facts and relationships
-2. B - Entities or concepts
-3. B - Relationships between entities
-4. See sample answer
-5. C - NetworkX
-6. B - A condition-action pair (IF-THEN)
-7. B - Starts from facts and applies rules forward
-8. B - Starts from goals and works backward
-9. "take umbrella"
-10. B - A way to represent concepts and their relationships
-11. A - Passing properties from parent to child
-12. See answer description
-13. B - Classes and inheritance
-14. `node`, `node`, `edge`
-15. See sample answer
 
 ---
 

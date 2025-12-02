@@ -22,7 +22,6 @@ What is the main purpose of Ridge Regression (L2 regularization)?
 - C) To increase model complexity
 - D) To handle missing values
 
-**Answer:** B
 
 ---
 
@@ -33,7 +32,6 @@ What is the key difference between Ridge and Lasso regression?
 - C) There is no difference
 - D) Ridge is for classification, Lasso is for regression
 
-**Answer:** B
 
 ---
 
@@ -44,7 +42,6 @@ Which regularization technique can set coefficients to exactly zero?
 - C) Both
 - D) Neither
 
-**Answer:** B
 
 ---
 
@@ -55,7 +52,6 @@ What does cross-validation help with?
 - C) Speeding up training
 - D) Handling missing values
 
-**Answer:** B
 
 ---
 
@@ -66,7 +62,6 @@ In K-Fold cross-validation with K=5, how many times is the model trained?
 - C) 10 times
 - D) Depends on the data size
 
-**Answer:** B
 
 ---
 
@@ -136,7 +131,6 @@ y = 2 * X[:, 0] + 1.5 * X[:, 1] - X[:, 2] + np.random.normal(0, 0.5, 200)
 ### Question 8 (5 points)
 Explain the difference between MSE, RMSE, and MAE. When would you use each?
 
-**Answer:**
 - **MSE (Mean Squared Error)**: Average of squared differences. Sensitive to outliers. Used when large errors should be penalized more.
 - **RMSE (Root Mean Squared Error)**: Square root of MSE. Same units as target variable. Commonly used for interpretability.
 - **MAE (Mean Absolute Error)**: Average of absolute differences. Less sensitive to outliers. Used when all errors should be treated equally.
@@ -148,7 +142,6 @@ Explain the difference between MSE, RMSE, and MAE. When would you use each?
 ### Question 9 (5 points)
 You have a regression model with R² = 0.85 on training data but R² = 0.60 on test data. What is this problem called, and what are two ways to address it?
 
-**Answer:**
 - **Problem:** Overfitting
 - **Solutions:**
   1. Use regularization (Ridge or Lasso) to penalize large coefficients
@@ -161,7 +154,6 @@ You have a regression model with R² = 0.85 on training data but R² = 0.60 on t
 ### Question 10 (5 points)
 Explain what happens to Ridge regression coefficients as the alpha parameter increases. What about Lasso?
 
-**Answer:**
 - **Ridge:** As alpha increases, coefficients shrink towards zero but never become exactly zero. All features remain in the model.
 - **Lasso:** As alpha increases, coefficients shrink towards zero, and some become exactly zero. This performs automatic feature selection.
 

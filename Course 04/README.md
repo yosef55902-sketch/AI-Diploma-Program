@@ -46,7 +46,7 @@ This course provides comprehensive training in machine learning algorithms using
 ├── 📄 README.md                        📖 This file
 ├── 📄 START_HERE.md                    ⭐ READ THIS FIRST!
 ├── 📄 STUDENT_PROGRESS_CHECKLIST.md    ✅ Track progress
-├── 📄 requirements.txt                 📦 Dependencies
+├── 📄 ../requirements.txt              📦 Dependencies (in root directory)
 │
 ├── 📓 unit1-data-processing/           📚 Unit 1: Data Processing & Regression
 ├── 📓 unit2-regression/                📚 Unit 2: Advanced Regression
@@ -67,7 +67,7 @@ This course provides comprehensive training in machine learning algorithms using
 ## Quick Start | البدء السريع
 
 1. **Read:** `START_HERE.md`
-2. **Install:** Libraries (see `requirements.txt` and `DOCS/`)
+2. **Install:** Libraries (see `../requirements.txt` and `DOCS/`)
 3. **Start:** `unit1-data-processing/examples/01_data_loading_exploration.ipynb`
 4. **Track:** Use `STUDENT_PROGRESS_CHECKLIST.md`
 
@@ -187,7 +187,7 @@ All documentation is in the `DOCS/` folder:
 - **Advanced ML:** xgboost, lightgbm
 - **Utilities:** jupyter, ipython
 
-See `requirements.txt` for complete list with versions.
+See `../requirements.txt` for complete list with versions.
 
 ---
 

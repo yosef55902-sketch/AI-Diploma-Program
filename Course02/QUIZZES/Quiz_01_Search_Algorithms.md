@@ -17,7 +17,6 @@ What is a node in a graph?
 - C) A path through the graph
 - D) A weight on an edge
 
-**Answer: B**
 
 ### Question 2 (5 points)
 What is an edge in a graph?
@@ -26,7 +25,6 @@ What is an edge in a graph?
 - C) A path
 - D) A weight
 
-**Answer: B**
 
 ### Question 3 (10 points)
 Draw a simple graph with 4 nodes (A, B, C, D) where:
@@ -34,7 +32,6 @@ Draw a simple graph with 4 nodes (A, B, C, D) where:
 - B is connected to D
 - C is connected to D
 
-**Answer: Students should draw a graph showing these connections**
 
 ---
 
@@ -47,7 +44,6 @@ What data structure does BFS use?
 - C) Priority Queue
 - D) List
 
-**Answer: B**
 
 ### Question 5 (5 points)
 BFS finds:
@@ -56,7 +52,6 @@ BFS finds:
 - C) The longest path
 - D) Any path
 
-**Answer: B**
 
 ### Question 6 (10 points)
 Trace BFS on the following graph starting from node A:
@@ -67,7 +62,6 @@ C -- D
 ```
 Show the order nodes are visited.
 
-**Answer: A, B, C, D (or A, C, B, D depending on order of neighbors)**
 
 ### Question 7 (5 points)
 What is the time complexity of BFS?
@@ -76,7 +70,6 @@ What is the time complexity of BFS?
 - C) O(V²)
 - D) O(E)
 
-**Answer: B**
 
 ---
 
@@ -89,7 +82,6 @@ What data structure does DFS use?
 - C) Priority Queue
 - D) List
 
-**Answer: A**
 
 ### Question 9 (5 points)
 DFS explores:
@@ -98,7 +90,6 @@ DFS explores:
 - C) Randomly
 - D) Shortest paths first
 
-**Answer: B**
 
 ### Question 10 (10 points)
 Trace DFS on the following graph starting from node A:
@@ -109,7 +100,6 @@ C -- D
 ```
 Show the order nodes are visited (assume alphabetical order for neighbors).
 
-**Answer: A, B, D, C (or A, C, D, B depending on implementation)**
 
 ---
 
@@ -122,7 +112,6 @@ What makes A* different from Dijkstra's algorithm?
 - C) It doesn't use a priority queue
 - D) It's slower
 
-**Answer: B**
 
 ### Question 12 (5 points)
 The A* algorithm uses which formula for node evaluation?
@@ -131,7 +120,6 @@ The A* algorithm uses which formula for node evaluation?
 - C) f(n) = g(n) + h(n)
 - D) f(n) = g(n) - h(n)
 
-**Answer: C**
 
 ### Question 13 (5 points)
 What does g(n) represent in A*?
@@ -140,7 +128,6 @@ What does g(n) represent in A*?
 - C) Estimated cost to goal
 - D) Total cost
 
-**Answer: B**
 
 ### Question 14 (5 points)
 What does h(n) represent in A*?
@@ -149,7 +136,6 @@ What does h(n) represent in A*?
 - C) Total cost
 - D) Path length
 
-**Answer: B**
 
 ---
 
@@ -162,7 +148,6 @@ Dijkstra's algorithm finds:
 - C) Longest path
 - D) Any path
 
-**Answer: B**
 
 ### Question 16 (5 points)
 What data structure does Dijkstra's algorithm use?
@@ -171,7 +156,6 @@ What data structure does Dijkstra's algorithm use?
 - C) Priority Queue
 - D) List
 
-**Answer: C**
 
 ### Question 17 (5 points)
 Dijkstra's algorithm works on:
@@ -180,29 +164,8 @@ Dijkstra's algorithm works on:
 - C) Any graph
 - D) Only directed graphs
 
-**Answer: B**
 
 ---
-
-## Answer Key Summary
-
-1. B - A point or vertex in the graph
-2. B - A connection between two nodes
-3. See answer description
-4. B - Queue (FIFO)
-5. B - The shortest path (in unweighted graphs)
-6. A, B, C, D (or A, C, B, D)
-7. B - O(V + E)
-8. A - Stack (LIFO)
-9. B - As deep as possible first
-10. A, B, D, C (or A, C, D, B)
-11. B - It uses a heuristic function
-12. C - f(n) = g(n) + h(n)
-13. B - Actual cost from start to node n
-14. B - Estimated cost from node n to goal
-15. B - Shortest path in weighted graphs
-16. C - Priority Queue
-17. B - Only weighted graphs with non-negative weights
 
 ---
 

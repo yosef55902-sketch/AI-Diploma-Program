@@ -37,7 +37,7 @@ python --version
 ### Q5: How do I install the required libraries?
 **A:** Follow `DOCS/INSTALLATION_GUIDE.md`. Quick method:
 ```bash
-pip install -r requirements.txt
+pip install -r ../../requirements.txt
 ```
 
 ---
@@ -49,7 +49,7 @@ pip install -r requirements.txt
 
 ### Q7: I'm getting "No module named 'numpy'" error. What should I do?
 **A:** 
-1. Make sure you installed libraries: `pip install -r requirements.txt`
+1. Make sure you installed libraries: `pip install -r ../../requirements.txt`
 2. Check if you're in the correct virtual environment
 3. Verify installation: `python TESTING/verify_installation.py`
 

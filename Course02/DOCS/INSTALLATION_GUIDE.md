@@ -28,7 +28,7 @@ source venv/bin/activate
 
 ```bash
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r ../../requirements.txt
 ```
 
 ### Step 3: Verify Installation
@@ -53,7 +53,7 @@ This tests all libraries work together and reports any issues.
 
 ```bash
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r ../../requirements.txt
 pip check  # Verify no conflicts
 python TESTING/verify_installation.py  # Test all libraries
 ```
@@ -62,7 +62,7 @@ python TESTING/verify_installation.py  # Test all libraries
 
 ## 📋 Manual Installation (If Needed)
 
-If `requirements.txt` causes issues, install in this order:
+If `../../requirements.txt` causes issues, install in this order:
 
 ```bash
 # 1. Core libraries first
@@ -104,7 +104,7 @@ pip install jupyter notebook ipykernel
 3. **Python < 3.9**: Some libraries don't support older Python
 
 ### ✅ Solution:
-Use versions in `requirements.txt` - they're all tested together!
+Use versions in `../../requirements.txt` - they're all tested together!
 
 ---
 
@@ -225,7 +225,7 @@ source venv/bin/activate  # or: venv\Scripts\activate on Windows
 
 # 2. Install everything
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r ../../requirements.txt
 
 # 3. Verify installation
 pip check  # Quick check for conflicts
@@ -236,7 +236,7 @@ jupyter notebook
 ```
 
 **What these commands do:**
-- `pip install -r requirements.txt`: Installs all libraries with compatible versions
+- `pip install -r ../../requirements.txt`: Installs all libraries with compatible versions
 - `pip check`: Quick check for conflicts between libraries
 - `python TESTING/verify_installation.py`: Detailed check - tests all libraries work together
 
@@ -248,7 +248,7 @@ jupyter notebook
 2. **Use `pip check`** after installation to find conflicts
 3. **Keep pip updated**: `pip install --upgrade pip`
 4. **If conflicts occur**: Use virtual environment and reinstall
-5. **Don't mix installations**: Either use requirements.txt OR manual, not both
+5. **Don't mix installations**: Either use ../../requirements.txt OR manual, not both
 
 ---
 

@@ -17,7 +17,6 @@ What does `df.info()` display?
 - C) Data types, non-null counts, and memory usage
 - D) Last 5 rows of the DataFrame
 
-**Answer:** C
 
 ---
 
@@ -28,7 +27,6 @@ Which method is used to read a CSV file in pandas?
 - C) `pd.read_json()`
 - D) `pd.load_csv()`
 
-**Answer:** B
 
 ---
 
@@ -39,7 +37,6 @@ What does `df.describe()` return?
 - C) Number of missing values
 - D) Column names
 
-**Answer:** B
 
 ---
 
@@ -52,7 +49,6 @@ How do you check for missing values in a DataFrame?
 - C) `df.find_na()`
 - D) `df.check_null()`
 
-**Answer:** B
 
 ---
 
@@ -63,7 +59,6 @@ What method removes duplicate rows from a DataFrame?
 - C) `df.unique()`
 - D) `df.deduplicate()`
 
-**Answer:** B
 
 ---
 
@@ -74,7 +69,6 @@ Which method fills missing values with a specific value?
 - C) `df.update()`
 - D) `df.set_value()`
 
-**Answer:** B
 
 ---
 
@@ -87,7 +81,6 @@ What is the purpose of StandardScaler?
 - C) To remove outliers
 - D) To handle missing values
 
-**Answer:** B
 
 ---
 
@@ -98,7 +91,6 @@ Which encoding method creates binary columns for each category?
 - C) Ordinal Encoding
 - D) Binary Encoding
 
-**Answer:** B
 
 ---
 
@@ -111,7 +103,6 @@ In linear regression, what does the coefficient represent?
 - C) The error term
 - D) The correlation coefficient
 
-**Answer:** B
 
 ---
 
@@ -122,22 +113,11 @@ What is the difference between simple and multiple linear regression?
 - C) There is no difference
 - D) Simple is for classification, multiple is for regression
 
-**Answer:** A
 
 ---
 
 ## Answer Key | مفتاح الإجابات
 
-1. C - Data types, non-null counts, and memory usage
-2. B - `pd.read_csv()`
-3. B - Statistical summary (mean, std, min, max, etc.) for numerical columns
-4. B - `df.isnull().sum()`
-5. B - `df.drop_duplicates()`
-6. B - `df.fillna()`
-7. B - To standardize features to have mean=0 and std=1
-8. B - One-Hot Encoding
-9. B - The change in target variable per unit change in feature
-10. A - Simple uses one feature, multiple uses many features
 
 ---
 

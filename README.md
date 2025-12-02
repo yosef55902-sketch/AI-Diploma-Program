@@ -187,7 +187,7 @@ Each course follows a consistent structure:
 
 3. **Install dependencies:**
    ```bash
-   pip install -r requirements.txt
+   pip install -r requirements.txt  # (in root directory)
    ```
 
 4. **Follow course-specific setup instructions** in `START_HERE.md`

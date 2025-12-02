@@ -17,7 +17,6 @@ What is the main difference between supervised and unsupervised learning?
 - C) There is no difference
 - D) Supervised learning is faster
 
-**Answer:** A
 
 ---
 
@@ -28,7 +27,6 @@ What does K-Means clustering try to minimize?
 - C) The number of features
 - D) The distance between clusters
 
-**Answer:** B
 
 ---
 
@@ -39,7 +37,6 @@ How do you choose the optimal number of clusters (K) in K-Means?
 - C) Use the number of features
 - D) Use the number of samples
 
-**Answer:** B
 
 ---
 
@@ -50,7 +47,6 @@ What is the main difference between K-Means and Hierarchical clustering?
 - C) There is no difference
 - D) K-Means is for classification, Hierarchical is for regression
 
-**Answer:** A
 
 ---
 
@@ -63,7 +59,6 @@ What is the main purpose of PCA (Principal Component Analysis)?
 - C) To remove outliers
 - D) To handle missing values
 
-**Answer:** B
 
 ---
 
@@ -74,7 +69,6 @@ What does "explained variance" represent in PCA?
 - C) The number of features
 - D) The number of samples
 
-**Answer:** B
 
 ---
 
@@ -85,7 +79,6 @@ How many principal components can you have at most?
 - C) Always 2
 - D) Always 3
 
-**Answer:** A
 
 ---
 
@@ -96,7 +89,6 @@ What is a common rule of thumb for choosing the number of PCA components?
 - C) Always use 2 components
 - D) Use half the number of features
 
-**Answer:** B
 
 ---
 
@@ -109,7 +101,6 @@ What does the Silhouette Score measure?
 - C) Both cluster compactness and separation
 - D) The number of clusters
 
-**Answer:** C
 
 ---
 
@@ -120,22 +111,11 @@ What is a good Silhouette Score range?
 - C) 0 to 100 (higher is better)
 - D) Any positive value
 
-**Answer:** A
 
 ---
 
 ## Answer Key | مفتاح الإجابات
 
-1. A - Supervised learning uses labels, unsupervised learning doesn't
-2. B - The within-cluster sum of squares (WCSS)
-3. B - Use the Elbow Method or Silhouette Score
-4. A - K-Means requires specifying K, Hierarchical doesn't
-5. B - To reduce dimensionality while preserving variance
-6. B - The proportion of variance captured by each component
-7. A - The number of features
-8. B - Use components that explain 80-95% of variance
-9. C - Both cluster compactness and separation
-10. A - -1 to 1 (closer to 1 is better)
 
 ---
 

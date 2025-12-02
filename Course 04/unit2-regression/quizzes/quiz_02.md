@@ -17,7 +17,6 @@ What is the main purpose of Ridge Regression (L2 regularization)?
 - C) To increase model complexity
 - D) To handle missing values
 
-**Answer:** B
 
 ---
 
@@ -28,7 +27,6 @@ What is the main difference between Ridge and Lasso regression?
 - C) There is no difference
 - D) Ridge is for classification, Lasso is for regression
 
-**Answer:** B
 
 ---
 
@@ -39,7 +37,6 @@ Which regularization technique can set coefficients to exactly zero?
 - C) Both
 - D) Neither
 
-**Answer:** B
 
 ---
 
@@ -50,7 +47,6 @@ What does the alpha parameter control in Ridge/Lasso regression?
 - C) The number of iterations
 - D) The number of features
 
-**Answer:** B
 
 ---
 
@@ -63,7 +59,6 @@ Which metric is most sensitive to outliers in regression?
 - C) R² Score
 - D) RMSE (Root Mean Squared Error)
 
-**Answer:** B
 
 ---
 
@@ -74,7 +69,6 @@ What does R² (R-squared) measure?
 - C) The mean squared error
 - D) The residual sum of squares
 
-**Answer:** B
 
 ---
 
@@ -85,7 +79,6 @@ What is a good R² score?
 - C) Close to -1
 - D) Any positive value
 
-**Answer:** B
 
 ---
 
@@ -98,7 +91,6 @@ What is the main purpose of cross-validation?
 - C) To speed up training
 - D) To handle missing values
 
-**Answer:** B
 
 ---
 
@@ -109,7 +101,6 @@ In K-Fold cross-validation with K=5, how many times is the model trained?
 - C) 10 times
 - D) Depends on the data size
 
-**Answer:** B
 
 ---
 
@@ -120,22 +111,11 @@ What is the advantage of using cross-validation over a simple train-test split?
 - C) It provides multiple performance estimates
 - D) It requires less data
 
-**Answer:** C
 
 ---
 
 ## Answer Key | مفتاح الإجابات
 
-1. B - To penalize large coefficients and prevent overfitting
-2. B - Ridge uses L2 penalty, Lasso uses L1 penalty
-3. B - Lasso Regression
-4. B - The strength of regularization
-5. B - MSE (Mean Squared Error)
-6. B - The proportion of variance explained by the model
-7. B - Close to 1
-8. B - To get a more reliable estimate of model performance
-9. B - 5 times
-10. C - It provides multiple performance estimates
 
 ---
 

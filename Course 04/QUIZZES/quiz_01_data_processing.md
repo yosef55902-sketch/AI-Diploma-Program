@@ -14,7 +14,6 @@ What does `df.isnull().sum()` return?
 - C) A boolean dataframe
 - D) None of the above
 
-**Answer:** B
 
 ---
 
@@ -25,7 +24,6 @@ Which method removes duplicate rows in pandas?
 - C) `df.unique()`
 - D) `df.deduplicate()`
 
-**Answer:** B
 
 ---
 
@@ -36,7 +34,6 @@ What does StandardScaler do?
 - C) Normalizes features using min-max
 - D) Removes outliers
 
-**Answer:** B
 
 ---
 
@@ -47,7 +44,6 @@ When should you use Label Encoding vs One-Hot Encoding?
 - C) Both work the same way
 - D) Only use One-Hot Encoding
 
-**Answer:** A
 
 ---
 
@@ -58,7 +54,6 @@ What is the purpose of train_test_split?
 - C) To remove missing values
 - D) To scale the data
 
-**Answer:** A
 
 ---
 
@@ -71,7 +66,6 @@ Write Python code to:
 3. Check for missing values
 4. Fill missing values in numeric columns with the mean
 
-**Answer:**
 ```python
 import pandas as pd
 import numpy as np
@@ -99,7 +93,6 @@ Write code to:
 2. Fit it on training data X_train
 3. Transform both X_train and X_test
 
-**Answer:**
 ```python
 from sklearn.preprocessing import StandardScaler
 
@@ -115,7 +108,6 @@ X_test_scaled = scaler.transform(X_test)
 ### Question 8 (5 points)
 Explain the difference between standardization and normalization. When would you use each?
 
-**Answer:**
 - **Standardization (Z-score normalization):** Transforms data to have mean=0 and std=1. Formula: (x - mean) / std. Use when data has outliers or follows normal distribution.
 - **Normalization (Min-Max scaling):** Transforms data to range [0, 1]. Formula: (x - min) / (max - min). Use when you need bounded range or data doesn't follow normal distribution.
 
@@ -124,7 +116,6 @@ Explain the difference between standardization and normalization. When would you
 ### Question 9 (5 points)
 What is multicollinearity? Why is it a problem in machine learning?
 
-**Answer:**
 Multicollinearity occurs when features are highly correlated with each other. Problems:
 1. Makes model coefficients unstable
 2. Reduces interpretability
@@ -138,11 +129,6 @@ Solutions: Remove correlated features, use regularization (Ridge/Lasso), or use 
 ## Answer Key
 
 **Part 1:**
-1. B - 2 points
-2. B - 2 points
-3. B - 2 points
-4. A - 2 points
-5. A - 2 points
 
 **Part 2:**
 6. Full code with all steps - 5 points
