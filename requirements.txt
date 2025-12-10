@@ -8,7 +8,8 @@
 # - Course 05: Scalable Data Science
 # - Course 06: Ethics of Artificial Intelligence
 # ============================================================================
-# Python 3.9+ required
+# Python Version: 3.8+ required (3.10 or 3.11 recommended)
+# Compatible with: Windows 10+, macOS 10.14+, Linux (Ubuntu 18.04+)
 # ============================================================================
 
 # ============================================================================
