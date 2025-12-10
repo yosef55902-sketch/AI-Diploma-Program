@@ -6,6 +6,20 @@ SOLUTIONS_ALL/
 **/META/*.md
 **/META/*.py
 
+# Exclude internal review and status files
+*REVIEW*.md
+*NOTEBOOK_REVIEW*.md
+FINAL_STATUS.md
+**/FINAL_STATUS.md
+review_*.py
+*_review_*.py
+
+# Exclude temporary/version files (files starting with =)
+=*
+
+# Exclude duplicate quiz summary files (we use README.md instead)
+**/QUIZZES/quiz_summary.md
+
 # Python
 __pycache__/
 *.pyc
