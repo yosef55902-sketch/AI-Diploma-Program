@@ -70,7 +70,7 @@ Welcome to the **AI Diploma Program** - a comprehensive, hands-on curriculum cov
 ---
 
 ### Course 05: Data Science | علوم البيانات
-**Directory:** `Course 05 _ /`
+**Directory:** `Course 05/`
 
 **Description:** Scalable data science techniques using Python, pandas, and NVIDIA RAPIDS for large-scale data processing.
 
@@ -87,7 +87,7 @@ Welcome to the **AI Diploma Program** - a comprehensive, hands-on curriculum cov
 ---
 
 ### Course 06: AI Ethics | أخلاقيات الذكاء الاصطناعي
-**Directory:** `Course 06-ethics /`
+**Directory:** `Course 06/`
 
 **Description:** Ethical considerations, bias detection, privacy, transparency, and governance in AI systems.
 
@@ -244,8 +244,8 @@ AI Diploma/
 ├── Course02/              AI Fundamentals
 ├── Course03/              Mathematics for AI
 ├── Course 04/             Machine Learning
-├── Course 05 _ /          Data Science
-└── Course 06-ethics /    AI Ethics
+├── Course 05/             Data Science
+└── Course 06/             AI Ethics
 ```
 
 ---
@@ -256,8 +256,8 @@ AI Diploma/
 - [Course 02 - START_HERE](Course02/START_HERE.md)
 - [Course 03 - START_HERE](Course03/START_HERE.md)
 - [Course 04 - START_HERE](Course%2004/START_HERE.md)
-- [Course 05 - START_HERE](Course%2005%20_%20/START_HERE.md)
-- [Course 06 - START_HERE](Course%2006-ethics%20/START_HERE.md)
+- [Course 05 - START_HERE](Course%2005/START_HERE.md)
+- [Course 06 - START_HERE](Course%2006/START_HERE.md)
 
 ---
 
