@@ -171,6 +171,27 @@ Use this checklist to track your progress:
 
 ---
 
+## 🔗 Navigating Related Topics | التنقل بين المواضيع ذات الصلة
+
+**You may notice that some topics (like BFS, Linear Regression) appear in multiple courses. This is intentional!**
+
+**📖 For a complete guide to understanding duplications and navigating between courses:**
+- Read `COURSE_MAP.md` in the root directory
+- This document explains:
+  - Why topics appear in multiple courses
+  - Which course to use for each topic
+  - How courses connect to each other
+  - Learning paths based on your background
+
+**Quick Reference:**
+- **BFS/DFS/A* Algorithms**: Also covered in `Course 01/unit2-search-algorithms/` (simpler examples)
+- **Linear Regression**: Also covered in `Course 04/unit1-data-processing/examples/04_linear_regression.ipynb` (full implementation)
+- **Gradient Descent**: Also covered in `Course 03/modules/module_02/` (mathematical foundations)
+
+**💡 Tip:** If you're confused about which resource to use, check `COURSE_MAP.md` for guidance!
+
+---
+
 ## 📖 File Guide | دليل الملفات
 
 **What each file is for:**

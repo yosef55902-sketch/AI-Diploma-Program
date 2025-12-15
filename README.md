@@ -10,11 +10,14 @@ Welcome to the **AI Diploma Program** - a comprehensive, hands-on curriculum cov
 
 ## 🚀 Quick Start | البدء السريع
 
-1. **Choose your course** from the list below
-2. **Navigate to the course directory** (e.g., `Course 04/`)
-3. **Read `START_HERE.md`** in that course directory
-4. **Follow the setup instructions** in `START_HERE.md`
-5. **Begin learning!**
+1. **📖 Read `COURSE_MAP.md`** - Understand course structure and find topics quickly
+2. **Choose your course** from the list below
+3. **Navigate to the course directory** (e.g., `Course 04/`)
+4. **Read `START_HERE.md`** in that course directory
+5. **Follow the setup instructions** in `START_HERE.md`
+6. **Begin learning!**
+
+**💡 New to the program?** Start with `COURSE_MAP.md` to understand how courses connect and which path is right for you!
 
 ---
 

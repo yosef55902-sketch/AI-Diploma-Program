@@ -99,6 +99,27 @@ This file explains:
 
 ---
 
+## 🔗 Navigating Related Topics | التنقل بين المواضيع ذات الصلة
+
+**You may notice that some topics (like Linear Regression) appear in multiple courses. This is intentional!**
+
+**📖 For a complete guide to understanding duplications and navigating between courses:**
+- Read `COURSE_MAP.md` in the root directory
+- This document explains:
+  - Why topics appear in multiple courses
+  - Which course to use for each topic
+  - How courses connect to each other
+  - Learning paths based on your background
+
+**Quick Reference:**
+- **Linear Regression**: Also introduced in `Course 02/NOTEBOOKS/05_AI_Learning_Models.ipynb` (concept introduction)
+- **PCA**: Theory covered in `Course 03/modules/module_04/` (mathematical foundations)
+- **Gradient Descent**: AI context in `Course 02/NOTEBOOKS/04_Optimization_Techniques.ipynb`, math in `Course 03/modules/module_02/`
+
+**💡 Tip:** If you're confused about which resource to use, check `COURSE_MAP.md` for guidance!
+
+---
+
 ## 📚 Learning Sequence | تسلسل التعلم
 
 **Follow this exact order:**
