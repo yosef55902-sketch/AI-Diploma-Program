@@ -80,6 +80,8 @@ pip install pandas numpy scikit-learn matplotlib seaborn
 
 ### Step 3: Create Data Loader (Day 2)
 
+**📖 Course Connection:** Review `unit1-data-processing/examples/01_data_loading_exploration.ipynb` for data loading techniques
+
 **File: `src/data_loader.py`**
 
 ```python
@@ -149,6 +151,8 @@ loader.explore_data()
 
 ### Step 4: Create Preprocessor (Day 3)
 
+**📖 Course Connection:** Follow `unit1-data-processing/examples/02_data_cleaning.ipynb` and `03_data_preprocessing.ipynb` for preprocessing steps
+
 **File: `src/preprocessor.py`**
 
 ```python
@@ -206,6 +210,8 @@ class Preprocessor:
 
 ### Step 5: Create Feature Engineer (Day 4)
 
+**📖 Course Connection:** Review `unit1-data-processing/examples/03_data_preprocessing.ipynb` for feature engineering
+
 **File: `src/feature_engineer.py`**
 
 ```python
@@ -247,6 +253,8 @@ class FeatureEngineer:
 ---
 
 ### Step 6: Create Model Trainer (Day 5)
+
+**📖 Course Connection:** Follow `unit1-data-processing/examples/04_linear_regression.ipynb` for model training and evaluation
 
 **File: `src/model_trainer.py`**
 

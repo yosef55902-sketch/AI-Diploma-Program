@@ -26,6 +26,8 @@
 
 ### Step 1: Understand the Problem (Day 1)
 
+**📖 Course Connection:** Review `unit1-ai-foundations/examples/01_ai_introduction.ipynb` to understand AI agents
+
 **What is an AI Agent?**
 An AI agent is a program that:
 - Perceives its environment (knows where it is)
@@ -68,6 +70,8 @@ pip install numpy
 ---
 
 ### Step 3: Create the Problem Structure (Day 2)
+
+**📖 Course Connection:** Review `unit2-search-algorithms/examples/01_bfs_algorithm.ipynb` for graph representation
 
 **File: `problem.py`**
 
@@ -116,6 +120,8 @@ problem = Problem(start='A', goal='G', graph=graph)
 
 ### Step 4: Implement BFS Algorithm (Day 3)
 
+**📖 Course Connection:** Follow `unit2-search-algorithms/examples/01_bfs_algorithm.ipynb` for BFS implementation
+
 **File: `search_algorithms.py`**
 
 ```python
@@ -163,6 +169,8 @@ print(f"Path found: {' -> '.join(path)}")
 
 ### Step 5: Implement DFS Algorithm (Day 4)
 
+**📖 Course Connection:** Follow `unit2-search-algorithms/examples/02_dfs_algorithm.ipynb` for DFS implementation
+
 ```python
 def dfs(problem):
     """
@@ -195,6 +203,8 @@ def dfs(problem):
 ---
 
 ### Step 6: Implement A* Algorithm (Day 5)
+
+**📖 Course Connection:** Follow `unit2-search-algorithms/examples/03_astar_algorithm.ipynb` for A* implementation
 
 ```python
 import heapq
