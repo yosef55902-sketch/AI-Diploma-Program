@@ -17,6 +17,6 @@
 
 > 💡 **Already familiar with this?** See [Quick Start](#-quick-start-for-experienced-students) section above.
 
-See Implementation Guide for technical details.
+See Quick Start section above for technical details.
 
 ---
