@@ -25,9 +25,12 @@ Implement core ML algorithms (Linear Regression, Logistic Regression, PCA) from 
 **Topic:** Dimensionality Reduction  
 **Difficulty:** Intermediate  
 **Estimated Time:** 2-3 weeks  
-**Folder:** `02_PCA_Implementation/`
+**Folder:** `02_PCA_Implementation/`  
+**Real-World Example:** Image Compression (Google Photos, iCloud)
 
 Implement Principal Component Analysis from scratch and create visualizations of the process.
+
+📖 **New to PCA?** Check out the **[Beginner's Guide](02_PCA_Implementation/BEGINNER_GUIDE.md)** for step-by-step instructions!
 
 [View Details →](02_PCA_Implementation/README.md)
 
@@ -37,9 +40,12 @@ Implement Principal Component Analysis from scratch and create visualizations of
 **Topic:** Optimization  
 **Difficulty:** Intermediate  
 **Estimated Time:** 2-3 weeks  
-**Folder:** `03_Gradient_Descent_Visualizer/`
+**Folder:** `03_Gradient_Descent_Visualizer/`  
+**Real-World Example:** Neural Network Training Visualization (TensorBoard, Weights & Biases)
 
 Create an interactive visualization tool for understanding gradient descent and optimization algorithms.
+
+📖 **New to optimization?** Check out the **[Beginner's Guide](03_Gradient_Descent_Visualizer/BEGINNER_GUIDE.md)** for step-by-step instructions!
 
 [View Details →](03_Gradient_Descent_Visualizer/README.md)
 
