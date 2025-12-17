@@ -158,3 +158,80 @@ review_notebooks_comprehensive.py
 **/solutions/**
 **/SOLUTION/
 **/SOLUTION/**
+
+# Exclude teacher-only documentation
+TEACHER_*.md
+*TEACHER*.md
+INSTRUCTOR_*.md
+*INSTRUCTOR*.md
+TEACHER_ONLY_README.md
+
+# Exclude development/status documentation (not for students)
+*STATUS*.md
+*REVIEW*.md
+*SUMMARY*.md
+*VERIFICATION*.md
+*COMPARISON*.md
+*ANALYSIS*.md
+*FIXES*.md
+*COMPLETE*.md
+*CREATED*.md
+*DEPLOYMENT*.md
+*CONFLICT*.md
+*CONSISTENCY*.md
+*BEGINNER_GUIDES*.md
+*PROJECT_BEGINNER*.md
+*PROJECT_COURSE*.md
+*PROJECT_REAL*.md
+*PROJECT_SOLUTIONS*.md
+*PROJECT_STUDENT*.md
+*QUIZ_STANDARDIZATION*.md
+*QUIZ_STRUCTURE*.md
+*COURSE_SUMMARIES*.md
+*COURSE_SUMMARY*.md
+*COURSE_*_QUIZ*.md
+*COURSE_*_STATUS*.md
+*EMPTY_*.md
+*GUIDE_*.md
+*GUIDES_*.md
+*README_VS*.md
+*SHOULD_WE*.md
+*WHAT_NEXT*.md
+*HONEST_*.md
+*FINAL_FIXES*.md
+*FINAL_STUDENT*.md
+*NOTEBOOK_FIXES*.md
+*STRUCTURE_COMPARISON*.md
+*CONTENT_DEVELOPMENT*.md
+*COMPREHENSIVE_NOTEBOOK*.md
+*NOTEBOOK_REVIEW*.md
+*COURSE_01_COMPARISON*.md
+*PLAN_COMPARISON*.md
+*COURSE_06_STATUS*.md
+*CLEANUP_*.md
+*ALL_COURSES_*.md
+*BEGINNER_PROJECT*.md
+*CONFLICT_CHECK*.md
+*COURSE_MAP.md
+
+# Exclude development Python scripts (root level)
+create_*.py
+*_fix*.py
+*convert*.py
+*setup*.py
+*update*.py
+*rebuild*.py
+extract_*.py
+review_*.py
+*_review_*.py
+check_*.py
+fix_*.py
+standardize_*.py
+merge_*.py
+
+# Keep only essential root-level files for students
+# README.md - course overview (KEEP)
+# requirements.txt - dependencies (KEEP)
+# .gitignore - git rules (KEEP)
+# CROSS_PLATFORM_GUIDE.md - student guide (KEEP)
+# GITHUB_SETUP.md - student guide (KEEP)
