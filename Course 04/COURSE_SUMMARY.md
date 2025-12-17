@@ -10,108 +10,13 @@ This document provides a comprehensive text summary of all course materials.
 ## Pdfs
 
 
-### 14
+
+### 01
 
 --- Page 1 ---
 
-Polynom ial Regression
-
---- Page 2 ---
-
-Polynomial Regression
-Polynomial Linear Regression is an extension of linear regression that models non-linear relationships
-by transforming the input variables into polynomial terms. Even though the relationship between the
-variables may not be linear, the regression itself is still considered "linear" because the model is linear in
-terms of the coefficients.
-
---- Page 3 ---
-
-Polynomial Regression
-Key Features of Polynomial Regression
-Transformation of Variables:
-In regular linear regression, the model is: y=b0 +b1 x
-In polynomial regression, higher-order terms are added:y=b0+b1x+b2x2+b3x3+…
-These polynomial terms allow the model to capture curves or more complex relationships.
-Fitting Curves:
-Useful when the data shows a non-linear relationship, such as U-shaped, S-shaped, or exponential
-patterns.
-Still a "Linear Model":
-Even though the relationship is non-linear, it is called "linear" because the equation remains linear in
-terms of the coefficients (b0,b1,b2).
-This is why it's called Polynomial Linear Regression.
-
---- Page 4 ---
-
-Polynomial Regression
-When to Use Polynomial Regression?
-When the data shows clear non-linear patterns that cannot be captured by regular linear regression.
-When adding flexibility is needed for better accuracy but without overfitting (important to choose the
-right degree of the polynomial).
-
---- Page 5 ---
-
-Polynomial Regression
-Why Do We Need Polynomial Regression?
-Linear regression works only for straight-line
-relationships.
-Many real-world relationships are non-linear,
-such as:
-Population growth.
-Disease progression.
-Economic data (e.g., sales trends).
-Example: Stock price data that linear regression
-cannot capture.
-https://www.investopedia.com/terms/p/polynomial_trending.asp
-
---- Page 6 ---
-
-Polynom ial Regression
-How Polynom ial Regression W orks
-C o n v e r t the input variable (x) into polynomial terms (x^2,x^3).
-A p p l y linear regression to estimate coefficients ( β 0, β 1).
-Higher-order terms allow the model to capture curves.
-
---- Page 7 ---
-
-Polynomial Regression
-Choosing the Polynomial Degree
-The degree of the polynomial affects the model's
-complexity:
-Low degree: Underfitting (model too simple).
-High degree: Overfitting (model too complex,
-fits noise).
-Use tools like:
-Cross-validation.
-Adjusted R2.
-
---- Page 8 ---
-
-Polynomial Regression
-Choosing the Polynomial Degree
-https://allmodelsarewrong.github.io/overfit.html
-
---- Page 9 ---
-
-Polynom ial Regression
-Practical Applications
-Use cases for polynomial regression:
-Forecasting trends in sales or demand.
-Modeling natural phenomena (e.g., rainfall vs. crop yield).
-Predicting disease progression.
-Engineering data (e.g., stress-strain curves).
----------------------------------------------------------------------------------------------------------
-Limitations of Polynomial Regression
-Overfitting when the degree is too high.
-Sensitive to outliers.
-May not generalize well to unseen data.
-Not suitable for truly complex, non-linear relationships (consider other models like decision trees or
-neural networks).
-
---- Page 10 ---
-
-Hands-On Code
-Polynomial Linear Regression
-
+© SuperDataScienceMachine Learning A-Z
+ClassificationClassification ModelProsConsLogistic RegressionProbabilistic approach, gives informations about statistical significance of featuresThe Logistic Regression AssumptionsK-NNSimple to understand, fast and efficientNeed to choose the number of neighbours kSVMPerformant, not biased by outliers,not sensitive to overfittingNot appropriate for non linear problems, not the best choice for large number of featuresKernel SVMHigh performance on nonlinear problems, not biased by outliers, not sensitive to overfittingNot the best choice for large number of features, more complexNaive BayesEfficient, not biased by outliers, works on nonlinear problems, probabilistic approachBased on the assumption that features have same statistical relevanceDecision Tree ClassificationInterpretability, no need for feature scaling, works on both linear / nonlinear problemsPoor results on too small datasets, overfitting can easily occurRandom Forest ClassificationPowerful and accurate, good performance on many problems, including non linearNo interpretability, overfitting can easily occur, need to choose the number of trees
 
 ### 02
 
@@ -258,7 +163,6 @@ Difference Between Clustering Models
 
 Hands-On Code
 Clustering Implementation
-
 
 ### 03
 
@@ -563,6 +467,289 @@ https://www.researchgate.net/publication/344389401_DS-Regression-04-SVR
 Hands-On Code
 Random Forest Implemenration
 
+### 04
+
+--- Page 1 ---
+
+Evaluation Regression Model
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVR
+
+--- Page 2 ---
+
+Regularization
+Methods
+
+--- Page 3 ---
+
+Regularization Methods
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRA  curve perfectly fitting all data points 
+The model captures noise instead of the real
+pattern.
+Key Points:
+Overfitting: The model is too complex, learning
+noise instead of trends.
+Effects: High training accuracy but poor test
+performance.
+Indicators: High variance, unstable predictions,
+poor generalization.The Problem of Overfitting
+
+--- Page 4 ---
+
+Regularization Methods
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRSmall changes in input lead to big prediction shifts.The Problem of Overfitting
+
+--- Page 5 ---
+
+Regularization Methods
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRExamples of Regularization
+Regularization is a technique in regression that adds a penalty to the model to prevent overfitting and improve generalization.
+
+--- Page 6 ---
+
+Regularization Methods
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRWithout Regularization
+This is the standard Mean Squared Error (MSE)
+minimization in linear regression.
+The model aims to minimize the sum of squared
+differences between actual values yi and predicted
+values.
+Key Points:
+No Penalty on Coefficients: The model freely adjusts
+parameters b0 ,b1 ,...bm .
+Risk of Overfitting: If there are too many features, the
+model may fit noise instead of patterns.
+
+--- Page 7 ---
+
+Regularization Methods
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRRidge Regression
+Ridge regression adds a penalty ( λ  * sum of squared coefficients) to the
+standard loss function.
+This penalty shrinks coefficients but does not force them to zero.
+Key Points:
+Controls Overfitting by reducing coefficient magnitudes.
+Smooths model predictions and improves generalization.
+λ (lambda) controls regularization strength – higher λ  shrinks coefficients more.
+
+--- Page 8 ---
+
+Lasso adds a penalty on the absolute values of coefficients 
+(∣b1 ∣ + ∣ b2 ∣ +...+ ∣ bm ∣ ).
+Encourages sparsity by forcing some coefficients to exactly zero.
+Key Points:
+Feature Selection: Automatically removes less important features.
+Sparse Models: Useful when only a few features matter.
+λ (lambda) controls regularization strength – higher λ  forces more coefficients to zero.
+Regularization Methods
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRLasso Regression
+
+--- Page 9 ---
+
+Elastic Net combines Lasso (L1) and Ridge (L2) penalties.
+The penalty includes both absolute values and squared values of coefficients.
+Key Points:
+Best of Both Worlds: Shrinks coefficients like Ridge and performs feature selection like
+Lasso.
+Useful when features are correlated: Lasso alone may arbitrarily drop one feature, but
+Elastic Net keeps important ones.
+Two Hyperparameters ( λ ₁, λ ₂): Control the balance between L1 and L2 regularization.
+Regularization Methods
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRElastic Net
+
+--- Page 10 ---
+
+Regularization prevents overfitting by
+simplifying the model.
+Better generalization: The model performs
+well on both training and new data.
+Less variance: Predictions are more stable and
+robust.
+Regularization Methods
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRAs a Result,
+
+### 05
+
+--- Page 1 ---
+
+Naive Bayes
+
+--- Page 2 ---
+
+P(A∣ B) → Probability of A happe ning given B is true.
+P(B∣ A) → Probability of B happe ning given A is true.
+P(A) → Prior probability of A happening.
+P(B) → Total probability of B happening.
+Example: Diagnosing a Disease:
+P(Disease ∣ Symptom) → Probabi lity of having a disease given the symptom.
+P(Symptom ∣ Disease) → Probabi lity of the symptom if the person has the disease.
+Why is Bayes' Theorem Important?
+Updates beliefs as new evidence comes in.
+Forms the foundation of Naïve Bayes Classifier for making predictions.
+Used in spam filtering, medical diagnosis, and machine learning.Naive Bayes
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRWhat Is Bayes Therom About?
+
+--- Page 3 ---
+
+When a  new data point is introduced, we need to classify whether this new individual is more likely to walk
+or drive based on given data.
+Naive Bayes
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHow does it work ?
+
+--- Page 4 ---
+
+Naive Bayes
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRStep #1
+The probability of a person walking given their data point P(Walks|X) is computed using
+Bayes' Theorem.Prior Probability P(Walks): Initial belief about the probability of walking.
+Marginal Likelihood P(X): The overall probability of observing a data point like X.
+Likelihood P(X ∣ Walks): The probability of observing XX given that the person walks.
+Posterior Probability P(Walks ∣ X): The final probability that the person belongs to the "Walks" category.
+
+--- Page 5 ---
+
+Naive Bayes
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRStep #2
+Similarly, the probability of a person driving given their data point P(Drives|X) is
+computed using the same formula.
+
+--- Page 6 ---
+
+Naive Bayes
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRStep #3
+The classification decision is made by comparing P(Walks ∣ X) vs. P(Drives ∣ X).
+The category with the higher probability is chosen.
+
+--- Page 7 ---
+
+Naive Bayes
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRNaive bayes | In Action >> Step #1
+
+--- Page 8 ---
+
+Naive Bayes
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRNaive bayes | In Action >> Step #1
+
+--- Page 9 ---
+
+Naive Bayes
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRNaive bayes | In Action >> Step #1
+
+--- Page 10 ---
+
+Naive Bayes
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRNaive bayes | In Action >> Step #1
+
+--- Page 11 ---
+
+Naive Bayes
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRNaive bayes | In Action >> Step #1
+
+--- Page 12 ---
+
+Naive Bayes
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRNaive bayes | In Action  >> Step #2
+
+--- Page 13 ---
+
+Naive Bayes
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRNaive bayes | In Action  >> Step #2
+
+--- Page 14 ---
+
+Naive Bayes
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRWhy is it called "Naive"?
+Because it assumes independence between features, meaning each feature
+contributes to the classification independently.
+Why Can We Ignore P(X)?
+Since P(X) is the same for all classes, it cancels out when comparing probabilities.
+More than Two Classes?
+The method extends to multiple classes by computing the probability for each
+and picking the highest.
+
+--- Page 15 ---
+
+QUIZ
+Naive Bayes
+
+--- Page 16 ---
+
+Hands-On Code
+Naive Bayes
+
+--- Page 17 ---
+
+Decision Tree
+Classification
+
+--- Page 18 ---
+
+Decision Tree Classification
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRCART
+
+--- Page 19 ---
+
+Decision Tree Classification
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRDifference Between Decision Tree Regression and Classification:
+Decision Tree Regression: Predicts a continuous numerical value based on input features.
+The tree is built using splits that minimize variance within groups.
+Decision Tree Classification: Assigns an input to a specific category (class) by recursively
+splitting the data based on features that best separate different classes.
+
+--- Page 20 ---
+
+Decision Tree Classification
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRExplanation of Decision Tree Classification:
+The images illustrate how a decision tree classifier
+works by recursively splitting the data into smaller
+regions.
+Each split is made based on a feature that best
+separates the classes (red and green points).
+The first split (Split 1) separates based on X₂ > 60,
+dividing the data into two main groups.
+The second split (Split 2) further divides one of these
+groups based on X₁ < 50.
+Additional splits (Split 3, Split 4) continue until pure
+or nearly pure regions are formed.
+
+--- Page 21 ---
+
+The tree chooses splits based on feature values that maximize class
+separation. This is done using:
+Gini Impurity (default in CART trees):
+Measures how mixed a group is.
+A lower Gini value means a purer split.
+Entropy & Information Gain 
+Entropy measures uncertainty in data:
+Information Gain calculates how much uncertainty is reduced by a split:
+The split that maximizes Information Gain is chosen.
+Decision Tree Classification
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRExplanation of Decision Tree Classification:
+
+--- Page 22 ---
+
+Hands-On Code
+Decision Tree Classification
+
+--- Page 23 ---
+
+Random  Forest
+Classification
+
+--- Page 24 ---
+
+STEP 1: Pick at random K data points from the Training set.
+STEP 2: Build the Decision Tree associated to these K data points.
+STEP 3: Choose the number Ntree of trees you want to build and repeat STEPS 1 & 2
+STEP 4: For a new data point, make each one of your Ntree trees predict the category to
+which the data points belongs, and assign the new data point to the category that wins
+the majority vote.Random Forest Classification
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHow does Random Forest do Classification?
+Ensemble Learning
+
+--- Page 25 ---
+
+Hands-On Code
+Random Forest Classification
 
 ### 06
 
@@ -808,191 +995,303 @@ Preprocessing techniques like removing outliers or scaling data help improve per
 Hands-On Code
 PCA Implementation
 
-
-### 05
+### 07
 
 --- Page 1 ---
 
-Naive Bayes
+Logistic
+Regression
 
 --- Page 2 ---
 
-P(A∣ B) → Probability of A happe ning given B is true.
-P(B∣ A) → Probability of B happe ning given A is true.
-P(A) → Prior probability of A happening.
-P(B) → Total probability of B happening.
-Example: Diagnosing a Disease:
-P(Disease ∣ Symptom) → Probabi lity of having a disease given the symptom.
-P(Symptom ∣ Disease) → Probabi lity of the symptom if the person has the disease.
-Why is Bayes' Theorem Important?
-Updates beliefs as new evidence comes in.
-Forms the foundation of Naïve Bayes Classifier for making predictions.
-Used in spam filtering, medical diagnosis, and machine learning.Naive Bayes
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRWhat Is Bayes Therom About?
+Logistic regression is defined as a supervised machine learning algorithm that accomplishes binary
+classification tasks by predicting the probability of an outcome, event, or observation. 
+The model delivers a binary or discrete outcome limited to two possible outcomes: yes/no, 0/1, or
+true/false.
+Logical regression analyzes the relationship between one or more independent variables and
+classifies data into discrete classes. 
+It is extensively used in predictive modeling, where the model estimates the mathematical
+probability of whether an instance belongs to a specific category or not.Logistic Regression
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRDefinition
 
 --- Page 3 ---
 
-When a  new data point is introduced, we need to classify whether this new individual is more likely to walk
-or drive based on given data.
-Naive Bayes
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHow does it work ?
+Logistic Regression
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRUnderstanding Logistic Regression
 
 --- Page 4 ---
 
-Naive Bayes
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRStep #1
-The probability of a person walking given their data point P(Walks|X) is computed using
-Bayes' Theorem.Prior Probability P(Walks): Initial belief about the probability of walking.
-Marginal Likelihood P(X): The overall probability of observing a data point like X.
-Likelihood P(X ∣ Walks): The probability of observing XX given that the person walks.
-Posterior Probability P(Walks ∣ X): The final probability that the person belongs to the "Walks" category.
+Logistic Regression
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRUnderstanding Logistic Regression
+Linear Regression Fails for Classification – It
+predicts continuous values instead of clear 0
+or 1 labels.
+Invalid Probability Outputs – Predictions can
+go below 0 or above 1, which makes no sense
+for binary outcomes.
+No Clear Decision Boundary – It lacks a
+proper mechanism to classify points, unlike
+logistic regression, which uses a sigmoid
+function.
 
 --- Page 5 ---
 
-Naive Bayes
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRStep #2
-Similarly, the probability of a person driving given their data point P(Drives|X) is
-computed using the same formula.
+Logistic Regression
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRUnderstanding Logistic Regression
+Makes Sense – Some points in the middle could
+lean toward 0 or 1 but aren't strictly one or the
+other.
+Those in-between cases should have a probability,
+not a fixed value.Doesn’t Make Sense – Probabilities must stay
+between 0 and 1.
+Invalid Outputs – Values above 1 should be 1, and
+below 0 should be 0.So we kind of saying this modeling works
 
 --- Page 6 ---
 
-Naive Bayes
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRStep #3
-The classification decision is made by comparing P(Walks ∣ X) vs. P(Drives ∣ X).
-The category with the higher probability is chosen.
+Logistic Regression
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRUnderstanding Logistic Regression
+s l o p e
+best fitting line
 
 --- Page 7 ---
 
-Naive Bayes
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRNaive bayes | In Action >> Step #1
+Logistic Regression
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRUnderstanding Logistic Regression
+This could represent probabilities since it is
+between 0 and 1 
+Projecting blue values to each probabilities based
+on the training data 
+The line represents the logistic regression fitting
+line ( slope)
 
 --- Page 8 ---
 
-Naive Bayes
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRNaive bayes | In Action >> Step #1
+Logistic Regression
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRUnderstanding Logistic Regression
+Threshold at 0.5 – Anything below 0.5 is predicted
+as 0, and anything above is 1.
+Mismatch with Data – Predictions fall on 0 and 1,
+but not exactly where the data points are.
+Loss Optimization – The model tries to find the
+best-fitting line with minimal loss.
 
 --- Page 9 ---
 
-Naive Bayes
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRNaive bayes | In Action >> Step #1
+Variance Inflation Factor
+(VIF), which determines
+the correlation strength
+between the
+independent variables in
+a regression model.Logistic Regression
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRKey Assumptions For Applying Logistic Reg.
+Log odds express probabilities in terms
+of the ratio of success to failure, while
+probability measures success out of
+total events. For example, if you win 5
+out of 12 tennis games, your probability
+of winning is 5/12, but your odds of
+winning are 5 to 7 (wins to losses).
+Observations should be
+independent, meaning they
+shouldn’t be influenced by or
+repeated from other observations
+in the dataset.
 
 --- Page 10 ---
 
-Naive Bayes
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRNaive bayes | In Action >> Step #1
+Logistic Regression
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRLog Odds in Logistic Regression
+Odds represent the ratio of success to failure. It is calculated as:
+where:
+p is the probability of success (event happening).
+1−p is the probability of failure (event not happening).
 
 --- Page 11 ---
 
-Naive Bayes
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRNaive bayes | In Action >> Step #1
+Logistic Regression
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRMaximum Likelihood
+Logistic regression calculates likelihood by assigning probabilities
+to observations and maximizing the likelihood of correct
+classification.
+The logistic curve (yellow) aligns well with the actual data points.
+Each observation has an assigned probability based on the curve.
+Since the probabilities for correct classifications are higher, the
+overall likelihood is higher.
+With  (Lower Likelihood Model)
+The logistic curve does not fit the data as well.
+Incorrect probabilities are assigned to observations, resulting in a lower likelihood value.
+The likelihood is much smaller (0.00019939) compared to the left model.
 
 --- Page 12 ---
 
-Naive Bayes
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRNaive bayes | In Action  >> Step #2
+Logistic Regression
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRMaximum Likelihood
+The process of optimizing the logistic regression model to
+find the best-fit curve.
+Different logistic curves are tested, each corresponding to a
+different likelihood value.
+The goal is to find the curve with the highest likelihood.
+The highlighted likelihood 0.00019939 represents the best
+model, meaning this curve best separates the data into
+"YES" and "NO" categories.
+Maximum Likelihood Estimation (MLE) selects the best
+logistic regression model by finding the curve that
+maximizes the likelihood of correct classification.
 
 --- Page 13 ---
 
-Naive Bayes
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRNaive bayes | In Action  >> Step #2
+Logistic Regression
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRLogistic Regression: Strengths and Limitations
+Strength: Interpretability:
+Logistic regression is easy to understand because its coefficients directly show how each feature affects the log odds of
+the outcome.
+Each coefficient represents the change in log odds for a one-unit change in the feature.
+This makes it useful for domains like healthcare, finance, and social sciences, where explainability is crucial.
+In a model predicting heart disease risk:
+A coefficient of +0.5 for cholesterol level means higher cholesterol increases the odds of heart disease.
+A coefficient of -0.3 for exercise frequency means more exercise decreases the odds.
 
 --- Page 14 ---
 
-Naive Bayes
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRWhy is it called "Naive"?
-Because it assumes independence between features, meaning each feature
-contributes to the classification independently.
-Why Can We Ignore P(X)?
-Since P(X) is the same for all classes, it cancels out when comparing probabilities.
-More than Two Classes?
-The method extends to multiple classes by computing the probability for each
-and picking the highest.
+Logistic Regression
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRLogistic Regression: Strengths and Limitations
+Limitation: Struggles with Non-Linear Relationships
+Logistic regression assumes a linear relationship between features and log odds, which means it can't easily capture
+complex patterns in the data
+If the relationship between input variables and the outcome is non-linear, logistic regression won't perform well.
+------
+Logistic regression performs poorly when classes are overlapping or not easily separable.
+If the data points of two classes mix heavily, logistic regression struggles to find a clear decision boundary.
 
 --- Page 15 ---
 
-QUIZ
-Naive Bayes
+Logistic Regression
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHandling Multiple Categories in Logistic Regression
+Logistic regression is primarily designed for binary classification (0 or 1). However, when dealing with multiple
+classes(e.g., classifying emails as Primary, Social, or Promotions), we need extensions of logistic regression. 
+There are two main approaches:
+Multinomial Logistic Regression (Softmax Regression)
+This method directly extends logistic regression to multiple classes.
+Instead of using a single sigmoid function, it uses the softmax function to calculate the probability of each class.
+The model predicts one class out of many based on the highest probability.
+One-vs-All (OvA) Approach
+Instead of using a single model, OvA trains multiple binary logistic regression models.
+Each model separates one class from the rest.
+The final prediction is made by choosing the model with the highest probability.
 
 --- Page 16 ---
 
 Hands-On Code
-Naive Bayes
+Logistic Regression
+Implementation
 
 --- Page 17 ---
 
-Decision Tree
-Classification
+K-Nearest
+Neighbors (K-NN)
 
 --- Page 18 ---
 
-Decision Tree Classification
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRCART
+K-Nearest Neighbors (K-NN) is a non-parametric, instance-based learning algorithm used for
+classification. It’s simple, intuitive, and often works surprisingly well for many datasets.K-Nearest Neighbors (K-NN)
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRDefinition
 
 --- Page 19 ---
 
-Decision Tree Classification
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRDifference Between Decision Tree Regression and Classification:
-Decision Tree Regression: Predicts a continuous numerical value based on input features.
-The tree is built using splits that minimize variance within groups.
-Decision Tree Classification: Assigns an input to a specific category (class) by recursively
-splitting the data based on features that best separate different classes.
+K-NN makes predictions based on similarity. Instead of learning explicit patterns from the training
+data, it stores all the training data and makes decisions based on the most similar examples when a
+new data point arrives.
+🔹 Steps for Classification:
+Choose a value for K (the number of neighbors to consider). 1.
+Calculate the distance between the new data point and all existing data points. 2.
+Select the K closest points based on the chosen distance metric. 3.
+Assign the most common class (majority vote) among these K neighbors to the new data point. 4.K-Nearest Neighbors (K-NN)
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHow does it work !
 
 --- Page 20 ---
 
-Decision Tree Classification
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRExplanation of Decision Tree Classification:
-The images illustrate how a decision tree classifier
-works by recursively splitting the data into smaller
-regions.
-Each split is made based on a feature that best
-separates the classes (red and green points).
-The first split (Split 1) separates based on X₂ > 60,
-dividing the data into two main groups.
-The second split (Split 2) further divides one of these
-groups based on X₁ < 50.
-Additional splits (Split 3, Split 4) continue until pure
-or nearly pure regions are formed.
+K-NN makes predictions based on similarity. Instead of learning explicit patterns from the training
+data, it stores all the training data and makes decisions based on the most similar examples when a
+new data point arrives.
+🔹 Steps for Classification:
+Choose a value for K (the number of neighbors to consider). 1.
+Calculate the distance between the new data point and all existing data points. 2.
+Select the K closest points based on the chosen distance metric. 3.
+Assign the most common class (majority vote) among these K neighbors to the new data point. 4.K-Nearest Neighbors (K-NN)
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHow does it work !
 
 --- Page 21 ---
 
-The tree chooses splits based on feature values that maximize class
-separation. This is done using:
-Gini Impurity (default in CART trees):
-Measures how mixed a group is.
-A lower Gini value means a purer split.
-Entropy & Information Gain 
-Entropy measures uncertainty in data:
-Information Gain calculates how much uncertainty is reduced by a split:
-The split that maximizes Information Gain is chosen.
-Decision Tree Classification
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRExplanation of Decision Tree Classification:
+Choosing the Value of K:
+Small K (e.g., 1 or 3):
+More sensitive to noise.
+High variance, meaning it can change significantly
+with small dataset variations.
+Large K (e.g., 10 or 20):
+More generalized but may ignore local patterns.
+Reduces overfitting but can smooth out important
+details.
+A common approach is to try different K values and use
+cross-validation to find the best one.
+K-Nearest Neighbors (K-NN)
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHow does it work !
 
 --- Page 22 ---
 
-Hands-On Code
-Decision Tree Classification
+Since K-NN finds the "nearest" neighbors, we need a way to measure distance. 
+🔹 Euclidean Distance (Most Common)
+Used for continuous numerical data.
+🔹 Manhattan Distance
+Used when movement is restricted to horizontal and vertical paths.
+🔹 Hamming Distance
+Used for categorical data (e.g., DNA sequences or text classification).
+Choosing the right distance metric depends on the type of data.
+K-Nearest Neighbors (K-NN)
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHow does it work !
 
 --- Page 23 ---
 
-Random  Forest
-Classification
+3. Find the Nearest Neighbors (K Closest Points):
+We are using K = 5 (since we see 5 nearest neighbors
+considered).
+The algorithm selects the 5 closest points to the new data
+point.
+Majority Voting (Classification Decision):
+Among the 5 neighbors:
+3 belong to Category 1 (red crosses).
+2 belong to Category 2 (green plus signs).
+Since Category 1 has the majority (3 out of 5), the new data
+point is classified as Category 1 (red cross).K-Nearest Neighbors (K-NN)
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHow does it work !
 
 --- Page 24 ---
 
-STEP 1: Pick at random K data points from the Training set.
-STEP 2: Build the Decision Tree associated to these K data points.
-STEP 3: Choose the number Ntree of trees you want to build and repeat STEPS 1 & 2
-STEP 4: For a new data point, make each one of your Ntree trees predict the category to
-which the data points belongs, and assign the new data point to the category that wins
-the majority vote.Random Forest Classification
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHow does Random Forest do Classification?
-Ensemble Learning
+Simple & Easy to Understand – No training phase, just storing data and comparing distances.
+Works Well with Small Data – Effective for datasets with clear separation.
+Non-Parametric – Makes no assumptions about the data distribution.
+Can Handle Multi-Class Problems – Works for problems with multiple categories.K-Nearest Neighbors (K-NN)
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRStrengths of K-NN
 
 --- Page 25 ---
 
-Hands-On Code
-Random Forest Classification
+Computationally Expensive for Large Datasets
+Since K-NN stores all data, it can become slow for large datasets.
+Requires calculating distances for all points at prediction time.
+Sensitive to Irrelevant Features
+If some features are not useful, they can mislead K-NN.
+Feature selection and normalization (scaling data properly) are important.
+ Struggles with Imbalanced Data
+If one class is much larger than another, K-NN may always favor the majority class.
+Not Good for High-Dimensional Data
+In high-dimensional spaces, all points start looking equally distant (Curse of
+Dimensionality).K-Nearest Neighbors (K-NN)
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRLimitations of K-NN
 
+--- Page 26 ---
+
+Hands-On Code
+K-Nearest Neighbors
 
 ### 08
 
@@ -1340,6 +1639,187 @@ data.
 Hands-On Code
 KERNAL SVM
 
+### 09
+
+--- Page 1 ---
+
+Evaluating
+Classification
+Model
+
+--- Page 2 ---
+
+When evaluating a classification model, we often deal with prediction errors. Evaluating Classification Model
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRFalse Positives & False Negatives
+
+--- Page 3 ---
+
+False Positives (Type I Error)
+The model incorrectly predicts a positive
+outcome when the actual outcome is negative.
+Example: A medical test predicts a patient has
+a disease when they do not.
+False Negatives (Type II Error)
+The model incorrectly predicts a negative
+outcome when the actual outcome is positive.
+Example: A medical test predicts a patient
+does not have a disease when they actually do.Evaluating Classification Model
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRFalse Positives & False Negatives
+
+--- Page 4 ---
+
+These errors are crucial for measuring model performance.
+A good classification model should minimize both types of errors while maintaining high accuracy.
+Depending on the application, one type of error may be more costly than the other (e.g., in fraud
+detection, false negatives can be more dangerous).Evaluating Classification Model
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHow This Relates to Model Evaluation
+
+--- Page 5 ---
+
+Evaluating Classification Model
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRConfusion Matrix & Accuracy
+The confusion matrix is a fundamental tool for evaluating
+classification models. 
+It provides a summary of prediction results by comparing
+actual and predicted values. 
+The main components are:
+True Positive (TP): The model correctly predicted the
+positive class.
+True Negative (TN): The model correctly predicted the
+negative class.
+False Positive (FP) (Type I Error): The model incorrectly
+predicted positive when the actual class was negative.
+False Negative (FN) (Type II Error): The model incorrectly
+predicted negative when the actual class was positive.
+
+--- Page 6 ---
+
+Evaluating Classification Model
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRConfusion Matrix & Accuracy
+
+--- Page 7 ---
+
+Evaluating Classification Model
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRPrecision, Recall, and F1-Score Explanation
+Precision (Positive Predictive Value):
+Precision measures the accuracy of positive
+predictions made by the model. 
+It answers:
+"Of all the instances predicted as positive, how
+many were actually positive?"
+High Precision: Few false positives, meaning when
+the model predicts positive, it is often correct.
+Low Precision: Many false positives, meaning the
+model is often incorrect in predicting positives.
+
+--- Page 8 ---
+
+Evaluating Classification Model
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRPrecision, Recall, and F1-Score Explanation
+Recall (Sensitivity or True Positive Rate):
+Recall measures how well the model identifies all
+actual positive cases. 
+It answers:
+"Of all the actual positive cases, how many did the
+model correctly identify?"
+High Recall: Few false negatives, meaning most
+actual positives are correctly classified.
+Low Recall: Many false negatives, meaning the
+model misses many actual positives.
+
+--- Page 9 ---
+
+Evaluating Classification Model
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRPrecision, Recall, and F1-Score Explanation
+F1-Score (Harmonic Mean of Precision & Recall)
+The F1-score balances Precision and Recall. 
+It is useful when we want a single metric that
+considers both false positives and false negatives.
+
+--- Page 10 ---
+
+Evaluating Classification Model
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRPrecision, Recall, and F1-Score Explanation
+Key Insights:
+✅ Precision is important when false positives are costly (e.g., spam detection, where
+incorrectly flagging an important email is bad).
+✅ Recall is important when false negatives are costly (e.g., medical diagnoses, where
+missing a disease is dangerous).
+✅ F1-Score is a balanced metric, especially useful when the dataset is imbalanced.
+
+--- Page 11 ---
+
+Evaluating Classification Model
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRAccuracy Paradox - Scenario 1
+Here isa confusion matrix with two classes (0 and 1).
+The model achieves 98% accuracy, but it highlights a critical issue: imbalanced data.
+While most negative cases (0s) are correctly predicted (9,700), the model fails to
+correctly classify a significant number of positive cases (50 false negatives).
+Accuracy alone does not tell the full story of model performance, especially in
+imbalanced datasets.
+
+--- Page 12 ---
+
+Evaluating Classification Model
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRAccuracy Paradox -  Scenario #2
+The model slightly improves, increasing
+accuracy to 98.5%, but it completely ignores
+class 1 (no correct positive predictions).
+This highlights the accuracy paradox, where
+accuracy increases while performance for an
+important class worsens.
+A high accuracy does not necessarily mean the
+model is good. Other metrics like precision and
+recall must be considered.
+
+--- Page 13 ---
+
+Evaluating Classification Model
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRCAP (Cumulative Accuracy Profile) - Introduction
+CAP is a visualization technique to evaluate classification models.
+The x-axis represents total contacted (e.g., customers, patients, etc.), and the y-axis
+represents the positive outcomes (e.g., purchases, disease detection).
+The red curve shows the model's performance, while the blue diagonal represents
+random selection.
+A steeper curve indicates a better model.
+
+--- Page 14 ---
+
+Evaluating Classification Model
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRCAP Curves - Performance Comparison
+Compares different models:
+Crystal Ball: A perfect model (ideal
+case).
+Good Model: A practical, effective
+model.
+Random Model: A model that performs
+no better than random guessing.
+The closer the curve is to the perfect
+model, the better the classifier.
+
+--- Page 15 ---
+
+Evaluating Classification Model
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRCAP Analysis - Model Evaluation
+AR (Accuracy Ratio) Calculation:
+AR = aR / aP, where:
+aR is the area under the model’s
+curve.
+aP is the area under the perfect
+model’s curve.
+A higher AR value means a better model.
+AP analysis provides a quantitative
+measure of model quality.
+
+--- Page 16 ---
+
+Evaluating Classification Model
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRCAP Analysis - Model Evaluation
+
+--- Page 17 ---
+
+Hands-On Code
+Evaluating Classification Model
 
 ### 10
 
@@ -1616,1384 +2096,6 @@ Convolutional Q-Learning, and Convolutional Neural Networks.
 --- Page 32 ---
 
 Congratulations
-
-
-### 13
-
---- Page 1 ---
-
-Regression
-
---- Page 2 ---
-
-Sim ple Linear
-Regression
-
---- Page 3 ---
-
-Sim ple Linear Regression
-
---- Page 4 ---
-
-Sim ple Linear Regression
-Linear regression tries to model the relationship between an
-independent variable (x1 , e.g., Nitrogen Fertilizer) and a dependent
-variable (y, e.g., Potato Yield) using a straight line.
-Points in the Plot:
-Each blue dot represents a separate observation or harvest.
-The model attempts to fit the best line that minimizes the error
-(distance) between the actual data points and the predicted
-values.
-Regression Line:
-The grey line is the fitted regression line.
-It shows the predicted relationship between x1  (fertilizer) and y
-(yield).
-Slope of the Line:
-The slope (+3t) indicates that for every 1 kg increase in Nitrogen
-Fertilizer, the Potato Yield increases by 3 tonnes.
-This is the coefficient of x1  in the regression equation:
-                                                       y=8+3x1
-Intercept (Baseline Value):
-The intercept (8t) represents the predicted Potato Yield when no
-fertilizer (x1 =0) is used.
-
---- Page 5 ---
-
-Sim ple Linear Regression
-
---- Page 6 ---
-
-Ordinary Least Squares
-
---- Page 7 ---
-
-Multiple Linear Regression
-
---- Page 8 ---
-
-Multiple Linear Regression
-Definition: Multiple linear regression models the relationship between one dependent
-variable (y) and two or more independent variables (x1 ,x2 ,...,xn ), using the equation:
-Purpose: It predicts the dependent variable (y) based on multiple factors
-(independent variables), allowing a more comprehensive analysis of real-world
-scenarios.
-
---- Page 9 ---
-
-R Squared
-
---- Page 10 ---
-
-R Squared
-R-Squared is a statistical measure that explains how well the regression line fits the
-observed data.
-It represents the proportion of variance in the dependent variable (y) that is
-predictable from the independent variable (x1 ).
-SSres : Residual Sum of Squares (difference between actual values yi  and predicted values y^ i ).
-SStot : Total Sum of Squares (difference between actual values yi  and the mean of y (yavg )).
-
---- Page 11 ---
-
-R Squared
-
---- Page 12 ---
-
-Adjusted R Squared
-Problem with R-Squared:
-R-Squared always increases or stays the same when you add more predictors (x3 ,x4 ) to the model, even if the new
-predictors don't contribute meaningful information.
-This happens because adding predictors reduces SSres  (Residual Sum of Squares) or keeps it the same, but SStot 
-remains constant.
-Issue with Overfitting:
-Adding irrelevant predictors makes the model more complex without improving its performance or explanatory
-power, leading to overfitting.
-R-Squared cannot penalize for unnecessary predictors, so it can give a false impression of better performance.
-
---- Page 13 ---
-
-Adjusted R Squared
-Solution: Adjusted R-Squared:
-Adjusted R-Squared penalizes for adding predictors that don't improve the model.
-It provides a more realistic measure of how well the model explains the variability in the data.
-
---- Page 14 ---
-
-Assumptions Of
-Linear Regression
-
---- Page 15 ---
-
-Assumptions Of Linear Regression
-Linear regression relies on several key
-assumptions to ensure accurate
-predictions and meaningful results. 
-linearity assumes a straight-line
-relationship between the dependent
-variable (y) and each independent
-variable (x1 ,x2 ,...). 
-If the relationship is non-linear, linear
-regression will not capture it correctly.
-
---- Page 16 ---
-
-Assumptions Of Linear Regression
-Linear regression works best when certain conditions are
-met, ensuring accurate and reliable results. 
-These conditions include:
-Linear Relationship: The dependent variable (y) should
-have a straight-line relationship with the independent
-variables (x1 ,x2 , etc.).1.
-Equal Spread of Errors: The variation in prediction errors
-should stay consistent across all values of the
-independent variables.2.
-Normal Distribution of Errors: The errors (differences
-between actual and predicted values) should follow a
-normal distribution.3.
-Independence: Each observation in the data should be
-independent of the others.4.
-No Strong Correlation Between Variables: Independent
-variables should not be too closely related to each other,
-as it can confuse the model.5.
-Check for Outliers: Outliers can heavily influence the
-regression line and should be addressed if found.6.
-If these conditions aren't met, the model might not provide
-the best predictions, and adjustments or different techniques
-may be needed.
-
---- Page 17 ---
-
-Dum m y Variables
-
---- Page 18 ---
-
-Dum m y Variables
-
---- Page 19 ---
-
-Dum m y Variables
-
---- Page 20 ---
-
-Dummy 
-Variables Trap
-
---- Page 21 ---
-
-Dummy Variables Trap
-Dummy Variables:
-"State" is converted into two dummy variables:
-New York (D₁): 1 if the state is New York, 0
-otherwise.
-California (D₂): 1 if the state is California, 0
-otherwise.
-Dummy Variable Trap:
-Notice that the two dummy variables are highly
-dependent: 
-if D₁ = 1 (New York), D₂ must be 0 (California), and
-vice versa.
-This creates a problem of multicollinearity in the regression
-model because one dummy variable can be perfectly
-predicted from the other (e.g., D2 =1−D1 ).
-Multicollinearity makes it hard for the model to estimate
-coefficients correctly.
-
---- Page 22 ---
-
-Dummy Variables Trap
-Solution:
-To avoid the trap, drop one dummy variable (e.g., D₂)
-from the model.
-Now, the model only uses D₁ to represent the "State"
-variable, while the dropped category (e.g., California)
-becomes the baseline.
-For example:
-If D₁ = 1 → State is New York.
-If D₁ = 0 → State is California (by default).
-Regression Equation:
-The equation includes:
-Numerical variables (x1 ,x2 ,x3 ) like R&D Spend,
-Admin, Marketing.
-A single dummy variable (D1 ) representing the state.
-This avoids the dummy variable trap while still
-capturing the effect of the state on profit.
-
---- Page 23 ---
-
-Building A Model
-
---- Page 24 ---
-
-Building A Model
-The idea here is to explain different methods of building regression
-models by selecting the most relevant predictors (independent
-variables). 
-These methods aim to balance simplicity and accuracy in the model,
-ensuring only significant variables are included
-
---- Page 25 ---
-
-Use all the predictors without elimination.
-When to use:
-You have prior knowledge that all variables are important.
-It's required to include all variables (e.g., for regulatory reasons).
-You're preparing for Backward Elimination and want to start with all predictors.Building A Model
-All in one
-
---- Page 26 ---
-
-Start with all predictors and remove the least significant one (based on p-value) until only
-significant predictors remain.
-Steps:
-Set a significance level (e.g., SL=0.05). 1.
-Fit a full model with all predictors. 2.
-Remove the predictor with the highest p-value if p>SL, then refit the model. 3.
-Repeat until all remaining predictors have p<SLp<SL. 4.
- Useful when starting with many predictors and you want to eliminate irrelevant ones.Building A Model
-Backward
-Elimination
-
---- Page 27 ---
-
-Start with no predictors and add the most significant one step-by-step.
-Steps:
-Set a significance level for inclusion (e.g., SL=0.05). 1.
-Fit models with each predictor separately and select the one with the lowest p-value. 2.
-Add the selected variable and repeat by testing additional predictors one by one. 3.
-Stop when no remaining variable has p<SL. 4.
- Useful when starting with no predictors and gradually adding relevant ones.Building A Model
-Forward
-Selection
-
---- Page 28 ---
-
-Combine Forward Selection and Backward Elimination by adding and removing predictors
-dynamically.
-Steps:
-Set significance levels for adding (SLENTER ) and removing (SLSTAY ). 1.
-Add new predictors with p<SLENTER  (like Forward Selection). 2.
-Remove existing predictors with p>SLSTAY  (like Backward Elimination). 3.
-Repeat until no variables can be added or removed. 4.
-Useful when you want a flexible approach that checks both directions.Building A Model
-Bidirectional
-Elimination
-
---- Page 29 ---
-
-The significance level (SL) is a threshold used in statistical tests to decide whether a
-variable is significant enough to be included in a regression model.  
-Standard Practice (Default Value):
-SL=0.05: This is a common default value used in most statistical analyses.
-It corresponds to a 5% risk of incorrectly rejecting a variable that is actually
-significant (Type I error).
-Widely accepted in fields like science, engineering, and social sciences.Building A Model
-Why SL=0.05 (Significance Level) ?
-
---- Page 30 ---
-
-Based on Desired Confidence:
-Relationship to Confidence Level:
-SL=1−Confidence Level.
-For example:
-SL=0.05SL=0.05 → 95% Confidence Level.
-SL=0.01SL=0.01 → 99% Confidence Level (more stringent).
-SL=0.10SL=0.10 → 90% Confidence Level (less stringent).
-Domain-Specific Considerations:
-High-Stakes Decisions: Use a smaller SL (e.g., SL=0.01) in fields where errors are costly, such as medicine,
-finance, or safety-critical industries.
-Exploratory Analysis: Use a larger SL (e.g., SL=0.10) if you're exploring data and want to include more
-predictors for further analysis.Building A Model
-Why SL=0.05 (Significance Level) ?
-
---- Page 31 ---
-
-Size of Dataset and Model Complexity:
-Large Datasets: A smaller SL (e.g.,SL=0.01) might be more appropriate since larger datasets can detect even
-small effects.
-Small Datasets: A larger SL (e.g.,SL=0.10) might be acceptable because small datasets may lack the power to
-detect subtle relationships.
-Practical Tips:
-Start with SL=0.05 as a general rule.
-Adjust it based on:
-The importance of avoiding errors in your context.
-The size and complexity of your data.
-Your domain knowledge and goals.Building A Model
-Why SL=0.05 (Significance Level) ?
-
---- Page 32 ---
-
-Hands-On Code
-Simple Linear Regression
-
---- Page 33 ---
-
-Hands-On Code
-Multiple Linear Regression
-
---- Page 34 ---
-
-Polynomial
-Regression
-
-
-### 09
-
---- Page 1 ---
-
-Evaluating
-Classification
-Model
-
---- Page 2 ---
-
-When evaluating a classification model, we often deal with prediction errors. Evaluating Classification Model
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRFalse Positives & False Negatives
-
---- Page 3 ---
-
-False Positives (Type I Error)
-The model incorrectly predicts a positive
-outcome when the actual outcome is negative.
-Example: A medical test predicts a patient has
-a disease when they do not.
-False Negatives (Type II Error)
-The model incorrectly predicts a negative
-outcome when the actual outcome is positive.
-Example: A medical test predicts a patient
-does not have a disease when they actually do.Evaluating Classification Model
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRFalse Positives & False Negatives
-
---- Page 4 ---
-
-These errors are crucial for measuring model performance.
-A good classification model should minimize both types of errors while maintaining high accuracy.
-Depending on the application, one type of error may be more costly than the other (e.g., in fraud
-detection, false negatives can be more dangerous).Evaluating Classification Model
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHow This Relates to Model Evaluation
-
---- Page 5 ---
-
-Evaluating Classification Model
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRConfusion Matrix & Accuracy
-The confusion matrix is a fundamental tool for evaluating
-classification models. 
-It provides a summary of prediction results by comparing
-actual and predicted values. 
-The main components are:
-True Positive (TP): The model correctly predicted the
-positive class.
-True Negative (TN): The model correctly predicted the
-negative class.
-False Positive (FP) (Type I Error): The model incorrectly
-predicted positive when the actual class was negative.
-False Negative (FN) (Type II Error): The model incorrectly
-predicted negative when the actual class was positive.
-
---- Page 6 ---
-
-Evaluating Classification Model
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRConfusion Matrix & Accuracy
-
---- Page 7 ---
-
-Evaluating Classification Model
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRPrecision, Recall, and F1-Score Explanation
-Precision (Positive Predictive Value):
-Precision measures the accuracy of positive
-predictions made by the model. 
-It answers:
-"Of all the instances predicted as positive, how
-many were actually positive?"
-High Precision: Few false positives, meaning when
-the model predicts positive, it is often correct.
-Low Precision: Many false positives, meaning the
-model is often incorrect in predicting positives.
-
---- Page 8 ---
-
-Evaluating Classification Model
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRPrecision, Recall, and F1-Score Explanation
-Recall (Sensitivity or True Positive Rate):
-Recall measures how well the model identifies all
-actual positive cases. 
-It answers:
-"Of all the actual positive cases, how many did the
-model correctly identify?"
-High Recall: Few false negatives, meaning most
-actual positives are correctly classified.
-Low Recall: Many false negatives, meaning the
-model misses many actual positives.
-
---- Page 9 ---
-
-Evaluating Classification Model
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRPrecision, Recall, and F1-Score Explanation
-F1-Score (Harmonic Mean of Precision & Recall)
-The F1-score balances Precision and Recall. 
-It is useful when we want a single metric that
-considers both false positives and false negatives.
-
---- Page 10 ---
-
-Evaluating Classification Model
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRPrecision, Recall, and F1-Score Explanation
-Key Insights:
-✅ Precision is important when false positives are costly (e.g., spam detection, where
-incorrectly flagging an important email is bad).
-✅ Recall is important when false negatives are costly (e.g., medical diagnoses, where
-missing a disease is dangerous).
-✅ F1-Score is a balanced metric, especially useful when the dataset is imbalanced.
-
---- Page 11 ---
-
-Evaluating Classification Model
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRAccuracy Paradox - Scenario 1
-Here isa confusion matrix with two classes (0 and 1).
-The model achieves 98% accuracy, but it highlights a critical issue: imbalanced data.
-While most negative cases (0s) are correctly predicted (9,700), the model fails to
-correctly classify a significant number of positive cases (50 false negatives).
-Accuracy alone does not tell the full story of model performance, especially in
-imbalanced datasets.
-
---- Page 12 ---
-
-Evaluating Classification Model
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRAccuracy Paradox -  Scenario #2
-The model slightly improves, increasing
-accuracy to 98.5%, but it completely ignores
-class 1 (no correct positive predictions).
-This highlights the accuracy paradox, where
-accuracy increases while performance for an
-important class worsens.
-A high accuracy does not necessarily mean the
-model is good. Other metrics like precision and
-recall must be considered.
-
---- Page 13 ---
-
-Evaluating Classification Model
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRCAP (Cumulative Accuracy Profile) - Introduction
-CAP is a visualization technique to evaluate classification models.
-The x-axis represents total contacted (e.g., customers, patients, etc.), and the y-axis
-represents the positive outcomes (e.g., purchases, disease detection).
-The red curve shows the model's performance, while the blue diagonal represents
-random selection.
-A steeper curve indicates a better model.
-
---- Page 14 ---
-
-Evaluating Classification Model
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRCAP Curves - Performance Comparison
-Compares different models:
-Crystal Ball: A perfect model (ideal
-case).
-Good Model: A practical, effective
-model.
-Random Model: A model that performs
-no better than random guessing.
-The closer the curve is to the perfect
-model, the better the classifier.
-
---- Page 15 ---
-
-Evaluating Classification Model
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRCAP Analysis - Model Evaluation
-AR (Accuracy Ratio) Calculation:
-AR = aR / aP, where:
-aR is the area under the model’s
-curve.
-aP is the area under the perfect
-model’s curve.
-A higher AR value means a better model.
-AP analysis provides a quantitative
-measure of model quality.
-
---- Page 16 ---
-
-Evaluating Classification Model
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRCAP Analysis - Model Evaluation
-
---- Page 17 ---
-
-Hands-On Code
-Evaluating Classification Model
-
-
-### 04
-
---- Page 1 ---
-
-Evaluation Regression Model
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVR
-
---- Page 2 ---
-
-Regularization
-Methods
-
---- Page 3 ---
-
-Regularization Methods
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRA  curve perfectly fitting all data points 
-The model captures noise instead of the real
-pattern.
-Key Points:
-Overfitting: The model is too complex, learning
-noise instead of trends.
-Effects: High training accuracy but poor test
-performance.
-Indicators: High variance, unstable predictions,
-poor generalization.The Problem of Overfitting
-
---- Page 4 ---
-
-Regularization Methods
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRSmall changes in input lead to big prediction shifts.The Problem of Overfitting
-
---- Page 5 ---
-
-Regularization Methods
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRExamples of Regularization
-Regularization is a technique in regression that adds a penalty to the model to prevent overfitting and improve generalization.
-
---- Page 6 ---
-
-Regularization Methods
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRWithout Regularization
-This is the standard Mean Squared Error (MSE)
-minimization in linear regression.
-The model aims to minimize the sum of squared
-differences between actual values yi and predicted
-values.
-Key Points:
-No Penalty on Coefficients: The model freely adjusts
-parameters b0 ,b1 ,...bm .
-Risk of Overfitting: If there are too many features, the
-model may fit noise instead of patterns.
-
---- Page 7 ---
-
-Regularization Methods
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRRidge Regression
-Ridge regression adds a penalty ( λ  * sum of squared coefficients) to the
-standard loss function.
-This penalty shrinks coefficients but does not force them to zero.
-Key Points:
-Controls Overfitting by reducing coefficient magnitudes.
-Smooths model predictions and improves generalization.
-λ (lambda) controls regularization strength – higher λ  shrinks coefficients more.
-
---- Page 8 ---
-
-Lasso adds a penalty on the absolute values of coefficients 
-(∣b1 ∣ + ∣ b2 ∣ +...+ ∣ bm ∣ ).
-Encourages sparsity by forcing some coefficients to exactly zero.
-Key Points:
-Feature Selection: Automatically removes less important features.
-Sparse Models: Useful when only a few features matter.
-λ (lambda) controls regularization strength – higher λ  forces more coefficients to zero.
-Regularization Methods
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRLasso Regression
-
---- Page 9 ---
-
-Elastic Net combines Lasso (L1) and Ridge (L2) penalties.
-The penalty includes both absolute values and squared values of coefficients.
-Key Points:
-Best of Both Worlds: Shrinks coefficients like Ridge and performs feature selection like
-Lasso.
-Useful when features are correlated: Lasso alone may arbitrarily drop one feature, but
-Elastic Net keeps important ones.
-Two Hyperparameters ( λ ₁, λ ₂): Control the balance between L1 and L2 regularization.
-Regularization Methods
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRElastic Net
-
---- Page 10 ---
-
-Regularization prevents overfitting by
-simplifying the model.
-Better generalization: The model performs
-well on both training and new data.
-Less variance: Predictions are more stable and
-robust.
-Regularization Methods
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRAs a Result,
-
-
-### 01
-
---- Page 1 ---
-
-© SuperDataScienceMachine Learning A-Z
-ClassificationClassification ModelProsConsLogistic RegressionProbabilistic approach, gives informations about statistical significance of featuresThe Logistic Regression AssumptionsK-NNSimple to understand, fast and efficientNeed to choose the number of neighbours kSVMPerformant, not biased by outliers,not sensitive to overfittingNot appropriate for non linear problems, not the best choice for large number of featuresKernel SVMHigh performance on nonlinear problems, not biased by outliers, not sensitive to overfittingNot the best choice for large number of features, more complexNaive BayesEfficient, not biased by outliers, works on nonlinear problems, probabilistic approachBased on the assumption that features have same statistical relevanceDecision Tree ClassificationInterpretability, no need for feature scaling, works on both linear / nonlinear problemsPoor results on too small datasets, overfitting can easily occurRandom Forest ClassificationPowerful and accurate, good performance on many problems, including non linearNo interpretability, overfitting can easily occur, need to choose the number of trees
-
-
-### 12
-
---- Page 1 ---
-
-AI Diploma
-
---- Page 2 ---
-
-Semester One | Course TwoMachine Learning Algorithms
-and Applications
-
---- Page 3 ---
-
-Data PreprocessingUnit 1: Basic Data
-processing methods
-and regression Unit 2: Advance
-Regression Algorithms Unit 3:
-Classification Unit 4 : Clustering
-& Dimensionality
-ReductionUnit 5: Model Selection
-& Boosting  
-ClassificationClusteringRegression AlgorithmsML
-Road
-Map
-Dimensionality ReductionMissing Data
-Categorical Data
-Template For
-Preprocessing Data
-(General Steps)K-Means Clustering
-Hierarchical ClusteringSupport Vector
-Regression
-Decision Tree Regression
-Random Forest
-Regression
-Evaluating Regression
-Model
-Regularisation MethodsK-Nearest Neighbors (K-NN)
-Support Vector Machine
-(SVM)
-Kernel SVM
-Naive Bayes
-Decision Tree Classification
-Random Forest Classification
-Evaluating Classification
-ModelModel Selection
-XGBoost
-Principal Component
-AnalysisRegression
-Simple Linear
-Regression
-Multiple Linear
-Regression
-Polynomial regressionClassification in Regression
-Logistic RegressionROADMAP
-
---- Page 4 ---
-
-Semester One | Course TwoMachine Learning Algorithms and Applications
-Unit 1 : Basic Data
-Processing Methods
-and Regression
-
---- Page 5 ---
-
-Data Preprocessing
-
---- Page 6 ---
-
-The Machine Learning Process
-Data Pre-
-Processing1 2 3
-Data Pre-Processing
-Import the data
-Clean the data
-Split into training & test sets
-Feature ScalingModelling
-Modelling
-Build the model  
-Train the model
-Make predictionsEvaluation
-Evaluation
-Calculate performance
-metrics
-Make a predict
-
---- Page 7 ---
-
-Training Set & Test Set
-https://support.cognex.com/docs/deep-learning_311/web/EN/deep-learning/Content/deep-learning-Topics/training-blue-read/prepare-train-test.htm?TocPath=Training%20Blue%20Read%7C_____8
-
---- Page 8 ---
-
-Feature Scaling
-Feature scaling is a technique to
-standardize or normalize the
-range of independent variables
-(features).
-It ensures that no feature
-dominates the learning process
-due to larger numerical values.
-Examples of why it’s needed:
-Height (cm) and weight (kg)
-might have very different ranges.
-
---- Page 9 ---
-
-Feature Scaling
-Improves Model Performance: Many ML algorithms rely on distance-based
-calculations (e.g., KNN, SVM, Gradient Descent).
-Speeds Up Convergence: For optimization algorithms, scaling helps them reach
-a solution faster.
-Avoids Bias: Prevents large values from dominating smaller ones.Why Do We Need It?
-
---- Page 10 ---
-
-Feature Scaling
-Normalization
-Rescales data between 0 and 1.
-Suitable for: Algorithms sensitive to absolute magnitudes (e.g., KNN).).Standardization
-Rescales data to have a mean of 0 and a standard deviation of 1.
-Suitable for: Gaussian-distributed features (e.g., Logistic Regression)
-
---- Page 11 ---
-
-Feature Scaling
-Normalization
-Rescales data between 0 and 1.
-Suitable for: Algorithms sensitive to absolute magnitudes (e.g., KNN).).Standardization
-Rescales data to have a mean of 0 and a standard deviation of 1.
-Suitable for: Gaussian-distributed features (e.g., Logistic Regression)
-
---- Page 12 ---
-
-Feature Scaling
-Normalization
-Use when features have different ranges but need to be scaled between 0 and 1.
-Example: Min-Max Scaling.
-Standardization
-Use when data needs a Gaussian distribution or involves outliers.Choosing the Right Scaling Method
-
---- Page 13 ---
-
-Feature Scaling
-Example
-Normalization
-1
-0 . 8
-01
-0 . 4 4 4
-0
-
---- Page 14 ---
-
-Data that represents categories or groups.
-Types:
-Ordinal: Has an order (e.g., small, medium, large).
-Nominal: No order (e.g., colors: red, green, blue).
-Why Handle Categorical Data?
-Machine learning models require numerical data.
-Example:
-Raw: ["Red", "Green", "Blue"]
-Encoded: [1, 2, 3] or One-Hot Encoding.Categorical Data
-What is Categorical Data?
-
---- Page 15 ---
-
-Categorical Data
-How to deal with Categorical Data?
-Ordinal Encoding
-
---- Page 16 ---
-
-Categorical Data
-How to deal with Categorical Data?
-One Hot Encoding
-
---- Page 17 ---
-
-Categorical Data
-How to deal with Categorical Data?
-Dummy Encoding
-
---- Page 18 ---
-
-Categorical Data
-How to deal with Categorical Data?
-Other Type Encoding 
-https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniques
-
---- Page 19 ---
-
-Handling Missing Data
-What is Missing Data?
-Missing or incomplete values in the dataset.
-Types of Missing Data:
-Missing Completely at Random (MCAR).
-Missing at Random (MAR).
-Not Missing at Random (NMAR).
-Challenges:
-Leads to biased models or errors in predictions.
-
---- Page 20 ---
-
-Handling Missing Data
-Why we have Missing Data?
-https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniques
-
---- Page 21 ---
-
-Handling Missing Data
-1) Missing completely at random (MCAR)
-https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniquesMCAR is a situation in which the data is genuinely missing at random and has no relation to any observed or unobserved variables.
-In other words, the missing data points follow no recognized pattern.
-
---- Page 22 ---
-
-Handling Missing Data
-1) Missing completely at random (MCAR)
-https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniquesUnrealistic Assumption: MCAR is rarely realistic in real-world datasets because missing data is often influenced by observed or unobserved factors.
-Influencing Factors: Missing data may arise due to:
-Human behavior (e.g., omitting sensitive information).
-Survey administration errors.
-External events influencing responses.
-Selective Missingness: Certain groups or individuals may be more likely to leave responses blank, leading to patterns in missingness.
-Need for Context: Assuming MCAR requires:
-Understanding the full data collection process.
-Consulting domain experts.
-Collaboration between data scientists and data engineers.
-Practical Approach: If MCAR seems reasonable after analysis or expert input, simple imputation techniques can be used for handling missing values.
-
---- Page 23 ---
-
-Handling Missing Data
-2) Missing at random (MAR)
-https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniquesMAR is a situation in which the missingness of one feature can be explained by other observed features in the dataset.
-
---- Page 24 ---
-
-Handling Missing Data
-2) Missing at random (MAR)
-https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniquesMissing at Random (MAR) assumes that the probability of missing data is related to observed features but not to the
-missing feature itself.
-Practical Observation: MAR is more commonly seen in real-world datasets compared to MCAR.
-Missingness can be estimated using available data, allowing for accurate imputation through statistical methods.
-To identify MAR, examine if the probability of missingness changes based on other observed features.
-Example: In an academic survey, students with higher grades might avoid reporting study hours, showing a
-relationship between grades (observed feature) and missingness.
-Imputation Techniques for MAR:
-kNN Imputation
-Miss Forest
-These methods leverage observed features to fill in missing values effectively.
-
---- Page 25 ---
-
-Handling Missing Data
-kNN Imputation
-https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniques
-
---- Page 26 ---
-
-Handling Missing Data
-Miss Forest
-https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniques
-
---- Page 27 ---
-
-Handling Missing Data
-3) Missing not at random (MNAR)
-https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniquesMNAR is the most complicated situation of all three.
-In MNAR, missingness is either attributed to the missing value itself or the feature(s) that we didn’t collect data for.
-
---- Page 28 ---
-
-Handling Missing Data
-3) Missing not at random (MNAR)
-https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniquesPreserving Missingness Patterns: Add a binary indicator feature to flag whether a
-value was imputed. This allows machine learning algorithms to recognize and learn
-from the missingness pattern.MNAR is the most complicated situation of all three.
-In MNAR, missingness is either attributed to the missing value itself or the feature(s) that we didn’t collect data for.
-Unlike MCAR (no pattern) or MAR (related to observed features), MNAR has a clear missingness pattern tied to the missing variable.
-Example: In a health survey, individuals with high stress levels might avoid disclosing their stress level due to stigma, creating a non-
-random missingness pattern.
-Challenge: Since missingness is dependent on the missing variable, it’s difficult to address without collecting additional data or having
-domain expertise.
-
---- Page 29 ---
-
-Data Preprocessing Template
-https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniquesSteps to Follow:
-Load the data.
-Check for missing data and handle it.
-Encode categorical data.
-Split dataset into training and test sets.
-Feature scale numerical data.
-Input Raw Data → Handle Missing Data → Encode
-Categories → Train/Test Split → Scale Features → 
-ML Algorithm
-
---- Page 30 ---
-
-Hands-On Code
-Data Preprocessing Template
-
-
-### 07
-
---- Page 1 ---
-
-Logistic
-Regression
-
---- Page 2 ---
-
-Logistic regression is defined as a supervised machine learning algorithm that accomplishes binary
-classification tasks by predicting the probability of an outcome, event, or observation. 
-The model delivers a binary or discrete outcome limited to two possible outcomes: yes/no, 0/1, or
-true/false.
-Logical regression analyzes the relationship between one or more independent variables and
-classifies data into discrete classes. 
-It is extensively used in predictive modeling, where the model estimates the mathematical
-probability of whether an instance belongs to a specific category or not.Logistic Regression
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRDefinition
-
---- Page 3 ---
-
-Logistic Regression
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRUnderstanding Logistic Regression
-
---- Page 4 ---
-
-Logistic Regression
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRUnderstanding Logistic Regression
-Linear Regression Fails for Classification – It
-predicts continuous values instead of clear 0
-or 1 labels.
-Invalid Probability Outputs – Predictions can
-go below 0 or above 1, which makes no sense
-for binary outcomes.
-No Clear Decision Boundary – It lacks a
-proper mechanism to classify points, unlike
-logistic regression, which uses a sigmoid
-function.
-
---- Page 5 ---
-
-Logistic Regression
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRUnderstanding Logistic Regression
-Makes Sense – Some points in the middle could
-lean toward 0 or 1 but aren't strictly one or the
-other.
-Those in-between cases should have a probability,
-not a fixed value.Doesn’t Make Sense – Probabilities must stay
-between 0 and 1.
-Invalid Outputs – Values above 1 should be 1, and
-below 0 should be 0.So we kind of saying this modeling works
-
---- Page 6 ---
-
-Logistic Regression
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRUnderstanding Logistic Regression
-s l o p e
-best fitting line
-
---- Page 7 ---
-
-Logistic Regression
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRUnderstanding Logistic Regression
-This could represent probabilities since it is
-between 0 and 1 
-Projecting blue values to each probabilities based
-on the training data 
-The line represents the logistic regression fitting
-line ( slope)
-
---- Page 8 ---
-
-Logistic Regression
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRUnderstanding Logistic Regression
-Threshold at 0.5 – Anything below 0.5 is predicted
-as 0, and anything above is 1.
-Mismatch with Data – Predictions fall on 0 and 1,
-but not exactly where the data points are.
-Loss Optimization – The model tries to find the
-best-fitting line with minimal loss.
-
---- Page 9 ---
-
-Variance Inflation Factor
-(VIF), which determines
-the correlation strength
-between the
-independent variables in
-a regression model.Logistic Regression
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRKey Assumptions For Applying Logistic Reg.
-Log odds express probabilities in terms
-of the ratio of success to failure, while
-probability measures success out of
-total events. For example, if you win 5
-out of 12 tennis games, your probability
-of winning is 5/12, but your odds of
-winning are 5 to 7 (wins to losses).
-Observations should be
-independent, meaning they
-shouldn’t be influenced by or
-repeated from other observations
-in the dataset.
-
---- Page 10 ---
-
-Logistic Regression
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRLog Odds in Logistic Regression
-Odds represent the ratio of success to failure. It is calculated as:
-where:
-p is the probability of success (event happening).
-1−p is the probability of failure (event not happening).
-
---- Page 11 ---
-
-Logistic Regression
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRMaximum Likelihood
-Logistic regression calculates likelihood by assigning probabilities
-to observations and maximizing the likelihood of correct
-classification.
-The logistic curve (yellow) aligns well with the actual data points.
-Each observation has an assigned probability based on the curve.
-Since the probabilities for correct classifications are higher, the
-overall likelihood is higher.
-With  (Lower Likelihood Model)
-The logistic curve does not fit the data as well.
-Incorrect probabilities are assigned to observations, resulting in a lower likelihood value.
-The likelihood is much smaller (0.00019939) compared to the left model.
-
---- Page 12 ---
-
-Logistic Regression
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRMaximum Likelihood
-The process of optimizing the logistic regression model to
-find the best-fit curve.
-Different logistic curves are tested, each corresponding to a
-different likelihood value.
-The goal is to find the curve with the highest likelihood.
-The highlighted likelihood 0.00019939 represents the best
-model, meaning this curve best separates the data into
-"YES" and "NO" categories.
-Maximum Likelihood Estimation (MLE) selects the best
-logistic regression model by finding the curve that
-maximizes the likelihood of correct classification.
-
---- Page 13 ---
-
-Logistic Regression
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRLogistic Regression: Strengths and Limitations
-Strength: Interpretability:
-Logistic regression is easy to understand because its coefficients directly show how each feature affects the log odds of
-the outcome.
-Each coefficient represents the change in log odds for a one-unit change in the feature.
-This makes it useful for domains like healthcare, finance, and social sciences, where explainability is crucial.
-In a model predicting heart disease risk:
-A coefficient of +0.5 for cholesterol level means higher cholesterol increases the odds of heart disease.
-A coefficient of -0.3 for exercise frequency means more exercise decreases the odds.
-
---- Page 14 ---
-
-Logistic Regression
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRLogistic Regression: Strengths and Limitations
-Limitation: Struggles with Non-Linear Relationships
-Logistic regression assumes a linear relationship between features and log odds, which means it can't easily capture
-complex patterns in the data
-If the relationship between input variables and the outcome is non-linear, logistic regression won't perform well.
-------
-Logistic regression performs poorly when classes are overlapping or not easily separable.
-If the data points of two classes mix heavily, logistic regression struggles to find a clear decision boundary.
-
---- Page 15 ---
-
-Logistic Regression
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHandling Multiple Categories in Logistic Regression
-Logistic regression is primarily designed for binary classification (0 or 1). However, when dealing with multiple
-classes(e.g., classifying emails as Primary, Social, or Promotions), we need extensions of logistic regression. 
-There are two main approaches:
-Multinomial Logistic Regression (Softmax Regression)
-This method directly extends logistic regression to multiple classes.
-Instead of using a single sigmoid function, it uses the softmax function to calculate the probability of each class.
-The model predicts one class out of many based on the highest probability.
-One-vs-All (OvA) Approach
-Instead of using a single model, OvA trains multiple binary logistic regression models.
-Each model separates one class from the rest.
-The final prediction is made by choosing the model with the highest probability.
-
---- Page 16 ---
-
-Hands-On Code
-Logistic Regression
-Implementation
-
---- Page 17 ---
-
-K-Nearest
-Neighbors (K-NN)
-
---- Page 18 ---
-
-K-Nearest Neighbors (K-NN) is a non-parametric, instance-based learning algorithm used for
-classification. It’s simple, intuitive, and often works surprisingly well for many datasets.K-Nearest Neighbors (K-NN)
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRDefinition
-
---- Page 19 ---
-
-K-NN makes predictions based on similarity. Instead of learning explicit patterns from the training
-data, it stores all the training data and makes decisions based on the most similar examples when a
-new data point arrives.
-🔹 Steps for Classification:
-Choose a value for K (the number of neighbors to consider). 1.
-Calculate the distance between the new data point and all existing data points. 2.
-Select the K closest points based on the chosen distance metric. 3.
-Assign the most common class (majority vote) among these K neighbors to the new data point. 4.K-Nearest Neighbors (K-NN)
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHow does it work !
-
---- Page 20 ---
-
-K-NN makes predictions based on similarity. Instead of learning explicit patterns from the training
-data, it stores all the training data and makes decisions based on the most similar examples when a
-new data point arrives.
-🔹 Steps for Classification:
-Choose a value for K (the number of neighbors to consider). 1.
-Calculate the distance between the new data point and all existing data points. 2.
-Select the K closest points based on the chosen distance metric. 3.
-Assign the most common class (majority vote) among these K neighbors to the new data point. 4.K-Nearest Neighbors (K-NN)
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHow does it work !
-
---- Page 21 ---
-
-Choosing the Value of K:
-Small K (e.g., 1 or 3):
-More sensitive to noise.
-High variance, meaning it can change significantly
-with small dataset variations.
-Large K (e.g., 10 or 20):
-More generalized but may ignore local patterns.
-Reduces overfitting but can smooth out important
-details.
-A common approach is to try different K values and use
-cross-validation to find the best one.
-K-Nearest Neighbors (K-NN)
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHow does it work !
-
---- Page 22 ---
-
-Since K-NN finds the "nearest" neighbors, we need a way to measure distance. 
-🔹 Euclidean Distance (Most Common)
-Used for continuous numerical data.
-🔹 Manhattan Distance
-Used when movement is restricted to horizontal and vertical paths.
-🔹 Hamming Distance
-Used for categorical data (e.g., DNA sequences or text classification).
-Choosing the right distance metric depends on the type of data.
-K-Nearest Neighbors (K-NN)
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHow does it work !
-
---- Page 23 ---
-
-3. Find the Nearest Neighbors (K Closest Points):
-We are using K = 5 (since we see 5 nearest neighbors
-considered).
-The algorithm selects the 5 closest points to the new data
-point.
-Majority Voting (Classification Decision):
-Among the 5 neighbors:
-3 belong to Category 1 (red crosses).
-2 belong to Category 2 (green plus signs).
-Since Category 1 has the majority (3 out of 5), the new data
-point is classified as Category 1 (red cross).K-Nearest Neighbors (K-NN)
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRHow does it work !
-
---- Page 24 ---
-
-Simple & Easy to Understand – No training phase, just storing data and comparing distances.
-Works Well with Small Data – Effective for datasets with clear separation.
-Non-Parametric – Makes no assumptions about the data distribution.
-Can Handle Multi-Class Problems – Works for problems with multiple categories.K-Nearest Neighbors (K-NN)
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRStrengths of K-NN
-
---- Page 25 ---
-
-Computationally Expensive for Large Datasets
-Since K-NN stores all data, it can become slow for large datasets.
-Requires calculating distances for all points at prediction time.
-Sensitive to Irrelevant Features
-If some features are not useful, they can mislead K-NN.
-Feature selection and normalization (scaling data properly) are important.
- Struggles with Imbalanced Data
-If one class is much larger than another, K-NN may always favor the majority class.
-Not Good for High-Dimensional Data
-In high-dimensional spaces, all points start looking equally distant (Curse of
-Dimensionality).K-Nearest Neighbors (K-NN)
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRLimitations of K-NN
-
---- Page 26 ---
-
-Hands-On Code
-K-Nearest Neighbors
-
-
-### 15
-
---- Page 1 ---
-
-Clustering
-
---- Page 2 ---
-
-Clustering
-https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRWhat is Clustering?
-Clustering – grouping 
-Unlabelled Data
-
---- Page 3 ---
-
-Clustering
-Image source: mdpi.com/2073-8994/10/12/73What is Clustering?
-
---- Page 4 ---
-
-Clustering
-Image source: mdpi.com/2073-8994/10/12/73What is Clustering?
-
---- Page 5 ---
-
-K-Means
-Clustering
-
---- Page 6 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73The Intuition Behind K-Means Clustering
-No labels data 
-How many clusters ? 
-Let consider twoReplace them randomly ,
-any point (centroid)K-means assign distance
-line to the closest these
-centroid , easiest way like
-this
-
---- Page 7 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73The Intuition Behind K-Means Clustering
-Calculate mass or gravity of each
-clusters ..
-For take all x and get average and for
-blue take all y and get the average so
-you will find the cluster mass move the centriod to new positions
-and repeat the process Place the line to the closest centroid
-
---- Page 8 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73The Intuition Behind K-Means Clustering
-Repeat the process ..
-
---- Page 9 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73The Intuition Behind K-Means Clustering
-Repeat the process ..
-
---- Page 10 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73The Intuition Behind K-Means Clustering
-Repeat the process
-
---- Page 11 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73The Intuition Behind K-Means Clustering
-Repeat until the cluster wont change
-
---- Page 12 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73The Intuition Behind K-Means Clustering
-So Here is our final clusters
-
---- Page 13 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73The question is how many clusters should
-be/should we have !
-Sometimes from the knowledge domain 
-Sometimes we need to know how many we should have
-
---- Page 14 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73The Elbow Method
-It basically looks at the distance between each point and
-the centroid and square it
-
---- Page 15 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73The Elbow Method
-In this example, measure each points with the centroid
-and square it to find the WCSS
-
---- Page 16 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73The Elbow Method
-Case if we have two clusters
-
---- Page 17 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73The Elbow Method
-Case if we have three clusters and so on ...
-
---- Page 18 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73The Elbow Method
-If you notice, we need the clusters to find
-WCSS .. so we need to run it first 
-It is backward !! 
-The more clusters we have,  the smaller WCSS
-we have .. So we can continue increasing
-numbers of clusters until we get max number
-of clusters = number of points so WCSS will
-become 0 
-The optimal number of clusters is three
-because it is the elbow , where WCSS stop
-dropping as rapidly.
-Judgment call !! sometimes not clear, more than
-candidate .. so
-
---- Page 19 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73K-Means++
-
---- Page 20 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73K-Means++
-K-Means++ Initialization Algorithm:
-Step 1: Choose first centroid at random among data point
-Step 2: For each of the remaining data points compute the distance (D) to the nearest out of already selected centroids
-Step 3: Choose next centroid among remaining data points using weighted random selection – weighted by D2
-Step 4: Repeat Steps 2 and 3 until all k centroids have been selected 
-Step 5: Proceed with standard k-means clustering
-
---- Page 21 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73K-Means++
-
---- Page 22 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73K-Means++
-
---- Page 23 ---
-
-K-Means Clustering
-Image source: mdpi.com/2073-8994/10/12/73K-Means++
-
 
 ### 11
 
@@ -3397,3 +2499,887 @@ XGBoost Implementation
 
 The End.
 
+### 12
+
+--- Page 1 ---
+
+AI Diploma
+
+--- Page 2 ---
+
+Semester One | Course TwoMachine Learning Algorithms
+and Applications
+
+--- Page 3 ---
+
+Data PreprocessingUnit 1: Basic Data
+processing methods
+and regression Unit 2: Advance
+Regression Algorithms Unit 3:
+Classification Unit 4 : Clustering
+& Dimensionality
+ReductionUnit 5: Model Selection
+& Boosting  
+ClassificationClusteringRegression AlgorithmsML
+Road
+Map
+Dimensionality ReductionMissing Data
+Categorical Data
+Template For
+Preprocessing Data
+(General Steps)K-Means Clustering
+Hierarchical ClusteringSupport Vector
+Regression
+Decision Tree Regression
+Random Forest
+Regression
+Evaluating Regression
+Model
+Regularisation MethodsK-Nearest Neighbors (K-NN)
+Support Vector Machine
+(SVM)
+Kernel SVM
+Naive Bayes
+Decision Tree Classification
+Random Forest Classification
+Evaluating Classification
+ModelModel Selection
+XGBoost
+Principal Component
+AnalysisRegression
+Simple Linear
+Regression
+Multiple Linear
+Regression
+Polynomial regressionClassification in Regression
+Logistic RegressionROADMAP
+
+--- Page 4 ---
+
+Semester One | Course TwoMachine Learning Algorithms and Applications
+Unit 1 : Basic Data
+Processing Methods
+and Regression
+
+--- Page 5 ---
+
+Data Preprocessing
+
+--- Page 6 ---
+
+The Machine Learning Process
+Data Pre-
+Processing1 2 3
+Data Pre-Processing
+Import the data
+Clean the data
+Split into training & test sets
+Feature ScalingModelling
+Modelling
+Build the model  
+Train the model
+Make predictionsEvaluation
+Evaluation
+Calculate performance
+metrics
+Make a predict
+
+--- Page 7 ---
+
+Training Set & Test Set
+https://support.cognex.com/docs/deep-learning_311/web/EN/deep-learning/Content/deep-learning-Topics/training-blue-read/prepare-train-test.htm?TocPath=Training%20Blue%20Read%7C_____8
+
+--- Page 8 ---
+
+Feature Scaling
+Feature scaling is a technique to
+standardize or normalize the
+range of independent variables
+(features).
+It ensures that no feature
+dominates the learning process
+due to larger numerical values.
+Examples of why it’s needed:
+Height (cm) and weight (kg)
+might have very different ranges.
+
+--- Page 9 ---
+
+Feature Scaling
+Improves Model Performance: Many ML algorithms rely on distance-based
+calculations (e.g., KNN, SVM, Gradient Descent).
+Speeds Up Convergence: For optimization algorithms, scaling helps them reach
+a solution faster.
+Avoids Bias: Prevents large values from dominating smaller ones.Why Do We Need It?
+
+--- Page 10 ---
+
+Feature Scaling
+Normalization
+Rescales data between 0 and 1.
+Suitable for: Algorithms sensitive to absolute magnitudes (e.g., KNN).).Standardization
+Rescales data to have a mean of 0 and a standard deviation of 1.
+Suitable for: Gaussian-distributed features (e.g., Logistic Regression)
+
+--- Page 11 ---
+
+Feature Scaling
+Normalization
+Rescales data between 0 and 1.
+Suitable for: Algorithms sensitive to absolute magnitudes (e.g., KNN).).Standardization
+Rescales data to have a mean of 0 and a standard deviation of 1.
+Suitable for: Gaussian-distributed features (e.g., Logistic Regression)
+
+--- Page 12 ---
+
+Feature Scaling
+Normalization
+Use when features have different ranges but need to be scaled between 0 and 1.
+Example: Min-Max Scaling.
+Standardization
+Use when data needs a Gaussian distribution or involves outliers.Choosing the Right Scaling Method
+
+--- Page 13 ---
+
+Feature Scaling
+Example
+Normalization
+1
+0 . 8
+01
+0 . 4 4 4
+0
+
+--- Page 14 ---
+
+Data that represents categories or groups.
+Types:
+Ordinal: Has an order (e.g., small, medium, large).
+Nominal: No order (e.g., colors: red, green, blue).
+Why Handle Categorical Data?
+Machine learning models require numerical data.
+Example:
+Raw: ["Red", "Green", "Blue"]
+Encoded: [1, 2, 3] or One-Hot Encoding.Categorical Data
+What is Categorical Data?
+
+--- Page 15 ---
+
+Categorical Data
+How to deal with Categorical Data?
+Ordinal Encoding
+
+--- Page 16 ---
+
+Categorical Data
+How to deal with Categorical Data?
+One Hot Encoding
+
+--- Page 17 ---
+
+Categorical Data
+How to deal with Categorical Data?
+Dummy Encoding
+
+--- Page 18 ---
+
+Categorical Data
+How to deal with Categorical Data?
+Other Type Encoding 
+https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniques
+
+--- Page 19 ---
+
+Handling Missing Data
+What is Missing Data?
+Missing or incomplete values in the dataset.
+Types of Missing Data:
+Missing Completely at Random (MCAR).
+Missing at Random (MAR).
+Not Missing at Random (NMAR).
+Challenges:
+Leads to biased models or errors in predictions.
+
+--- Page 20 ---
+
+Handling Missing Data
+Why we have Missing Data?
+https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniques
+
+--- Page 21 ---
+
+Handling Missing Data
+1) Missing completely at random (MCAR)
+https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniquesMCAR is a situation in which the data is genuinely missing at random and has no relation to any observed or unobserved variables.
+In other words, the missing data points follow no recognized pattern.
+
+--- Page 22 ---
+
+Handling Missing Data
+1) Missing completely at random (MCAR)
+https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniquesUnrealistic Assumption: MCAR is rarely realistic in real-world datasets because missing data is often influenced by observed or unobserved factors.
+Influencing Factors: Missing data may arise due to:
+Human behavior (e.g., omitting sensitive information).
+Survey administration errors.
+External events influencing responses.
+Selective Missingness: Certain groups or individuals may be more likely to leave responses blank, leading to patterns in missingness.
+Need for Context: Assuming MCAR requires:
+Understanding the full data collection process.
+Consulting domain experts.
+Collaboration between data scientists and data engineers.
+Practical Approach: If MCAR seems reasonable after analysis or expert input, simple imputation techniques can be used for handling missing values.
+
+--- Page 23 ---
+
+Handling Missing Data
+2) Missing at random (MAR)
+https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniquesMAR is a situation in which the missingness of one feature can be explained by other observed features in the dataset.
+
+--- Page 24 ---
+
+Handling Missing Data
+2) Missing at random (MAR)
+https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniquesMissing at Random (MAR) assumes that the probability of missing data is related to observed features but not to the
+missing feature itself.
+Practical Observation: MAR is more commonly seen in real-world datasets compared to MCAR.
+Missingness can be estimated using available data, allowing for accurate imputation through statistical methods.
+To identify MAR, examine if the probability of missingness changes based on other observed features.
+Example: In an academic survey, students with higher grades might avoid reporting study hours, showing a
+relationship between grades (observed feature) and missingness.
+Imputation Techniques for MAR:
+kNN Imputation
+Miss Forest
+These methods leverage observed features to fill in missing values effectively.
+
+--- Page 25 ---
+
+Handling Missing Data
+kNN Imputation
+https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniques
+
+--- Page 26 ---
+
+Handling Missing Data
+Miss Forest
+https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniques
+
+--- Page 27 ---
+
+Handling Missing Data
+3) Missing not at random (MNAR)
+https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniquesMNAR is the most complicated situation of all three.
+In MNAR, missingness is either attributed to the missing value itself or the feature(s) that we didn’t collect data for.
+
+--- Page 28 ---
+
+Handling Missing Data
+3) Missing not at random (MNAR)
+https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniquesPreserving Missingness Patterns: Add a binary indicator feature to flag whether a
+value was imputed. This allows machine learning algorithms to recognize and learn
+from the missingness pattern.MNAR is the most complicated situation of all three.
+In MNAR, missingness is either attributed to the missing value itself or the feature(s) that we didn’t collect data for.
+Unlike MCAR (no pattern) or MAR (related to observed features), MNAR has a clear missingness pattern tied to the missing variable.
+Example: In a health survey, individuals with high stress levels might avoid disclosing their stress level due to stigma, creating a non-
+random missingness pattern.
+Challenge: Since missingness is dependent on the missing variable, it’s difficult to address without collecting additional data or having
+domain expertise.
+
+--- Page 29 ---
+
+Data Preprocessing Template
+https://blog.dailydoseofds.com/p/7-categorical-data-encoding-techniquesSteps to Follow:
+Load the data.
+Check for missing data and handle it.
+Encode categorical data.
+Split dataset into training and test sets.
+Feature scale numerical data.
+Input Raw Data → Handle Missing Data → Encode
+Categories → Train/Test Split → Scale Features → 
+ML Algorithm
+
+--- Page 30 ---
+
+Hands-On Code
+Data Preprocessing Template
+
+### 13
+
+--- Page 1 ---
+
+Regression
+
+--- Page 2 ---
+
+Sim ple Linear
+Regression
+
+--- Page 3 ---
+
+Sim ple Linear Regression
+
+--- Page 4 ---
+
+Sim ple Linear Regression
+Linear regression tries to model the relationship between an
+independent variable (x1 , e.g., Nitrogen Fertilizer) and a dependent
+variable (y, e.g., Potato Yield) using a straight line.
+Points in the Plot:
+Each blue dot represents a separate observation or harvest.
+The model attempts to fit the best line that minimizes the error
+(distance) between the actual data points and the predicted
+values.
+Regression Line:
+The grey line is the fitted regression line.
+It shows the predicted relationship between x1  (fertilizer) and y
+(yield).
+Slope of the Line:
+The slope (+3t) indicates that for every 1 kg increase in Nitrogen
+Fertilizer, the Potato Yield increases by 3 tonnes.
+This is the coefficient of x1  in the regression equation:
+                                                       y=8+3x1
+Intercept (Baseline Value):
+The intercept (8t) represents the predicted Potato Yield when no
+fertilizer (x1 =0) is used.
+
+--- Page 5 ---
+
+Sim ple Linear Regression
+
+--- Page 6 ---
+
+Ordinary Least Squares
+
+--- Page 7 ---
+
+Multiple Linear Regression
+
+--- Page 8 ---
+
+Multiple Linear Regression
+Definition: Multiple linear regression models the relationship between one dependent
+variable (y) and two or more independent variables (x1 ,x2 ,...,xn ), using the equation:
+Purpose: It predicts the dependent variable (y) based on multiple factors
+(independent variables), allowing a more comprehensive analysis of real-world
+scenarios.
+
+--- Page 9 ---
+
+R Squared
+
+--- Page 10 ---
+
+R Squared
+R-Squared is a statistical measure that explains how well the regression line fits the
+observed data.
+It represents the proportion of variance in the dependent variable (y) that is
+predictable from the independent variable (x1 ).
+SSres : Residual Sum of Squares (difference between actual values yi  and predicted values y^ i ).
+SStot : Total Sum of Squares (difference between actual values yi  and the mean of y (yavg )).
+
+--- Page 11 ---
+
+R Squared
+
+--- Page 12 ---
+
+Adjusted R Squared
+Problem with R-Squared:
+R-Squared always increases or stays the same when you add more predictors (x3 ,x4 ) to the model, even if the new
+predictors don't contribute meaningful information.
+This happens because adding predictors reduces SSres  (Residual Sum of Squares) or keeps it the same, but SStot 
+remains constant.
+Issue with Overfitting:
+Adding irrelevant predictors makes the model more complex without improving its performance or explanatory
+power, leading to overfitting.
+R-Squared cannot penalize for unnecessary predictors, so it can give a false impression of better performance.
+
+--- Page 13 ---
+
+Adjusted R Squared
+Solution: Adjusted R-Squared:
+Adjusted R-Squared penalizes for adding predictors that don't improve the model.
+It provides a more realistic measure of how well the model explains the variability in the data.
+
+--- Page 14 ---
+
+Assumptions Of
+Linear Regression
+
+--- Page 15 ---
+
+Assumptions Of Linear Regression
+Linear regression relies on several key
+assumptions to ensure accurate
+predictions and meaningful results. 
+linearity assumes a straight-line
+relationship between the dependent
+variable (y) and each independent
+variable (x1 ,x2 ,...). 
+If the relationship is non-linear, linear
+regression will not capture it correctly.
+
+--- Page 16 ---
+
+Assumptions Of Linear Regression
+Linear regression works best when certain conditions are
+met, ensuring accurate and reliable results. 
+These conditions include:
+Linear Relationship: The dependent variable (y) should
+have a straight-line relationship with the independent
+variables (x1 ,x2 , etc.).1.
+Equal Spread of Errors: The variation in prediction errors
+should stay consistent across all values of the
+independent variables.2.
+Normal Distribution of Errors: The errors (differences
+between actual and predicted values) should follow a
+normal distribution.3.
+Independence: Each observation in the data should be
+independent of the others.4.
+No Strong Correlation Between Variables: Independent
+variables should not be too closely related to each other,
+as it can confuse the model.5.
+Check for Outliers: Outliers can heavily influence the
+regression line and should be addressed if found.6.
+If these conditions aren't met, the model might not provide
+the best predictions, and adjustments or different techniques
+may be needed.
+
+--- Page 17 ---
+
+Dum m y Variables
+
+--- Page 18 ---
+
+Dum m y Variables
+
+--- Page 19 ---
+
+Dum m y Variables
+
+--- Page 20 ---
+
+Dummy 
+Variables Trap
+
+--- Page 21 ---
+
+Dummy Variables Trap
+Dummy Variables:
+"State" is converted into two dummy variables:
+New York (D₁): 1 if the state is New York, 0
+otherwise.
+California (D₂): 1 if the state is California, 0
+otherwise.
+Dummy Variable Trap:
+Notice that the two dummy variables are highly
+dependent: 
+if D₁ = 1 (New York), D₂ must be 0 (California), and
+vice versa.
+This creates a problem of multicollinearity in the regression
+model because one dummy variable can be perfectly
+predicted from the other (e.g., D2 =1−D1 ).
+Multicollinearity makes it hard for the model to estimate
+coefficients correctly.
+
+--- Page 22 ---
+
+Dummy Variables Trap
+Solution:
+To avoid the trap, drop one dummy variable (e.g., D₂)
+from the model.
+Now, the model only uses D₁ to represent the "State"
+variable, while the dropped category (e.g., California)
+becomes the baseline.
+For example:
+If D₁ = 1 → State is New York.
+If D₁ = 0 → State is California (by default).
+Regression Equation:
+The equation includes:
+Numerical variables (x1 ,x2 ,x3 ) like R&D Spend,
+Admin, Marketing.
+A single dummy variable (D1 ) representing the state.
+This avoids the dummy variable trap while still
+capturing the effect of the state on profit.
+
+--- Page 23 ---
+
+Building A Model
+
+--- Page 24 ---
+
+Building A Model
+The idea here is to explain different methods of building regression
+models by selecting the most relevant predictors (independent
+variables). 
+These methods aim to balance simplicity and accuracy in the model,
+ensuring only significant variables are included
+
+--- Page 25 ---
+
+Use all the predictors without elimination.
+When to use:
+You have prior knowledge that all variables are important.
+It's required to include all variables (e.g., for regulatory reasons).
+You're preparing for Backward Elimination and want to start with all predictors.Building A Model
+All in one
+
+--- Page 26 ---
+
+Start with all predictors and remove the least significant one (based on p-value) until only
+significant predictors remain.
+Steps:
+Set a significance level (e.g., SL=0.05). 1.
+Fit a full model with all predictors. 2.
+Remove the predictor with the highest p-value if p>SL, then refit the model. 3.
+Repeat until all remaining predictors have p<SLp<SL. 4.
+ Useful when starting with many predictors and you want to eliminate irrelevant ones.Building A Model
+Backward
+Elimination
+
+--- Page 27 ---
+
+Start with no predictors and add the most significant one step-by-step.
+Steps:
+Set a significance level for inclusion (e.g., SL=0.05). 1.
+Fit models with each predictor separately and select the one with the lowest p-value. 2.
+Add the selected variable and repeat by testing additional predictors one by one. 3.
+Stop when no remaining variable has p<SL. 4.
+ Useful when starting with no predictors and gradually adding relevant ones.Building A Model
+Forward
+Selection
+
+--- Page 28 ---
+
+Combine Forward Selection and Backward Elimination by adding and removing predictors
+dynamically.
+Steps:
+Set significance levels for adding (SLENTER ) and removing (SLSTAY ). 1.
+Add new predictors with p<SLENTER  (like Forward Selection). 2.
+Remove existing predictors with p>SLSTAY  (like Backward Elimination). 3.
+Repeat until no variables can be added or removed. 4.
+Useful when you want a flexible approach that checks both directions.Building A Model
+Bidirectional
+Elimination
+
+--- Page 29 ---
+
+The significance level (SL) is a threshold used in statistical tests to decide whether a
+variable is significant enough to be included in a regression model.  
+Standard Practice (Default Value):
+SL=0.05: This is a common default value used in most statistical analyses.
+It corresponds to a 5% risk of incorrectly rejecting a variable that is actually
+significant (Type I error).
+Widely accepted in fields like science, engineering, and social sciences.Building A Model
+Why SL=0.05 (Significance Level) ?
+
+--- Page 30 ---
+
+Based on Desired Confidence:
+Relationship to Confidence Level:
+SL=1−Confidence Level.
+For example:
+SL=0.05SL=0.05 → 95% Confidence Level.
+SL=0.01SL=0.01 → 99% Confidence Level (more stringent).
+SL=0.10SL=0.10 → 90% Confidence Level (less stringent).
+Domain-Specific Considerations:
+High-Stakes Decisions: Use a smaller SL (e.g., SL=0.01) in fields where errors are costly, such as medicine,
+finance, or safety-critical industries.
+Exploratory Analysis: Use a larger SL (e.g., SL=0.10) if you're exploring data and want to include more
+predictors for further analysis.Building A Model
+Why SL=0.05 (Significance Level) ?
+
+--- Page 31 ---
+
+Size of Dataset and Model Complexity:
+Large Datasets: A smaller SL (e.g.,SL=0.01) might be more appropriate since larger datasets can detect even
+small effects.
+Small Datasets: A larger SL (e.g.,SL=0.10) might be acceptable because small datasets may lack the power to
+detect subtle relationships.
+Practical Tips:
+Start with SL=0.05 as a general rule.
+Adjust it based on:
+The importance of avoiding errors in your context.
+The size and complexity of your data.
+Your domain knowledge and goals.Building A Model
+Why SL=0.05 (Significance Level) ?
+
+--- Page 32 ---
+
+Hands-On Code
+Simple Linear Regression
+
+--- Page 33 ---
+
+Hands-On Code
+Multiple Linear Regression
+
+--- Page 34 ---
+
+Polynomial
+Regression
+
+### 14
+
+--- Page 1 ---
+
+Polynom ial Regression
+
+--- Page 2 ---
+
+Polynomial Regression
+Polynomial Linear Regression is an extension of linear regression that models non-linear relationships
+by transforming the input variables into polynomial terms. Even though the relationship between the
+variables may not be linear, the regression itself is still considered "linear" because the model is linear in
+terms of the coefficients.
+
+--- Page 3 ---
+
+Polynomial Regression
+Key Features of Polynomial Regression
+Transformation of Variables:
+In regular linear regression, the model is: y=b0 +b1 x
+In polynomial regression, higher-order terms are added:y=b0+b1x+b2x2+b3x3+…
+These polynomial terms allow the model to capture curves or more complex relationships.
+Fitting Curves:
+Useful when the data shows a non-linear relationship, such as U-shaped, S-shaped, or exponential
+patterns.
+Still a "Linear Model":
+Even though the relationship is non-linear, it is called "linear" because the equation remains linear in
+terms of the coefficients (b0,b1,b2).
+This is why it's called Polynomial Linear Regression.
+
+--- Page 4 ---
+
+Polynomial Regression
+When to Use Polynomial Regression?
+When the data shows clear non-linear patterns that cannot be captured by regular linear regression.
+When adding flexibility is needed for better accuracy but without overfitting (important to choose the
+right degree of the polynomial).
+
+--- Page 5 ---
+
+Polynomial Regression
+Why Do We Need Polynomial Regression?
+Linear regression works only for straight-line
+relationships.
+Many real-world relationships are non-linear,
+such as:
+Population growth.
+Disease progression.
+Economic data (e.g., sales trends).
+Example: Stock price data that linear regression
+cannot capture.
+https://www.investopedia.com/terms/p/polynomial_trending.asp
+
+--- Page 6 ---
+
+Polynom ial Regression
+How Polynom ial Regression W orks
+C o n v e r t the input variable (x) into polynomial terms (x^2,x^3).
+A p p l y linear regression to estimate coefficients ( β 0, β 1).
+Higher-order terms allow the model to capture curves.
+
+--- Page 7 ---
+
+Polynomial Regression
+Choosing the Polynomial Degree
+The degree of the polynomial affects the model's
+complexity:
+Low degree: Underfitting (model too simple).
+High degree: Overfitting (model too complex,
+fits noise).
+Use tools like:
+Cross-validation.
+Adjusted R2.
+
+--- Page 8 ---
+
+Polynomial Regression
+Choosing the Polynomial Degree
+https://allmodelsarewrong.github.io/overfit.html
+
+--- Page 9 ---
+
+Polynom ial Regression
+Practical Applications
+Use cases for polynomial regression:
+Forecasting trends in sales or demand.
+Modeling natural phenomena (e.g., rainfall vs. crop yield).
+Predicting disease progression.
+Engineering data (e.g., stress-strain curves).
+---------------------------------------------------------------------------------------------------------
+Limitations of Polynomial Regression
+Overfitting when the degree is too high.
+Sensitive to outliers.
+May not generalize well to unseen data.
+Not suitable for truly complex, non-linear relationships (consider other models like decision trees or
+neural networks).
+
+--- Page 10 ---
+
+Hands-On Code
+Polynomial Linear Regression
+
+### 15
+
+--- Page 1 ---
+
+Clustering
+
+--- Page 2 ---
+
+Clustering
+https://www.researchgate.net/publication/344389401_DS-Regression-04-SVRWhat is Clustering?
+Clustering – grouping 
+Unlabelled Data
+
+--- Page 3 ---
+
+Clustering
+Image source: mdpi.com/2073-8994/10/12/73What is Clustering?
+
+--- Page 4 ---
+
+Clustering
+Image source: mdpi.com/2073-8994/10/12/73What is Clustering?
+
+--- Page 5 ---
+
+K-Means
+Clustering
+
+--- Page 6 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73The Intuition Behind K-Means Clustering
+No labels data 
+How many clusters ? 
+Let consider twoReplace them randomly ,
+any point (centroid)K-means assign distance
+line to the closest these
+centroid , easiest way like
+this
+
+--- Page 7 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73The Intuition Behind K-Means Clustering
+Calculate mass or gravity of each
+clusters ..
+For take all x and get average and for
+blue take all y and get the average so
+you will find the cluster mass move the centriod to new positions
+and repeat the process Place the line to the closest centroid
+
+--- Page 8 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73The Intuition Behind K-Means Clustering
+Repeat the process ..
+
+--- Page 9 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73The Intuition Behind K-Means Clustering
+Repeat the process ..
+
+--- Page 10 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73The Intuition Behind K-Means Clustering
+Repeat the process
+
+--- Page 11 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73The Intuition Behind K-Means Clustering
+Repeat until the cluster wont change
+
+--- Page 12 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73The Intuition Behind K-Means Clustering
+So Here is our final clusters
+
+--- Page 13 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73The question is how many clusters should
+be/should we have !
+Sometimes from the knowledge domain 
+Sometimes we need to know how many we should have
+
+--- Page 14 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73The Elbow Method
+It basically looks at the distance between each point and
+the centroid and square it
+
+--- Page 15 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73The Elbow Method
+In this example, measure each points with the centroid
+and square it to find the WCSS
+
+--- Page 16 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73The Elbow Method
+Case if we have two clusters
+
+--- Page 17 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73The Elbow Method
+Case if we have three clusters and so on ...
+
+--- Page 18 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73The Elbow Method
+If you notice, we need the clusters to find
+WCSS .. so we need to run it first 
+It is backward !! 
+The more clusters we have,  the smaller WCSS
+we have .. So we can continue increasing
+numbers of clusters until we get max number
+of clusters = number of points so WCSS will
+become 0 
+The optimal number of clusters is three
+because it is the elbow , where WCSS stop
+dropping as rapidly.
+Judgment call !! sometimes not clear, more than
+candidate .. so
+
+--- Page 19 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73K-Means++
+
+--- Page 20 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73K-Means++
+K-Means++ Initialization Algorithm:
+Step 1: Choose first centroid at random among data point
+Step 2: For each of the remaining data points compute the distance (D) to the nearest out of already selected centroids
+Step 3: Choose next centroid among remaining data points using weighted random selection – weighted by D2
+Step 4: Repeat Steps 2 and 3 until all k centroids have been selected 
+Step 5: Proceed with standard k-means clustering
+
+--- Page 21 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73K-Means++
+
+--- Page 22 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73K-Means++
+
+--- Page 23 ---
+
+K-Means Clustering
+Image source: mdpi.com/2073-8994/10/12/73K-Means++

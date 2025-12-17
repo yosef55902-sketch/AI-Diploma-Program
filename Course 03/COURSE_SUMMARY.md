@@ -10,6 +10,183 @@ This document provides a comprehensive text summary of all course materials.
 ## Pptx Files
 
 
+
+### 01
+
+--- Slide 1 ---
+
+أكـــــاديميــــة طــــويـــق
+Linear Algebra for Machine Learning
+
+--- Slide 2 ---
+
+Introduction to Linear Algebra
+Fundamentals and Applications
+By: Dr. Afshan Hashmi
+
+--- Slide 3 ---
+
+Course Objectives:
+Recall and explain the relationship between machine learning concepts and mathematical constructs like vectors and matrices.
+Course Learning Outcomes:
+Recall how machine learning and vectors and matrices are related
+Interpret how changes in the model parameters affect the quality of the fit to the training data
+
+--- Slide 4 ---
+
+The Role of Linear Algebra in Machine Learning
+Machine learning algorithms rely heavily on linear algebra. Vectors and matrices provide a concise and efficient way to represent data and perform the mathematical operations for many Machine Learning models. Let's explore how these mathematical tools are used:
+Data Representation
+Model Training and Computation
+Optimization (Gradient Descent)
+Dimensionality Reduction
+Distance and Similarity Measures
+
+--- Slide 5 ---
+
+1. Data Representation
+Feature Vectors:  Each data point in a machine learning dataset can be represented as a vector of features.  Think of it as a list of characteristics describing that data point.
+
+Example: A house price prediction model may use a feature vector x = [area, bedrooms, age] = [1500, 3, 10]
+Datasets as Matrices: When we have multiple data points, these feature vectors are organized into a matrix. Each row of the matrix represents a single data point (or instance), and each column represents a specific feature.
+Rows = Data samples
+Columns = Features
+Example: A dataset with n samples and m features is represented as an n × m matrix.
+
+--- Slide 6 ---
+
+2. Model Training and Computation
+Linear Regression: This model predicts a value based on a linear combination of the features. Using matrix multiplication to calculate the  predictions 
+Model:  y = Xw + b
+X: Feature matrix 
+w: Weight vector 
+b: Bias 
+y: Predicted output
+Y
+
+--- Slide 7 ---
+
+3. Optimization (Gradient Descent)
+Machine learning models learn by adjusting their parameters (like w and b in linear regression). Gradient descent is a common algorithm for this, and it relies on vector calculus.
+Process:  The gradient of a loss function (which measures how well the model is performing) is calculated. This gradient is a vector that points in the direction of the steepest ascent.  We move against the gradient (downhill) to find better parameter values.
+
+--- Slide 8 ---
+
+4. Dimensionality Reduction: Simplifying Complex Data
+Imagine you're trying to understand a complex system, like the factors influencing a city's air quality. You might have dozens of measurements: pollution levels, traffic volume, weather conditions, industrial activity, and so on. Analyzing all these factors at once can be overwhelming and computationally expensive. This is where dimensionality reduction comes in.
+What is Dimensionality Reduction?
+Dimensionality reduction is a technique that aims to simplify high-dimensional data by reducing the number of features (or dimensions) while preserving the essential information. This simplification can make data easier to visualize, process, and analyze, and it can also help prevent overfitting in machine learning models. Techniques like:
+
+Principal Component Analysis (PCA) use eigenvectors and eigenvalues (concepts from linear algebra) to reduce the number of features while preserving important information. This is useful for dealing with high-dimensional data.
+Singular Value Decomposition (SVD): Another powerful technique for dimensionality reduction is Singular Value Decomposition (SVD). Unlike PCA, which works on the covariance matrix of the data, SVD directly decomposes the data matrix itself.
+
+--- Slide 9 ---
+
+5. Dimensionality Reduction: Simplifying Complex Data
+5. Distance and Similarity Measures
+Many machine learning algorithms rely on calculating distances or similarities between data points.
+Euclidean Distance: A common way to measure the straight-line distance between two points (vectors).
+
+
+
+
+
+Cosine Similarity: Measures the angle between two vectors, indicating how similar their directions are. This is often used in natural language processing and recommendation systems.
+
+--- Slide 10 ---
+
+Summary
+
+--- Slide 11 ---
+
+How Changes in Model Parameters Affect Fit Quality in Machine Learning
+Model parameters (such as weights, biases, and hyperparameters) directly influence how well a model fits the training data. Here’s how different parameter changes impact model performance:
+Equation of Linear Regression
+Y= wX + b 
+w(weight or slope): Controls how steep the line is.
+b(bias or intercept): Shifts the line up or down.
+Effect of Changing Parameters
+Increasing w: Steeper slope, which can lead to overfitting.
+Decreasing w: Flatter slope, which may cause underfitting.
+Changing b: Moves the regression line up/down but does not affect the slope.
+
+--- Slide 12 ---
+
+How Changes in Model Parameters Affect Fit Quality in Linear Regression
+.
+
+--- Slide 13 ---
+
+How Changes in Model Parameters Affect Fit Quality in Linear Regression
+.
+Effect of Changing Parameters:
+Increasing w: The slope of the regression line becomes steeper. If weight is too large, the line may overfit the data.
+Decreasing w: The slope becomes flatter. If weight is too small, the line may underfit the data.
+Changing b: The intercept shifts the line up or down without affecting the slope.
+
+The original data points scattered in blue.
+Three regression lines corresponding to different values of w and b.
+
+--- Slide 14 ---
+
+Gradient Descent and Learning Rate Effect
+.
+The learning rate is a crucial parameter in gradient descent. It controls the size of the steps you take downhill:
+
+High Learning Rate: If the learning rate is too high, you might take large steps and overshoot the lowest point, bouncing around and never settling at the optimal solution. This can lead to instability and prevent convergence.
+Low Learning Rate: If the learning rate is too low, you'll take tiny steps, and it will take a very long time to reach the bottom of the valley. The training process will be very slow.
+Optimal Learning Rate: A properly tuned learning rate allows the network to converge efficiently to a good solution. It's a balancing act – large enough to make progress but small enough to avoid overshooting.
+
+In summary: Training a neural network involves carefully balancing the weights and biases to avoid overfitting and underfitting, and tuning the learning rate in gradient descent to ensure efficient convergence. It's a process of finding the sweet spot where the network learns the underlying patterns in the data without memorizing noise.
+
+--- Slide 15 ---
+
+Gradient Descent and Learning Rate Effect
+.
+Key Takeaways
+High Learning Rate: Fast but unstable convergence.
+Low Learning Rate: Slow but stable convergence.
+Optimal Learning Rate: Balances speed and stability for efficient convergence.
+
+--- Slide 16 ---
+
+Regularization: Impact on Overfitting & Underfitting
+.
+Types of Regularization
+L1 (Lasso): Shrinks some weights to zero → Feature selection.
+L2 (Ridge): Shrinks weights but doesn’t remove them → Prevents overfitting.
+Dropout (for neural networks): Randomly drops neurons to improve generalization.
+Effect of Regularization Strength (λ\lambda)
+No regularization → Overfits.
+Moderate regularization → Generalizes well.
+Too much regularization → Underfits.
+
+--- Slide 17 ---
+
+Effects of L2 Regularization on fit
+.
+No regularization (small λ\lambda) → Overfits.
+Medium regularization → Best fit.
+High regularization (large λ\lambda) → Underfits.
+
+--- Slide 18 ---
+
+Overall Effects of Parameters on Fit
+
+--- Slide 19 ---
+
+Practical Implementation
+Click here for the code
+
+--- Slide 20 ---
+
+الشراكات العالمية
+
+--- Slide 21 ---
+
+شــــــكــــرًا لكــــــم
+THANK YOU
+
 ### 02
 
 --- Slide 1 ---
@@ -230,7 +407,6 @@ Click here for the Code
 
 شــــــكــــرًا لكــــــم
 THANK YOU
-
 
 ### 03
 
@@ -492,261 +668,6 @@ Matplotlib Animation Guide: https://matplotlib.org/stable/api/animation_api.html
 شــــــكــــرًا لكــــــم
 THANK YOU
 
-
-### 01
-
---- Slide 1 ---
-
-أكـــــاديميــــة طــــويـــق
-Linear Algebra for Machine Learning
-
---- Slide 2 ---
-
-Introduction to Linear Algebra
-Fundamentals and Applications
-By: Dr. Afshan Hashmi
-
---- Slide 3 ---
-
-Course Objectives:
-Recall and explain the relationship between machine learning concepts and mathematical constructs like vectors and matrices.
-Course Learning Outcomes:
-Recall how machine learning and vectors and matrices are related
-Interpret how changes in the model parameters affect the quality of the fit to the training data
-
---- Slide 4 ---
-
-The Role of Linear Algebra in Machine Learning
-Machine learning algorithms rely heavily on linear algebra. Vectors and matrices provide a concise and efficient way to represent data and perform the mathematical operations for many Machine Learning models. Let's explore how these mathematical tools are used:
-Data Representation
-Model Training and Computation
-Optimization (Gradient Descent)
-Dimensionality Reduction
-Distance and Similarity Measures
-
---- Slide 5 ---
-
-1. Data Representation
-Feature Vectors:  Each data point in a machine learning dataset can be represented as a vector of features.  Think of it as a list of characteristics describing that data point.
-
-Example: A house price prediction model may use a feature vector x = [area, bedrooms, age] = [1500, 3, 10]
-Datasets as Matrices: When we have multiple data points, these feature vectors are organized into a matrix. Each row of the matrix represents a single data point (or instance), and each column represents a specific feature.
-Rows = Data samples
-Columns = Features
-Example: A dataset with n samples and m features is represented as an n × m matrix.
-
---- Slide 6 ---
-
-2. Model Training and Computation
-Linear Regression: This model predicts a value based on a linear combination of the features. Using matrix multiplication to calculate the  predictions 
-Model:  y = Xw + b
-X: Feature matrix 
-w: Weight vector 
-b: Bias 
-y: Predicted output
-Y
-
---- Slide 7 ---
-
-3. Optimization (Gradient Descent)
-Machine learning models learn by adjusting their parameters (like w and b in linear regression). Gradient descent is a common algorithm for this, and it relies on vector calculus.
-Process:  The gradient of a loss function (which measures how well the model is performing) is calculated. This gradient is a vector that points in the direction of the steepest ascent.  We move against the gradient (downhill) to find better parameter values.
-
---- Slide 8 ---
-
-4. Dimensionality Reduction: Simplifying Complex Data
-Imagine you're trying to understand a complex system, like the factors influencing a city's air quality. You might have dozens of measurements: pollution levels, traffic volume, weather conditions, industrial activity, and so on. Analyzing all these factors at once can be overwhelming and computationally expensive. This is where dimensionality reduction comes in.
-What is Dimensionality Reduction?
-Dimensionality reduction is a technique that aims to simplify high-dimensional data by reducing the number of features (or dimensions) while preserving the essential information. This simplification can make data easier to visualize, process, and analyze, and it can also help prevent overfitting in machine learning models. Techniques like:
-
-Principal Component Analysis (PCA) use eigenvectors and eigenvalues (concepts from linear algebra) to reduce the number of features while preserving important information. This is useful for dealing with high-dimensional data.
-Singular Value Decomposition (SVD): Another powerful technique for dimensionality reduction is Singular Value Decomposition (SVD). Unlike PCA, which works on the covariance matrix of the data, SVD directly decomposes the data matrix itself.
-
---- Slide 9 ---
-
-5. Dimensionality Reduction: Simplifying Complex Data
-5. Distance and Similarity Measures
-Many machine learning algorithms rely on calculating distances or similarities between data points.
-Euclidean Distance: A common way to measure the straight-line distance between two points (vectors).
-
-
-
-
-
-Cosine Similarity: Measures the angle between two vectors, indicating how similar their directions are. This is often used in natural language processing and recommendation systems.
-
---- Slide 10 ---
-
-Summary
-
---- Slide 11 ---
-
-How Changes in Model Parameters Affect Fit Quality in Machine Learning
-Model parameters (such as weights, biases, and hyperparameters) directly influence how well a model fits the training data. Here’s how different parameter changes impact model performance:
-Equation of Linear Regression
-Y= wX + b 
-w(weight or slope): Controls how steep the line is.
-b(bias or intercept): Shifts the line up or down.
-Effect of Changing Parameters
-Increasing w: Steeper slope, which can lead to overfitting.
-Decreasing w: Flatter slope, which may cause underfitting.
-Changing b: Moves the regression line up/down but does not affect the slope.
-
---- Slide 12 ---
-
-How Changes in Model Parameters Affect Fit Quality in Linear Regression
-.
-
---- Slide 13 ---
-
-How Changes in Model Parameters Affect Fit Quality in Linear Regression
-.
-Effect of Changing Parameters:
-Increasing w: The slope of the regression line becomes steeper. If weight is too large, the line may overfit the data.
-Decreasing w: The slope becomes flatter. If weight is too small, the line may underfit the data.
-Changing b: The intercept shifts the line up or down without affecting the slope.
-
-The original data points scattered in blue.
-Three regression lines corresponding to different values of w and b.
-
---- Slide 14 ---
-
-Gradient Descent and Learning Rate Effect
-.
-The learning rate is a crucial parameter in gradient descent. It controls the size of the steps you take downhill:
-
-High Learning Rate: If the learning rate is too high, you might take large steps and overshoot the lowest point, bouncing around and never settling at the optimal solution. This can lead to instability and prevent convergence.
-Low Learning Rate: If the learning rate is too low, you'll take tiny steps, and it will take a very long time to reach the bottom of the valley. The training process will be very slow.
-Optimal Learning Rate: A properly tuned learning rate allows the network to converge efficiently to a good solution. It's a balancing act – large enough to make progress but small enough to avoid overshooting.
-
-In summary: Training a neural network involves carefully balancing the weights and biases to avoid overfitting and underfitting, and tuning the learning rate in gradient descent to ensure efficient convergence. It's a process of finding the sweet spot where the network learns the underlying patterns in the data without memorizing noise.
-
---- Slide 15 ---
-
-Gradient Descent and Learning Rate Effect
-.
-Key Takeaways
-High Learning Rate: Fast but unstable convergence.
-Low Learning Rate: Slow but stable convergence.
-Optimal Learning Rate: Balances speed and stability for efficient convergence.
-
---- Slide 16 ---
-
-Regularization: Impact on Overfitting & Underfitting
-.
-Types of Regularization
-L1 (Lasso): Shrinks some weights to zero → Feature selection.
-L2 (Ridge): Shrinks weights but doesn’t remove them → Prevents overfitting.
-Dropout (for neural networks): Randomly drops neurons to improve generalization.
-Effect of Regularization Strength (λ\lambda)
-No regularization → Overfits.
-Moderate regularization → Generalizes well.
-Too much regularization → Underfits.
-
---- Slide 17 ---
-
-Effects of L2 Regularization on fit
-.
-No regularization (small λ\lambda) → Overfits.
-Medium regularization → Best fit.
-High regularization (large λ\lambda) → Underfits.
-
---- Slide 18 ---
-
-Overall Effects of Parameters on Fit
-
---- Slide 19 ---
-
-Practical Implementation
-Click here for the code
-
---- Slide 20 ---
-
-الشراكات العالمية
-
---- Slide 21 ---
-
-شــــــكــــرًا لكــــــم
-THANK YOU
-
-
-### 05
-
---- Slide 1 ---
-
-أكـــــاديميــــة طــــويـــق
-Linear Algebra for Machine Learning
-
---- Slide 2 ---
-
-Introduction to Linear Algebra
-Fundamentals and Applications
-By: Dr. Afshan Hashmi
-
---- Slide 3 ---
-
-Course Objectives:
-Recall and explain the relationship between machine learning concepts and mathematical constructs like vectors and matrices.
-Course Learning Outcomes:
-Demonstrate a comprehensive understanding of key mathematical concepts, including linear algebra and probability, and their applications in AI and machine learning.
-
---- Slide 4 ---
-
-Learning Objectives
-Identify matrices as operators
-Relate the transformation matrix to a set of new basis vectors
-Formulate code for mappings based on these transformation matrices
-Write code to find an orthonormal basis set computationally
-
---- Slide 5 ---
-
-Understanding Matrices as Operators
-
---- Slide 6 ---
-
-Matrices as Transformations
-
---- Slide 7 ---
-
-Matrices as Transformations
-
---- Slide 8 ---
-
-Practice Problems
-
---- Slide 9 ---
-
-Practice Problems
-
---- Slide 10 ---
-
-Practice Problems
-
---- Slide 11 ---
-
-Relating the Transformation Matrix to a Set of New Basis Vectors
-
---- Slide 12 ---
-
-Transformation Matrices and Basis Change
-
---- Slide 13 ---
-
-References
-Strang, G. (2016). Introduction to Linear Algebra. Wellesley-Cambridge Press.
-NumPy Documentation: https://numpy.org/doc/
-Matplotlib Guide: https://matplotlib.org/stable/contents.html
-
---- Slide 14 ---
-
-الشراكات العالمية
-
---- Slide 15 ---
-
-شــــــكــــرًا لكــــــم
-THANK YOU
-
-
 ### 04
 
 --- Slide 1 ---
@@ -885,3 +806,78 @@ Physics & Engineering: Used in simulations, robotics, and structural analysis.
 شــــــكــــرًا لكــــــم
 THANK YOU
 
+### 05
+
+--- Slide 1 ---
+
+أكـــــاديميــــة طــــويـــق
+Linear Algebra for Machine Learning
+
+--- Slide 2 ---
+
+Introduction to Linear Algebra
+Fundamentals and Applications
+By: Dr. Afshan Hashmi
+
+--- Slide 3 ---
+
+Course Objectives:
+Recall and explain the relationship between machine learning concepts and mathematical constructs like vectors and matrices.
+Course Learning Outcomes:
+Demonstrate a comprehensive understanding of key mathematical concepts, including linear algebra and probability, and their applications in AI and machine learning.
+
+--- Slide 4 ---
+
+Learning Objectives
+Identify matrices as operators
+Relate the transformation matrix to a set of new basis vectors
+Formulate code for mappings based on these transformation matrices
+Write code to find an orthonormal basis set computationally
+
+--- Slide 5 ---
+
+Understanding Matrices as Operators
+
+--- Slide 6 ---
+
+Matrices as Transformations
+
+--- Slide 7 ---
+
+Matrices as Transformations
+
+--- Slide 8 ---
+
+Practice Problems
+
+--- Slide 9 ---
+
+Practice Problems
+
+--- Slide 10 ---
+
+Practice Problems
+
+--- Slide 11 ---
+
+Relating the Transformation Matrix to a Set of New Basis Vectors
+
+--- Slide 12 ---
+
+Transformation Matrices and Basis Change
+
+--- Slide 13 ---
+
+References
+Strang, G. (2016). Introduction to Linear Algebra. Wellesley-Cambridge Press.
+NumPy Documentation: https://numpy.org/doc/
+Matplotlib Guide: https://matplotlib.org/stable/contents.html
+
+--- Slide 14 ---
+
+الشراكات العالمية
+
+--- Slide 15 ---
+
+شــــــكــــرًا لكــــــم
+THANK YOU

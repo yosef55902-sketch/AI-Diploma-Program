@@ -10,7 +10,8 @@ This document provides a comprehensive text summary of all course materials.
 ## Pptx Files
 
 
-### 12
+
+### 01
 
 --- Slide 1 ---
 
@@ -19,428 +20,1002 @@ Scalable Data Science
 
 --- Slide 2 ---
 
-Model Training on Large Datasets
+Automated Workflows in the Cloud
 By: Dr. Afshan Hashmi
 
 --- Slide 3 ---
 
 Course Objectives:
-Understand the challenges of training models on large datasets
-Apply best practices for handling large data efficiently
-Choose the right tools and infrastructure (e.g., distributed computing, cloud-based ML, GPUs)
-Optimize training using batching, sampling, and efficient data loading techniques
+Define cloud automation and its key components.
+Design workflows using serverless architectures (e.g., AWS Step Functions, Azure Logic Apps).
+Implement CI/CD pipelines for ML models in the cloud.
+Automate data processing with cloud-native tools (e.g., Airflow, Lambda).
+Evaluate cost/performance tradeoffs in workflow automation.
 
 --- Slide 4 ---
 
-Introduction to Large-Scale Model Training
-Why Large-Scale Training Matters
-Modern datasets exceed single-machine memory (e.g., TB-scale images, logs)
-Need for faster iteration in production ML systems
-Regulatory/compliance requirements for model reproducibility
-Key Challenges
-When to Scale?
-Dataset > 10GB (in-memory limits)
-Training time > 4 hours on single machine
-Need for frequent retraining (streaming data)
+Introduction to Automation in the Cloud
+What are Automated Workflows?
+Automated workflows are sequences of tasks and processes that are triggered and executed automatically using predefined rules or events in cloud environments.
+They eliminate the need for manual intervention and enhance efficiency, scalability, and reliability.
+Cloud Automation refers to the use of technology (scripts, tools, or services) to perform tasks in cloud environments automatically, with minimal or no human involvement.
+Purpose of Cloud Automation:
+Reduce Human Error
+Automated systems follow exact instructions every time eliminating mistakes that can happen with manual tasks.
+Save Time
+Tasks like server setup, deployments, or monitoring can be completed in seconds or scheduled regularly.
+Improve Scalability & Response Time
+Automatically adjust resources (like adding more servers) based on demand, ensuring smooth performance.
 
 --- Slide 5 ---
 
-Strategies for Efficient Training
-1.Data Sampling and Mini-Batching
-These are techniques used to efficiently train machine learning models, especially when dealing with large datasets that can't fit into memory all at once.
-A. Train on mini-batches instead of full data
-Why?
-Training on the entire dataset (full batch) at once consumes a lot of memory and can be very slow.
-Instead, we split the dataset into mini-batches (small chunks of data) and feed one batch at a time to the model.
-Benefits:
-Lower memory usage.
-More frequent updates to model weights → faster convergence.
-Enables parallelization and efficient GPU usage.
+Common Examples:
+Note: Tools like AWS CloudFormation, Terraform, Ansible, 
+and CI/CD pipelines (Jenkins, GitHub Actions) play key roles in automating cloud environments.
 
 --- Slide 6 ---
 
-Strategies for Efficient Training
-B. Use stratified sampling to maintain class balance
-What is it?
-When creating mini-batches, stratified sampling ensures that each batch has the same class distribution as the overall dataset.
-Why is it important?
-Prevents the model from being biased toward majority classes.
-Ensures better generalization and more stable training especially in imbalanced datasets.
-C. Common in TensorFlow and PyTorch: batch_size in DataLoader
-Both TensorFlow and PyTorch use the concept of mini-batches during training.
-You define the batch_size (number of samples per batch) when creating a data loader.
-Efficient training strategies like mini-batching and stratified sampling help manage memory usage, speed up training, and improve model performance,especially when working with large or imbalanced datasets.
+Key Components of Cloud Automation
+These components work together to automate tasks in a cloud environment  like an intelligent to-do list that runs itself based on events and conditions.
+
+1. Triggers: Events that start an automated workflow.
+Example: A new file uploaded to cloud storage (like Google Drive or AWS S3) could trigger a workflow to process it.
+
+2. Actions: The specific tasks performed automatically when a trigger occurs.
+Example: After a file is uploaded, an email is sent or a backup is created.
+
+3. Conditions: Logic or rules that determine whether certain actions should be executed.
+Example: If the uploaded file is a PDF, then process it; otherwise, ignore it.
 
 --- Slide 7 ---
 
-Strategies for Efficient Training
-2.Data Generators / Streaming
-This strategy is about loading only the data you need, when you need it, instead of loading everything into memory at once — perfect for large datasets.
-Why Use It?
-When your dataset is too large to fit into RAM, you:
-Don’t load the whole dataset into memory.
-Instead, stream data on the fly — this is called lazy loading.
-This technique is commonly implemented through data generators or custom dataset loaders.
-How It Works:
-You write or use a generator function that:
-Loads a small piece of the data (e.g., an image or a batch of rows).
-Processes it (if needed).
-Yields it to the model for training or prediction.
+Key Components of Cloud Automation
+4. APIs & Connectors: Interfaces that connect different services and tools.
+Example: Connecting Google Sheets to Slack or AWS to GitHub using REST APIs, webhooks, or prebuilt connectors.
+5. Orchestration: The coordination of multiple actions across different systems in a defined sequence.
+Example:After code is committed → test the code → deploy it → notify the team.
+Putting It All Together:
+Imagine this automated workflow:
+Trigger: New file uploaded to Dropbox
+Condition: File is a .csv
+Action 1: Parse and analyze the file
+Action 2: Upload results to Google Sheets
+Action 3: Send summary via email
+All coordinated through orchestration
 
 --- Slide 8 ---
 
-Strategies for Efficient Training
-Popular Frameworks & Tools
-TensorFlow – tf.data API
-tf.data.Dataset can load and preprocess data efficiently using generators, lazy loading, and pipelines.
-Example:
-import tensorflow as tf
-
-def generator():
-    for file in image_files:
-        yield load_image(file), load_label(file)
-
-dataset = tf.data.Dataset.from_generator(generator)
-dataset = dataset.batch(32).prefetch(tf.data.AUTOTUNE)
+Tools for Automating Workflows in the Cloud
+Cloud providers like AWS, Azure, and GCP offer a variety of tools to automate tasks, respond to events, and orchestrate services all without manual intervention.
+Amazon Web Services (AWS)
 
 --- Slide 9 ---
 
-Strategies for Efficient Training
-PyTorch – Dataset and DataLoader
-Create a custom Dataset class with __getitem__ to load only one item at a time.
-DataLoader then wraps this to handle mini-batches, shuffling, and multiprocessing.
-from torch.utils.data import Dataset, DataLoader
-
-class MyDataset(Dataset):
-    def __init__(self, file_paths):
-        self.file_paths = file_paths
-
-    def __len__(self):
-        return len(self.file_paths)
-
-    def __getitem__(self, idx):
-        data = load_data(self.file_paths[idx])
-        label = load_label(self.file_paths[idx])
-        return data, label
-
-dataset = MyDataset(file_paths)
-loader = DataLoader(dataset, batch_size=32, shuffle=True)
+Tools for Automating Workflows in the Cloud
+Microsoft Azure
 
 --- Slide 10 ---
 
-Strategies for Efficient Training
-Dask – For Large Tabular Data
-Dask DataFrames are like Pandas, but they load and process data in chunks (partitions).
-Ideal for big tabular data that doesn’t fit into memory.
-import dask.dataframe as dd
-
-df = dd.read_csv('large_dataset.csv')
-filtered = df[df['label'] == 1]
-result = filtered.compute()
-Using generators or streaming:
-Saves memory by not loading the full dataset.
-Works great for large image/text/tabular datasets.
-Frameworks like TensorFlow, PyTorch, and Dask provide built-in support for this.
+Tools for Automating Workflows in the Cloud
+Google Cloud Platform (GCP)
 
 --- Slide 11 ---
 
-Strategies for Efficient Training
-3. Using Cloud & Distributed Resources
-When your model or dataset is too large to train efficiently on a single machine (like your laptop), you can turn to cloud platforms and distributed computing to scale up training.
-
-Why Use Cloud and Distributed Resources?
-To train faster by using powerful cloud GPUs or TPUs.
-To scale horizontally (i.e., use multiple machines) for very large datasets or deep learning models.
-To save time and avoid limitations of local hardware.
-
-Popular Cloud Training Platforms
-
-Google Cloud AI Platform
-Offers managed services for training ML models.
-Supports TensorFlow, PyTorch, XGBoost, etc.
-You can train using GPUs/TPUs on the cloud without managing infrastructure.
+Real-World Examples of Cloud Automation
+These examples show how cloud automation can simplify repetitive or time-sensitive tasks across different platforms.
+Example 1: Daily File Backup
+Trigger:Time-based — scheduled every day at 8 PM
+Action:Automatically copy a file or database from the production environment to a backup storage location
+Tools Used:
+AWS Lambda – Executes the backup logic
+S3 – Stores the backup
+CloudWatch – Triggers Lambda on a schedule
+ This helps ensure that data is regularly backed up without needing a person to do it manually.
 
 --- Slide 12 ---
 
-Strategies for Efficient Training
-b). AWS SageMaker
-End-to-end ML service on Amazon Cloud.
-Train, tune, deploy, and monitor models.
-Built-in support for distributed training and pre-built ML containers.
-Key feature: "Bring Your Own Model" or use built-in algorithms.
+Real-World Examples of Cloud Automation
+Example 2: Slack Notification for New GitHub Issue
 
-
-c). Databricks (with Spark + MLlib)
-Ideal for big data + machine learning workflows.
-Combines Apache Spark for distributed data processing with MLlib for scalable ML algorithms.
-Great for tabular data, recommendation systems, etc.
+Trigger:A new issue is opened on a GitHub repository
+Action:Automatically send a message to a specific Slack channel with details of the new issue
+ Tools Used:
+Zapier (no-code)
+Or Azure Logic Apps (workflow builder)
+Or GCP Workflows for developers
+ This keeps your team in the loop in real time without constantly checking GitHub.
 
 --- Slide 13 ---
 
-Strategies for Efficient Training
-Distributed Training Frameworks
-a. Horovod
-Open-source framework from Uber.
-Allows distributed training across GPUs and nodes.
-Works with TensorFlow, PyTorch, and MXNet.
-Use case: Train deep learning models across many GPUs/nodes in parallel.
-b.  PyTorch DDP (Distributed Data Parallel)
-Native PyTorch module for distributed training.
-Replicates your model across multiple GPUs/machines.
-Each replica handles a portion of the data.
-torch.nn.parallel.DistributedDataParallel(model)
+Real-World Examples of Cloud Automation
+Example 3: Auto-Scaling EC2 Instances
+
+Trigger:When CPU usage > 80% on current EC2 instances
+Action:Automatically launch a new EC2 instance to handle the load
+Tools Used:
+AWS Auto Scaling – Adjusts the number of instances
+CloudWatch Alarms – Monitors CPU usage and triggers scaling
+This ensures performance under heavy load while saving costs when usage drops.
 
 --- Slide 14 ---
 
-Strategies for Efficient Training
-4. Model Checkpointing
-Checkpointing means saving your model’s progress (usually the learned weights) at different stages during training so you don’t lose all your work if something goes wrong (e.g., crash, power loss).
-
-Why is it Important?
-Avoids restarting from the beginning if training is interrupted.
-Helps you resume training from the last saved point.
-You can save the best version of your model (based on validation accuracy or loss).
-Useful for long training jobs that can take hours or days.
-
-What Does a Checkpoint Store?
-Typically includes:
-Model architecture (optional, if not already defined in code)
-Weights/parameters (learned during training)
-Optimizer state (so training resumes smoothly)
+Hands-On Exercise: Notify via Email When a File is Uploaded
+Platform: AWS
+Scenario Flow
+File UploadA user uploads a file to an Amazon S3 bucket.
+Trigger LambdaThe file upload triggers an AWS Lambda function through an S3 event.
+Send Email NotificationThe Lambda function uses AWS SNS (Simple Notification Service) to send an email alert.
 
 --- Slide 15 ---
 
-Strategies for Efficient Training
-4. Model Checkpointing
-When to Save Checkpoints?
-After every epoch
-After every N batches
-When validation loss improves
-At fixed time intervals
-Examples in Code
-TensorFlow / Keras:
-from tensorflow.keras.callbacks import ModelCheckpoint
-
-checkpoint_cb = ModelCheckpoint("model_checkpoint.h5", save_best_only=True)
-model.fit(X_train, y_train, epochs=10, callbacks=[checkpoint_cb])
-save_best_only=True means it saves only when the model improves on validation set.
+Hands-On Exercise: Notify via Email When a File is Uploaded
+import json
+import boto3
+def lambda_handler(event, context):
+    # Get uploaded file name from the S3 event
+    s3_info = event['Records'][0]['s3']['object']['key']
+    
+    # Create an SNS client
+    sns = boto3.client('sns')
+    
+    # Send an email via SNS
+    sns.publish(
+        TopicArn='arn:aws:sns:region:acct-id:topic',  # Replace with your SNS topic ARN
+        Message=f'New file uploaded: {s3_info}',
+        Subject='Upload Notification'
+    )
+    
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Notification sent!')
+    }
 
 --- Slide 16 ---
 
-Strategies for Efficient Training
-4. Model Checkpointing
-PyTorch:
-torch.save(model.state_dict(), 'model_checkpoint.pth')  # to save
-
-model.load_state_dict(torch.load('model_checkpoint.pth’)) # to load
-You can wrap this in a condition like:
-if epoch % 5 == 0:
-    torch.save(model.state_dict(), f'model_epoch_{epoch}.pth')
+Hands-On Exercise: Notify via Email When a File is Uploaded
+Explanation of Key Parts
 
 --- Slide 17 ---
 
-Strategies for Efficient Training
-5. Using GPU/TPU Acceleration
+Best Practices for Automated Workflows
+These practices ensure your automated workflows are secure, maintainable, and reliable.
+Use Environment Variables
 
-Training machine learning (especially deep learning) models can be very slow on regular CPUs. GPUs and TPUs are specialized hardware that speed up training significantly by handling computations in parallel.
-What are GPUs and TPUs?
+What it means: Instead of hardcoding sensitive data (like API keys, database URIs, file paths), use environment variables.
 
-GPU (Graphics Processing Unit) – Designed to handle thousands of parallel computations. Great for deep learning, especially for tasks like matrix multiplication (used heavily in neural networks).
+B. Why it matters:
+Keeps your code cleaner
+Makes deployments more flexible across dev, staging, and production
+Enhances security by avoiding hardcoded secrets
 
-TPU (Tensor Processing Unit) – Custom hardware developed by Google for fast TensorFlow operations. Even faster for certain tasks like large-scale training and inference.
+Example: Instead of writing db_password = 'abc123', store it in os.environ['DB_PASSWORD'].
 
 --- Slide 18 ---
 
-Strategies for Efficient Training
-5. Using GPU/TPU Acceleration
-Popular Frameworks & Tools for GPU/TPU Use
-cuML (from NVIDIA RAPIDS)
-A GPU-accelerated ML library.
-Offers scikit-learn-like API with much faster performance using CUDA.
-Example:
-from cuml.linear_model import LogisticRegression
-model = LogisticRegression()
-model.fit(X_train, y_train)
-TensorFlow / PyTorch with CUDA
-Both TensorFlow and PyTorch can automatically use the GPU if available.
-PyTorch example:
-device = "cuda" if torch.cuda.is_available() else "cpu"
-model = MyModel().to(device)
-TensorFlow example:
-# Automatically uses GPU if available
-model.fit(X_train, y_train)
+Best Practices for Automated Workflows
+2. Limit Permissions (Least-Privilege Principle)
+What it means: Give your automation only the minimum permissions it needs to function.
+Why it matters:
+Reduces risk if a service or script is compromised
+Prevents accidental changes to critical resources
+Example: A Lambda function that only reads from S3 should not have write or delete permissions.
+
+3. Monitor & Log All Actions
+What it means: Track workflow actions and issues through logging and monitoring services.
+Why it matters:
+Helps in debugging and auditing
+Ensures visibility into system health and workflow status
+Tools:
+AWS: CloudWatch
+GCP: Stackdriver
+Azure: Application Insights
 
 --- Slide 19 ---
 
-Strategies for Efficient Training
-Additional Tricks to Speed Up Training
-6. Batch Normalization
-Normalizes inputs to each layer, which stabilizes and accelerates training.
-Helps in faster convergence and can allow higher learning rates.
-Example (Keras):
-from tensorflow.keras.layers import BatchNormalization
-model.add(BatchNormalization())
-7. Mixed Precision Training
-Uses 16-bit (half) precision instead of 32-bit floats.
-Speeds up training and reduces memory usage while maintaining accuracy.
-Especially effective on NVIDIA GPUs with Tensor Cores or TPUs.
-from tensorflow.keras import mixed_precision
-mixed_precision.set_global_policy('mixed_float16')
+Best Practices for Automated Workflows
+4. Integrate Error Handling
+What it means: Plan for failures by writing code that can catch and handle errors gracefully.
+Why it matters:
+Avoids broken workflows and silent failures
+Enables retries or alerts when something goes wrong
+Example: Use try-except blocks in Python Lambda functions to catch API failures and log them or trigger alerts.
+
+5. Modularize Logic
+What it means: Break your workflows into small, reusable modules or steps.
+Why it matters:
+Easier to debug, test, and maintain
+Encourages reusability of logic across multiple workflows
+Example: Instead of one large function, have separate ones for validation, transformation, and sending data.
 
 --- Slide 20 ---
 
-Strategies for Efficient Training
-Additional Tricks to Speed Up Training
-PyTorch Example:
-from torch.cuda.amp import GradScaler, autocast
-scaler = GradScaler()
-for data in dataloader:
-    with autocast():
-        outputs = model(inputs)
-        loss = loss_fn(outputs, targets)
-    scaler.scale(loss).backward()
-    scaler.step(optimizer)
-    scaler.update()
+Best Practices for Automated Workflows
 
 --- Slide 21 ---
 
-Memory-Efficient Data Type
-When working with large datasets, every byte matters. Using smaller data types can significantly reduce memory usage which speeds up processing and allows you to train models more efficiently.
-Why Optimize Data Types?
-Lower memory usage
-Faster data loading and processing
-Less strain on RAM or GPU memory
-Helps prevent "out of memory" errors
-
-Common Optimizations:
+Summary
+Cloud-based automated workflows help execute tasks like backups, notifications, and deployments without manual intervention.
+Triggers (e.g., file upload, scheduled time) initiate actions such as sending emails or scaling infrastructure.
+Common cloud services for automation include AWS Lambda, Azure Logic Apps, and Google Cloud Functions.
+These workflows can connect multiple cloud services using APIs or orchestration tools like AWS Step Functions or GCP Workflows.
+Automation improves efficiency, reduces human error, and ensures consistency across processes.
+Best practices include setting up monitoring, logging, error handling, and using the principle of least privilege for security.
+Tools like Zapier and IFTTT offer no-code automation for connecting third-party services easily.
 
 --- Slide 22 ---
 
-Memory-Efficient Data Type
-Reducing Categorical Memory with category
-df['color'] = df['color'].astype('category')
-If you have a column with many repeated string values (like "red", "blue", "green"), converting it to category can save tons of memory.
-Example: Memory Comparison
-# Before
-df.memory_usage(deep=True)
-
-# After downcasting
-df['price'] = pd.to_numeric(df['price'], downcast='float')
-df['count'] = pd.to_numeric(df['count'], downcast='integer')
-
-df.memory_usage(deep=True)
+Reading and Resources
+AWS Docs: https://docs.aws.amazon.com/lambda
+Azure Logic Apps: https://learn.microsoft.com/en-us/azure/logic-apps
+GCP Workflows: https://cloud.google.com/workflows/docs
+Automate.io and Zapier (No-code tools)
+"Cloud Automation Cookbook" by Nikit Swaraj (Packt)
+YouTube: Cloud Academy, AWS Tutorials, Microsoft Learn
 
 --- Slide 23 ---
 
-Memory-Efficient Data Type
-Benefits of changing Data Type
-
---- Slide 24 ---
-
-Toolkits and Libraries Overview
-
---- Slide 25 ---
-
-Tool-by-Tool Explanation:
-Dask / Joblib
-Dask: Allows you to work with large tabular datasets by parallelizing operations across CPUs or clusters.
-Joblib: Commonly used to parallelize loops or cache functions in scikit-learn.
-Spark MLlib
-Part of Apache Spark, designed for distributed ML.
-Ideal when working with very large datasets stored in Hadoop or data lakes.
-cuML (NVIDIA RAPIDS)
-GPU-powered version of scikit-learn APIs.
-Speeds up classical ML algorithms (e.g., k-means, PCA, logistic regression) using NVIDIA GPUs.
-TFRecords (TensorFlow)
-A binary file format for storing large datasets (e.g., images, text).
-Used with tf.data for efficient streaming during training.
-PyTorch Lightning
-High-level wrapper over PyTorch.
-Helps you structure your code for clean, scalable, and reproducible training.
-Handles logging, checkpointing, and training loops automatically.
-Petastorm
-Developed by Uber.
-Lets you read large Parquet files efficiently into PyTorch or Spark.
-Supports streaming from remote storage like S3.
-
---- Slide 26 ---
-
-Tool-by-Tool Explanation:
-Dask / Joblib
-Dask: Allows you to work with large tabular datasets by parallelizing operations across CPUs or clusters.
-Joblib: Commonly used to parallelize loops or cache functions in scikit-learn.
-Spark MLlib
-Part of Apache Spark, designed for distributed ML.
-Ideal when working with very large datasets stored in Hadoop or data lakes.
-cuML (NVIDIA RAPIDS)
-GPU-powered version of scikit-learn APIs.
-Speeds up classical ML algorithms (e.g., k-means, PCA, logistic regression) using NVIDIA GPUs.
-TFRecords (TensorFlow)
-A binary file format for storing large datasets (e.g., images, text).
-Used with tf.data for efficient streaming during training.
-PyTorch Lightning
-High-level wrapper over PyTorch.
-Helps you structure your code for clean, scalable, and reproducible training.
-Handles logging, checkpointing, and training loops automatically.
-Petastorm
-Developed by Uber.
-Lets you read large Parquet files efficiently into PyTorch or Spark.
-Supports streaming from remote storage like S3.
-
---- Slide 27 ---
-
-Case Studies & Benchmarks
-Case Study 1: Recommendation Systems at Netflix
-Scale: 100TB+ user interaction data
-Solution: Spark ALS with model sharding
-Outcome: 8x faster training vs. single-node
-
-Case Study 2: Computer Vision at Tesla
-Scale: Millions of auto-labeled images
-Solution: PyTorch + Horovod on GPU cluster
-Trick: Gradient compression for cross-region sync
-Performance Benchmarks
-
---- Slide 28 ---
-
-Challenges & Future Trends
-Current Challenges
-Straggler Problem: Slow workers delay synchronization
-Data Skew: Uneven partition sizes hurt parallelism
-Debugging Complexity: Hard to trace distributed failures
-
-Emerging Solutions
-Zero Redundancy Optimizer (ZeRO): Memory optimization
-Serverless ML: AWS SageMaker, Google Vertex AI
-Quantum ML: Early experiments with QPUs
-
---- Slide 29 ---
-
-Summary
-Efficient training = smart data handling + parallelism + resource optimization
-Tools like Dask, Spark, cuML, and cloud platforms are essential
-Don’t load full data into memory—stream, batch, or partition it
-Evaluate models iteratively with checkpoints and logging
-
---- Slide 30 ---
-
-Resources & Further Reading
-Dask ML Docs
-cuML GitHub
-Spark MLlib Guide
-Efficient Data Loading with PyTorch
-"Designing Machine Learning Systems" - Chip Huyen
-"Distributed Machine Learning Patterns" - Yuan Tang
-
---- Slide 31 ---
-
 الشراكات العالمية
 
---- Slide 32 ---
+--- Slide 24 ---
 
 شــــــكــــرًا لكــــــم
 THANK YOU
 
+### 02
+
+--- Slide 1 ---
+
+أكـــــاديميــــة طــــويـــق
+Scalable Data Science
+
+--- Slide 2 ---
+
+Cloud Collaboration Tools
+By: Dr. Afshan Hashmi
+
+--- Slide 3 ---
+
+Course Objectives:
+Understand what cloud collaboration tools are and why they are important.
+Identify popular cloud collaboration platforms and their core features.
+Compare different tools based on functionality, accessibility, and security.
+Demonstrate the use of common cloud collaboration tools through practical examples.
+
+--- Slide 4 ---
+
+Introduction to Cloud Collaboration
+What is Cloud Collaboration?
+Cloud Collaboration refers to the practice of using cloud computing technologies that allow multiple people to:
+Work together on documents, files, or projects
+Access and edit content in real-time
+From anywhere with an internet connection
+Instead of storing files on a local device, cloud collaboration platforms store them on remote servers (the cloud), making it easy for teams to collaborate even if they are not in the same location.
+Key Features of Cloud Collaboration:
+Real-time Editing: Multiple users can edit the same document at the same time.
+Automatic Saving & Versioning: Changes are saved automatically, and previous versions are often stored.
+Remote Access: Files can be accessed anytime, anywhere.
+File Sharing: Easy to share with teams or external stakeholders.
+Integrated Communication: Chat, comments, and video calls often integrated into the tools.
+
+--- Slide 5 ---
+
+Why Use Cloud Collaboration Tools?
+1. Supports Remote and Hybrid Work Models
+With more people working from home or from different locations, cloud tools ensure everyone stays connected and productive.
+2. Facilitates Teamwork Across Geographic Boundaries
+Teams in different cities or countries can collaborate as if they were in the same room.
+3. Enhances Productivity and Communication
+Instant updates and seamless communication reduce misunderstandings and improve workflow.
+Saves time no need to send files back and forth by email.
+
+Examples of Cloud Collaboration Tools:
+Google Workspace (Docs, Sheets, Drive)
+Microsoft 365 (Word Online, OneDrive, Teams)
+Slack with file sharing
+Trello / Asana for task management
+Zoom / Microsoft Teams for meetings and screen sharing
+
+--- Slide 6 ---
+
+Key Features of Cloud Collaboration Tools
+Real-time Editing
+Multiple users can edit the same document or file at the same time.
+Changes appear instantly for everyone.
+Example: Google Docs lets your team write, edit, and see updates live.
+Version Control
+Keeps a history of all changes made to a document.
+You can track who edited what and when.
+Option to revert to previous versions if needed.
+ File Sharing
+Share files securely with team members or external collaborators.
+Set permissions: view-only, comment, or edit.
+No need to email attachments just share a link.
+
+--- Slide 7 ---
+
+Key Features of Cloud Collaboration Tools
+Commenting & Feedback
+Leave inline comments directly on documents.
+Tag teammates using @mention to notify them.
+Makes feedback clear, organized, and action-oriented.
+Integration
+Works smoothly with other tools like:
+Calendars (e.g., Google Calendar)
+Project management (e.g., Trello, Asana)
+Communication apps (e.g., Slack, Microsoft Teams)
+Keeps everything connected in one place.
+Security
+Strong protection through:
+User permissions (who can see or edit)
+Access control (limit by team, device, or IP)
+Data encryption (to keep content private and secure)
+
+--- Slide 8 ---
+
+Common Cloud Collaboration Tools
+Cloud collaboration tools help teams work together in real time, share files, manage tasks, and communicate effectively especially in remote or hybrid work environments.
+Here are some of the most widely used tools categorized by function:
+1. Document Creation & File Sharing
+Google Workspace
+Includes: Google Docs, Sheets, Slides, and Drive.
+Real-time editing, comments, version history.
+Ideal for document collaboration and storage.
+Microsoft 365
+Includes: Word Online, Excel Online, PowerPoint, OneDrive.
+Integrates with Microsoft Teams for smooth collaboration.
+Strong enterprise-level support.
+Dropbox
+File storage and sharing platform.
+Integrates with third-party apps for collaboration.
+Good version control and file recovery.
+
+--- Slide 9 ---
+
+Common Cloud Collaboration Tools
+Communication & Messaging
+Slack
+Team messaging app with channels and direct messages.
+File sharing and integration with tools like Google Drive and Trello.
+Real-time collaboration and notification system.
+Microsoft Teams
+Combines chat, video calls, file sharing, and collaboration in one place.
+Deeply integrated with Microsoft 365.
+Useful for team meetings and document co-authoring.
+Zoom
+Video conferencing and screen sharing.
+Useful for online meetings, webinars, and virtual classes.
+Can be integrated with other collaboration tools.
+
+--- Slide 10 ---
+
+Common Cloud Collaboration Tools
+Project & Task Management
+Trello
+Visual task management using boards, lists, and cards.
+Great for small teams and simple project tracking.
+Easy drag-and-drop interface.
+Asana
+Task and project management tool.
+Lets you assign tasks, set due dates, and track progress.
+Integrates with email, Slack, Google Drive, etc.
+ClickUp / Monday.com
+All-in-one workspaces for tasks, docs, goals, and timelines.
+Highly customizable workflows for teams.
+
+--- Slide 11 ---
+
+Common Cloud Collaboration Tools
+Integrated Platforms
+Notion
+Combines note-taking, docs, databases, and task tracking.
+Customizable and great for team knowledge bases.
+Real-time collaboration with rich media support.
+Airtable
+Like a super-powered spreadsheet.
+Combines database features with a user-friendly interface.
+Good for project planning and content calendars.
+
+--- Slide 12 ---
+
+Common Cloud Collaboration Tools
+
+--- Slide 13 ---
+
+Key Technologies Behind Cloud Collaboration
+These are the core technologies that make cloud collaboration fast, secure, and seamless.
+ A. Real-Time Sync
+Cloud collaboration tools rely on real-time synchronization to ensure all users see the same version of a document instantly.
+Operational Transformation (OT)
+A method used to resolve conflicts when multiple users are editing a document at the same time.
+It ensures that all changes are merged smoothly, so nothing is overwritten.
+Example: Google Docs uses OT to let multiple users type on the same document without issues.
+WebSockets
+A communication protocol that keeps a constant connection between the user’s device and the server.
+Allows instant updates to be sent in both directions no need to refresh the page.
+Used in live chats, collaborative editing, dashboards, etc.
+
+--- Slide 14 ---
+
+Key Technologies Behind Cloud Collaboration
+B. Security & Compliance
+Since cloud collaboration involves storing and transferring sensitive data, security is critical.
+ Encryption
+AES-256 (Advanced Encryption Standard) is used to protect data at rest (stored data).
+TLS (Transport Layer Security) protects data in transit (data being transferred between devices and servers).
+Access Controls
+Tools implement Role-Based Access Control (RBAC):
+Admin – full control
+Editor – can modify content
+Viewer – read-only access
+Ensures only the right people can see or edit data.
+Compliance Standards
+Tools often follow global standards to protect user privacy and data:
+GDPR – for data protection in the EU
+HIPAA – for health-related data security in the U.S.
+SOC 2 – for service organization controls (audits, privacy, etc.)
+
+--- Slide 15 ---
+
+Key Technologies Behind Cloud Collaboration
+C. APIs & Integrations
+APIs and integrations help cloud tools communicate with each other, improving efficiency and automation.
+REST APIs (Representational State Transfer)
+Allow external apps or systems to connect and exchange data.
+Example: Connect Slack with Google Calendar to get meeting reminders in Slack.
+Webhooks
+Used to send real-time alerts between systems when certain events happen.
+Example: A new issue is created in GitHub → a message is sent to your Slack channel automatically.
+
+--- Slide 16 ---
+
+Challenges and Considerations in Cloud Collaboration
+While cloud collaboration tools offer many benefits, there are some challenges that teams and organizations must address:
+1. Security Risks
+What it is: Data stored in the cloud can be vulnerable to unauthorized access, breaches, or leaks.
+Why it matters: Sensitive company or customer information may be exposed if proper security measures (like encryption and access control) aren't in place.
+Example: Sharing a file with the wrong permissions can lead to accidental exposure.
+
+2. Internet Dependency
+What it is: Cloud tools rely heavily on internet connectivity.
+Why it matters: If the internet is slow or unavailable, users may lose access to critical documents or live collaboration features.
+Example: During a meeting, poor internet can disrupt file sharing or real-time updates.
+
+--- Slide 17 ---
+
+Challenges and Considerations in Cloud Collaboration
+3. Compatibility Issues
+What it is: Different tools or file formats might not work well together.
+Why it matters: Users may face difficulties when collaborating across platforms or with older file versions.
+Example: A document made in Microsoft Word might lose formatting when opened in Google Docs.
+
+4. User Training
+What it is: Employees may need to learn how to use new tools or adapt to cloud-based workflows.
+Why it matters: Without proper training, productivity may drop, and users may resist adopting new systems.
+Example: A team used to emailing files may take time to adjust to using shared online documents.
+
+--- Slide 18 ---
+
+Best Practices for Effective Collaboration
+Effective collaboration using cloud tools requires not just the right platform, but also smart practices to ensure productivity, security, and alignment. Below are key best practices every team should follow:
+
+1. Standardize Tools
+Why it matters: Using too many tools creates confusion, duplicate work, and inefficiencies.
+Best practice:
+Choose one tool per function (e.g., only Asana or Trello for project management).
+Establish an official toolset for communication, file storage, task tracking, etc.
+Example: Use Google Workspace + Trello + Slack for your team, and ensure everyone sticks to them.
+
+--- Slide 19 ---
+
+Best Practices for Effective Collaboration
+2. Set Permissions
+Why it matters: Accidental edits or unauthorized access to sensitive data can be costly.
+Best practice:
+Set view-only, comment, or edit permissions based on role and responsibility.
+Use folder-level controls in tools like Google Drive or OneDrive.
+Example: Project plans can be editable by managers, while interns get view-only access.
+3. Train Teams
+Why it matters: Many powerful features go unused due to lack of knowledge.
+Best practice:
+Provide hands-on training or short video tutorials.
+Highlight features like:
+@mentions for collaboration,
+Version history to recover previous work,
+Shortcuts for productivity.
+Example: Conduct a 15-minute weekly “Tool Tips” session.
+
+--- Slide 20 ---
+
+Best Practices for Effective Collaboration
+4. Automate Workflows
+Why it matters: Manual tasks waste time and increase the risk of errors.
+Best practice:
+Use tools like Zapier, Make (Integromat), or Power Automate to connect platforms.
+Automate repetitive tasks, e.g.:
+New form submission → Create a Trello card.
+Slack message → Add to Google Calendar.
+Example: Automatically send a daily standup reminder via Slack at 9:00 a.m.
+
+5. Monitor Usage
+Why it matters: Helps in auditing, troubleshooting, and enforcing accountability.
+Best practice:
+Use built-in audit logs, usage dashboards, and activity history.
+Track who accessed/edited files, and monitor logins and sharing patterns.
+Example: In Google Workspace Admin Console, check Drive activity reports to ensure compliance.
+
+--- Slide 21 ---
+
+Comparison table
+
+--- Slide 22 ---
+
+Case Studies in Cloud Collaboration
+Real-world examples help demonstrate how cloud collaboration tools solve specific challenges. Here are two case studies:
+A. Remote Software Team
+Tools Used: GitHub + Slack + ZoomChallenge:
+Team members are working remotely across different time zones, making communication and coordination difficult.
+Solution:
+Outcome: Smooth code development, clear communication, and stronger team alignment across time zones.
+
+--- Slide 23 ---
+
+Case Studies in Cloud Collaboration
+B. Academic Research Group
+
+Tools Used: Notion + ZoteroChallenge: Researchers need to manage shared papers, deadlines, and citations for collaborative writing and publishing.
+
+Solution:
+Outcome: Organized workflow, centralized research materials, 
+and efficient citation management for academic writing.
+.
+
+--- Slide 24 ---
+
+Summary
+Cloud collaboration tools revolutionize how teams work and communicate.
+They offer convenience, flexibility, and scalability.
+Choosing the right tool depends on project needs, team size, and integration requirements.
+
+--- Slide 25 ---
+
+Reading and Resources
+Google Workspace: https://workspace.google.com/
+Microsoft 365: https://www.microsoft.com/microsoft-365
+Trello: https://trello.com/
+Slack: https://slack.com/
+Notion: https://www.notion.so/
+
+--- Slide 26 ---
+
+شــــــكــــرًا لكــــــم
+THANK YOU
+
+### 03
+
+--- Slide 1 ---
+
+أكـــــاديميــــة طــــويـــق
+Scalable Data Science
+
+--- Slide 2 ---
+
+Unit 5: Cloud Infrastructure & Production Deployment
+Cloud Storage Fundamentals & Running Your First Cloud Analysis
+By: Dr. Afshan Hashmi
+
+--- Slide 3 ---
+
+Course Objectives:
+
+Define cloud storage and its core components.
+Compare different cloud storage types (object, block, file).
+Explain key cloud storage features (durability, availability, scalability).
+Evaluate use cases for AWS S3, Azure Blob Storage, and Google Cloud Storage.
+Set up a cloud-based analysis environment
+Execute a basic data analysis workflow in the cloud
+Compare cloud vs. local analysis performance
+Optimize cloud resources for cost-effective analysis
+Interpret and visualize cloud analysis results
+
+--- Slide 4 ---
+
+Introduction to Cloud Storage
+What is Cloud Storage?
+Cloud storage is a service model in which data is maintained, managed, backed up remotely, and made available to users over a network (typically the internet).
+Explanation in simple terms:Instead of saving your files on a USB stick or your computer's hard drive, you save them on the internet, where they’re stored on remote servers and accessed via the web.
+Key Characteristics:
+Scalability: Grow storage on demand.
+Durability: Data redundancy (e.g., 99.999999999% durability in AWS S3).
+Accessibility: Available globally via APIs or web interfaces.
+Pay-as-you-go: Only pay for what you use.
+Analogy:"Like a virtual hard drive accessible from anywhere."
+
+--- Slide 5 ---
+
+How Does Cloud Storage Work?
+Data is Sent to Data Centers Using the InternetWhen you upload a file (like a photo or document), it travels through the internet to a remote server (computer) located in a data center  a secure facility filled with powerful servers and storage systems.
+
+Stored in Virtualized Pools of StorageOnce it arrives, your data is stored in what’s called a "virtualized storage pool" which means it's stored across many physical machines, but you see it as one unified storage space. Think of it like a virtual hard drive spread across many computers.
+Accessed Using Web Interfaces, APIs, or AppsYou can access your data through:
+Web interfaces (like Google Drive or Dropbox on a browser)
+Mobile or desktop apps
+APIs (Application Programming Interfaces) if you're integrating it with other software systems or applications.
+Managed and Maintained by Cloud Service ProvidersThe infrastructure servers, security, backups, updates  is handled by companies like Amazon Web Services (AWS), Microsoft Azure, or Google Cloud.You don’t need to worry about hardware failures, power, or maintenance they take care of all that.
+
+--- Slide 6 ---
+
+Types of Cloud Storage
+Simple Analogy:
+Object storage = warehouse (you store items with tags).
+File storage = filing cabinet.
+Block storage = Lego blocks (fast and flexible).
+
+--- Slide 7 ---
+
+Benefits of Cloud Storage
+Accessibility – Access Files from Anywhere
+As long as you have an internet connection, you can access your files from any device, anywhere in the world.
+Example: You can open your Google Docs or Dropbox files from your laptop, tablet, or phone  even while traveling.
+Scalability – Easily Increase Storage as Needed
+Need more space? Just click a few buttons  no need to buy hardware.
+Cloud storage grows with you, making it ideal for both individuals and large businesses.
+Durability & Redundancy – Data is Often Replicated Across Locations
+Cloud providers copy your data across multiple data centers to prevent loss.
+Even if one server crashes or there’s a natural disaster in one area, your data remains safe and available.
+Cost-Effective – Pay Only for What You Use
+No need to buy expensive hard drives upfront.
+You pay monthly or yearly based on your actual usage  storage space, bandwidth, etc.
+Automatic Backups – Data is Regularly Backed Up by the Provider
+Most providers automatically back up your files behind the scenes.
+This reduces the risk of losing important documents due to accidental deletion or system failure.
+
+--- Slide 8 ---
+
+Core Features of Cloud Storage
+1. Durability
+Durability means how well your data is protected from being lost or corrupted.
+Cloud storage providers (like AWS, Google Cloud) use multiple copies across multiple data centers to make sure your files are safe.
+
+Example: AWS S3 offers 99.999999999% durability (called “11 nines”)That’s like losing only 1 file every 10 million stored for 10,000 years!
+
+2. Availability
+Availability refers to how often the cloud service is accessible and running without interruption.
+It’s measured as a percentage of uptime per year.
+Example: AWS S3 Standard offers 99.99% availability,which means less than 1 hour of downtime per year (~53 minutes).
+
+--- Slide 9 ---
+
+Core Features of Cloud Storage
+3. Storage Classes
+Cloud providers offer different classes of storage depending on how often you need to access your data:
+Example:In AWS S3, this is like:
+S3 Standard (Hot)
+S3 Standard-IA (Cold)
+S3 Glacier / Glacier Deep Archive (Archive)
+
+--- Slide 10 ---
+
+Limitations of Cloud Storage
+Requires Internet – No Access Without a Stable Connection
+Cloud storage depends on an internet connection.
+If you're in an area with poor or no internet (like during a power outage or while traveling in remote regions), you may not be able to access your files.
+Ongoing Costs – Subscription or Pay-as-You-Go Model
+Unlike buying a physical hard drive once, cloud storage typically follows a monthly or annual subscription model.
+Costs can add up over time, especially for large storage needs or frequent access to data.
+Security Concerns – Risk of Data Breaches
+If not properly secured, cloud-stored data can be vulnerable to hacking, unauthorized access, or data leaks.
+Users must rely on the provider’s security protocols and also take steps like enabling multi-factor authentication and using strong passwords.
+ Latency – Slower Access for Large Files Compared to Local Storage
+Uploading or downloading large files from the cloud can be slower than accessing files saved directly on your device.
+This is especially noticeable when working with high-resolution videos, large datasets, or 3D files.
+
+--- Slide 11 ---
+
+Real-World Use Cases of Cloud Storage
+Personal Use: Google Drive
+What it is: A cloud-based storage service by Google.
+How it's used: People use Google Drive to save documents, photos, videos, and other files.
+Why it's useful: Files can be accessed from any device (phone, tablet, laptop) with internet access. It also allows for easy sharing and collaboration on documents in real time.
+
+Business Use: Dropbox Business
+What it is: A cloud storage solution tailored for teams and companies.
+How it's used: Teams can share and manage files across different departments and locations.
+Why it's useful: It offers advanced features like admin controls, file versioning, and integrations with other productivity tools, improving collaboration and productivity.
+
+--- Slide 12 ---
+
+Real-World Use Cases of Cloud Storage
+Backup & Recovery: iCloud for iPhones
+What it is: Apple’s cloud backup service.
+How it's used: Automatically backs up iPhone data such as contacts, messages, app data, and photos.
+Why it's useful: In case the phone is lost, damaged, or replaced, users can quickly restore all their data on a new device.
+
+Web Hosting: Amazon S3
+What it is: Amazon Simple Storage Service (S3), a part of AWS.
+How it's used: Used by developers and companies to store and serve website assets like images, videos, scripts, and other static files.
+Why it's useful: It's highly durable, scalable, and integrates easily with websites and applications. Plus, it allows files to be accessed globally with low latency.
+
+--- Slide 13 ---
+
+Key Cloud Storage Providers
+
+--- Slide 14 ---
+
+Cloud vs. Traditional Storage (Comparison Table)
+
+--- Slide 15 ---
+
+Introduction to Cloud Analysis
+Definition: Performing data processing and analytics using cloud-based resources instead of local machines
+
+Why Cloud Analysis?
+Scalability: Handle datasets too large for local machines
+Flexibility: Access specialized hardware (GPUs, TPUs)
+Collaboration: Share results and environments easily
+
+Common Use Cases:
+Big data processing
+Machine learning model training
+Business intelligence dashboards
+
+Demo: Show a real-world example (e.g., COVID-19 data analysis in the cloud)
+
+--- Slide 16 ---
+
+Setting Up Your Cloud Environment
+Option 1: Cloud Notebooks
+Google Colab
+Free GPU access
+Collaborative features
+AWS SageMaker Notebooks
+Integrated with AWS services
+Enterprise-grade security
+Option 2: Virtual Machines
+AWS EC2
+Choose instance types (CPU vs. GPU optimized)
+Google Compute Engine
+Pre-configured data science VMs
+Activity: Students create a free-tier cloud notebook
+
+--- Slide 17 ---
+
+Running Your First Analysis
+Sample Workflow: COVID-19 Data Analysis
+Data Ingestion:
+import pandas as pd
+url = "https://covid.ourworldindata.org/data/owid-covid-data.csv"
+df = pd.read_csv(url)
+2. Data Processing:
+# Filter and aggregate data
+latest = df[df['date'] == df['date'].max()]
+summary = latest.groupby('continent')['total_cases'].sum()
+3. Visualization:
+import matplotlib.pyplot as plt
+summary.plot(kind='bar')
+plt.title('Total COVID Cases by Continent')
+plt.show()
+
+--- Slide 18 ---
+
+Performance Benchmarking
+Exercise: Compare local vs. cloud runtime
+Run analysis on local machine (time it)
+Run same analysis in cloud notebook (time it)
+Compare results
+
+Sample Results:
+Discussion: When does cloud analysis make sense?
+
+--- Slide 19 ---
+
+Cost Optimization
+Cloud Cost Factors:
+Compute time
+Storage
+Data transfer
+
+Money-Saving Tips:
+Use spot instances
+Auto-shutdown unused resources
+Right-size instances
+
+Activity: Estimate costs using AWS/GCP pricing calculators
+
+--- Slide 20 ---
+
+Summary:
+Cloud storage lets users store and access data over the internet.
+Comes in object, file, and block storage types.
+Offers flexibility, cost savings, and ease of use but needs internet and security awareness.
+Commonly used in personal, academic, and business settings.
+Cloud analysis enables scalable processing of large datasets using remote resources (GPUs/TPUs), overcoming local hardware limitations.
+Performance benchmarks show 10x+ speedups for big data tasks.
+Monitor resources to avoid over-spending
+Use spot instances for 60-90% cost savings
+
+--- Slide 21 ---
+
+Resources & Further Reading
+Free Cloud Credits: AWS Educate, Google Cloud Free Tier
+Datasets: Google Cloud Public Datasets, AWS Open Data
+Data Science on AWS” Authors: Chris Fregly & Antje Barth Publisher: O'Reilly (2021)
+Google Cloud for Data Science Authors: Valliappa Lakshmanan & Jordan Tigani, Publisher: O'Reilly (2022)
+
+--- Slide 22 ---
+
+الشراكات العالمية
+
+--- Slide 23 ---
+
+شــــــكــــرًا لكــــــم
+THANK YOU
+
+### 04
+
+--- Slide 1 ---
+
+أكـــــاديميــــة طــــويـــق
+Scalable Data Science
+
+--- Slide 2 ---
+
+cuDF: Understsanding performance
+Correct the code
+By: Dr. Afshan Hashmi
+
+--- Slide 3 ---
+
+Course Objectives:
+Learners will be able to identify the performance issue
+Learners will be able to Fix the issue in the code
+
+--- Slide 4 ---
+
+Avoiding Unnecessary to_pandas() Calls
+
+Question: The following code converts a cuDF DataFrame to Pandas unnecessarily, causing performance issues. Correct the code to improve performance.
+import cudf
+
+df = cudf.DataFrame({'a': [1, 2, 3, 4], 'b': [5, 6, 7, 8]})
+
+# Inefficient approach
+df_pandas = df.to_pandas()
+df_pandas['c'] = df_pandas['a'] + df_pandas['b']
+df = cudf.DataFrame.from_pandas(df_pandas)
+
+print(df)
+Hint: Perform operations directly on the cuDF DataFrame.
+
+--- Slide 5 ---
+
+1. Avoiding Unnecessary to_pandas() Calls- Corrected code
+By performing the addition directly on the cuDF DataFrame, we avoid converting it to Pandas, thus improving performance.
+import cudf
+
+df = cudf.DataFrame({'a': [1, 2, 3, 4], 'b': [5, 6, 7, 8]})
+
+# Correct approach: Perform operations directly on the cuDF DataFrame
+df['c'] = df['a'] + df['b']
+
+print(df)
+
+--- Slide 6 ---
+
+2. Replacing apply() with Vectorized Operations
+
+Question: The function applied in apply() is not GPU-optimized, forcing execution on the CPU. Modify the code to use vectorized operations.
+Hint: Avoid apply() and use built-in cuDF vectorized operations.
+import cudf
+
+df = cudf.DataFrame({'a': [1, 2, 3, 4], 'b': [5, 6, 7, 8]})
+
+# Inefficient approach
+df['c'] = df.apply(lambda row: row['a'] + row['b'], axis=1)
+
+print(df)
+
+--- Slide 7 ---
+
+2. Replacing apply() with Vectorized Operations- Corrected code
+This approach avoids the use of apply() and leverages cuDF's built-in vectorized operations, which are much more efficient.
+import cudf
+
+df = cudf.DataFrame({'a': [1, 2, 3, 4], 'b': [5, 6, 7, 8]})
+
+# Correct approach: Use vectorized operations
+df['c'] = df['a'] + df['b']
+
+print(df)
+
+--- Slide 8 ---
+
+3. Incorrect cuDF GroupBy Operation
+
+Question: The following code attempts to use a Pandas-style aggregation on a cuDF DataFrame but fails. Correct it to work efficiently with cuDF.
+Hint: apply() is not GPU-optimized for groupby. Use a built-in cuDF aggregation instead.
+import cudf
+
+df = cudf.DataFrame({'category': ['A', 'B', 'A', 'B'], 'values': [10, 20, 30, 40]})
+
+# Incorrect approach
+df_grouped = df.groupby('category').apply(lambda x: x['values'].sum())
+
+print(df_grouped)
+
+--- Slide 9 ---
+
+3. Incorrect cuDF GroupBy Operation-Corrected code
+Instead of using apply(), which is not optimized for groupby operations, we use the built-in sum() method for grouping and aggregation in cuDF..
+import cudf
+
+df = cudf.DataFrame({'category': ['A', 'B', 'A', 'B'], 'values': [10, 20, 30, 40]})
+
+# Correct approach: Use a cuDF aggregation instead of apply()
+df_grouped = df.groupby('category')['values'].sum()
+
+print(df_grouped)
+
+--- Slide 10 ---
+
+4. Fixing Third-Party Library Compatibility Issue
+
+Question: The following code tries to use Plotly directly with a cuDF DataFrame, which is not compatible. Modify it so that it works correctly.
+import cudf
+import plotly.express as px
+
+df = cudf.DataFrame({'x': [1, 2, 3, 4], 'y': [10, 20, 30, 40]})
+
+# Incorrect approach
+fig = px.scatter(df, x='x', y='y')
+fig.show()
+Hint: Convert cuDF DataFrame to Pandas before passing it to Plotly.
+
+--- Slide 11 ---
+
+4. Fixing Third-Party Library Compatibility Issue-Corrected Code
+import cudf
+import plotly.express as px
+
+df = cudf.DataFrame({'x': [1, 2, 3, 4], 'y': [10, 20, 30, 40]})
+
+# Correct approach: Convert cuDF DataFrame to Pandas before passing to Plotly
+df_pandas = df.to_pandas()
+fig = px.scatter(df_pandas, x='x', y='y')
+fig.show()
+Since Plotly does not support cuDF DataFrames directly, we convert it to Pandas for visualization.
+
+--- Slide 12 ---
+
+5. Debugging Performance Issues in cuDF
+
+Question: The following code processes a large cuDF DataFrame but runs unexpectedly slow. Identify and fix the performance issue.
+Hint: Identify which function is causing CPU execution and replace it with a GPU-optimized alternative.
+import cudf
+
+df = cudf.DataFrame({'a': range(1, 1000001), 'b': range(1000001, 2000001)})
+
+# Inefficient approach
+df['c'] = df.apply(lambda row: row['a'] * 2 + row['b'] * 3, axis=1)
+
+print(df.head())
+
+--- Slide 13 ---
+
+5. Debugging Performance Issues in cuDF-Corrected Code
+import cudf
+
+df = cudf.DataFrame({'a': range(1, 1000001), 'b': range(1000001, 2000001)})
+
+# Correct approach: Use vectorized operations instead of apply
+df['c'] = df['a'] * 2 + df['b'] * 3
+
+print(df.head())
+Here, we replace apply() with vectorized operations (df['a'] * 2 + df['b'] * 3), which are GPU-accelerated, ensuring that the operations run on the GPU for optimal performance.
+
+--- Slide 14 ---
+
+شــــــكــــرًا لكــــــم
+THANK YOU
 
 ### 05
 
@@ -702,8 +1277,7 @@ Click HERE
 شــــــكــــرًا لكــــــم
 THANK YOU
 
-
-### 10
+### 06
 
 --- Slide 1 ---
 
@@ -712,178 +1286,159 @@ Scalable Data Science
 
 --- Slide 2 ---
 
-cuDF: GPU-accelerated Data Manipulation
-Overview and Comparison with Pandas
+cuML: open-source GPU-accelerated machine learning library
 By: Dr. Afshan Hashmi
 
 --- Slide 3 ---
 
 Course Objectives:
-This course aims to equip learners with GPU-accelerated data analysis skills using cuDF, Pandas. Students will learn how to efficiently manipulate, clean, and analyze large datasets
-Course Learning Outcomes:
-1. Understand GPU-accelerated computing and how cuDF differs from Pandas for big data processing.2. Perform efficient data analysis using cuDF, including data cleaning, aggregation, and transformation.
+
+Understand GPU-Accelerated Machine Learning – Learn how to leverage RAPIDS cuML for high-performance machine learning on large datasets, comparing it with traditional CPU-based approaches.
+
+Implement Efficient ML Models – Develop and optimize machine learning models using cuML, including regression, classification, and clustering, to achieve faster training and inference times.
+
+Apply cuML to Real-World Problems – Gain hands-on experience in applying GPU-accelerated ML techniques to practical use cases such as financial modeling, image recognition, and natural language processing.
 
 --- Slide 4 ---
 
-Introduction to cuDF
-What is cuDF?
-cuDF is a GPU DataFrame library for loading, joining, aggregating, filtering, and otherwise manipulating data.
-GPU-accelerated library for data manipulation.
-Part of the RAPIDS ecosystem.
-Why use cuDF?
-Leverage GPU power for faster data processing.
-Designed for large datasets.
+Introduction to cuML(RAPIDS Machine Learning Library)
+What is cuML?
+cuML is an open-source GPU-accelerated machine learning library developed by NVIDIA as part of the RAPIDS AI framework. It provides highly optimized implementations of common machine learning algorithms using CUDA.
+
+Why Use cuML?
+
+Faster Computation: Leverages GPUs for parallel execution, significantly reducing training time.
+
+Compatible with scikit-learn: Provides a similar API, making it easy to transition from CPU-based models.
+
+Seamless Integration: Works well with cuDF (GPU-accelerated pandas) and other RAPIDS libraries.
+cuML
+Rapids Machine Learning Library
 
 --- Slide 5 ---
 
-Key Features of cuDF
-GPU-accelerated DataFrame operations.
-Similar API to Pandas for ease of use.
-Seamless integration with other RAPIDS libraries (cuML, cuGraph).
-Support for CSV, Parquet, and ORC file formats.
+cuML-Supported Algorithms
+cuML provides GPU-accelerated implementations of various machine learning algorithms, including:
+
+Linear Models: Linear Regression, Ridge Regression, Lasso Regression
+
+Clustering: K-Means, DBSCAN
+
+Dimensionality Reduction: PCA, t-SNE, Truncated SVD
+
+Tree-based Models: Random Forest, Decision Trees
+
+Other Models: Nearest Neighbors, Support Vector Machines, Gaussian Mixture Models
 
 --- Slide 6 ---
 
-cuDF vs Pandas
-Performance Comparison:
-cuDF is faster for large datasets due to GPU acceleration.
-Pandas is better for small datasets (CPU overhead).
-API Similarity:
-cuDF mimics Pandas API for easy adoption.
-Memory Management:
-cuDF uses GPU memory; Pandas uses CPU memory.
+Real-World Applications of cuML
+Finance: Risk modeling, fraud detection, stock price prediction
+Healthcare: Genomic analysis, patient diagnosis predictions
+Retail: Customer segmentation, demand forecasting
+Cybersecurity: Anomaly detection in network traffic
+This Photo by Unknown Author is licensed under CC BY-SA-NC
 
 --- Slide 7 ---
 
-Set Up:Running with an NVIDIA GPU
-NVIDIA® T4 GPU accelerates diverse cloud workloads, including high-performance computing, deep learning training and inference, machine learning, data analytics, and graphics.
+Importing cuML and Dependencies
+cudf: A GPU-accelerated DataFrame library similar to pandas, optimized for NVIDIA GPUs.
+cuml.linear_model.LinearRegression: GPU-accelerated linear regression model.
+cuml.cluster.KMeans: GPU-accelerated K-Means clustering algorithm.
+numpy and pandas: Used for handling arrays and data processing before converting them into GPU-optimized structures.
+This setup ensures that machine learning workflows leverage GPU acceleration instead of CPU-based operations.
 
 --- Slide 8 ---
 
-Data Analysis Using Pandas
-Dataset used:
-https://data.rapids.ai/datasets/nyc_parking/nyc_parking_violations_2022.parquet
+cuML vs. Scikit-Learn Speed Comparison
+Uses cudf.DataFrame and cudf.Series to transfer data to the GPU.
+
+
+Measures and prints the execution time for both implementations.
+
+
+Demonstrates the potential speedup of cuML over scikit-learn for large datasets.
 
 --- Slide 9 ---
 
-Data Analysis Using Pandas
+GPU-Accelerated K-Means Clustering
+Implements GPU-based K-Means clustering, which is significantly faster than CPU-based implementations.
+
+Uses cudf.DataFrame to store data in a GPU-compatible format.
+
+Computes cluster centers efficiently using GPU-accelerated processing.
+
+Helps in segmentation tasks, such as customer grouping in retail or anomaly detection.
 
 --- Slide 10 ---
 
-Data Analysis Using Pandas
-To find the most common parking violation per U.S. state, based on vehicle registration, we used Pandas. We analyzed a dataset with state and violation data, using GroupBy and value_counts to determine the top offense for each state.
-Method chaining is used  to combine a series of operations into a single statement
+GPU-Accelerated Principal Component Analysis
+Implements GPU-accelerated PCA, which reduces dimensionality faster than traditional PCA methods.
+
+Uses cudf.DataFrame for efficient GPU memory handling
+Helps in feature extraction and compression in large datasets.
+
+Essential for preprocessing high-dimensional datasets in computer vision, bioinformatics, and NLP.
 
 --- Slide 11 ---
 
-Most common parking violation per U.S. state, based on vehicle registration
+Integrating cuML with Deep Learning (TensorFlow/PyTorch)
+Shows how cuML can work alongside deep learning frameworks like PyTorch.
+
+Moves data to GPU using .cuda(), but transfers it to CPU (.cpu().numpy()) before using cuML (since cuML does not support PyTorch tensors directly).
+
+Enables hybrid machine learning and deep learning workflows, useful in reinforcement learning, AI-powered security, and fraud detection.
 
 --- Slide 12 ---
 
-Identifying the vehicle body types that most commonly receive parking violations is a key area of analysis
-Output
+Project : Predicting House Prices using cuML
+Steps:
+Load the dataset (California housing dataset from sklearn).
+Preprocess the data and move it to cuDF for GPU processing.
+Train a Linear Regression model using cuML.
+Compare performance with Scikit-learn (CPU-based).
+Evaluate the model's performance (MSE & Training Time).
+For Full code click here
 
 --- Slide 13 ---
 
-To find out the parking violation across the day of the week
-A dictionary is created to map numerical weekday values (0-6) to their corresponding names.
-The "Issue Date" column is converted to a datetime format (datetime64[ms]), enabling date-based operations.
-.dt.weekday extracts the day of the week as an integer (0-6).
-.map(weekday_names) converts this integer into the corresponding weekday name (e.g., 0 -> "Monday").
-The data is grouped by "issue_weekday" (day of the week).
-The number of violations ("Summons Number") is counted for each weekday.
-.sort_values() sorts the results in ascending order to show which day had the fewest to the most violations.
+Advantages and Limitations of cuML
+Advantages:
+
+Massively Parallel Computation: Ideal for large datasets.
+
+Easy Transition from scikit-learn: Similar API.
+
+Optimized for NVIDIA GPUs: Provides huge speedups.
+
+Limitations:
+
+Requires NVIDIA GPU: Not useful for CPU-only environments.
+
+Memory Constraints: GPU memory is limited compared to CPU RAM.
+
+Limited Algorithm Support: Some ML models are not yet implemented in cuML.
 
 --- Slide 14 ---
 
-OUTPUT
-A noticeable decrease in parking violations occurs during weekends, likely due to reduced weekday traffic in New York City.
+Comparison of cuML with Scikit-learn
 
 --- Slide 15 ---
 
-Starting with  cuDF.Pandas
-To demonstrate the performance benefits of cudf.pandas, we will re-execute the previously used Pandas code.
-
- To accurately simulate a typical workflow, where cudf.pandas is loaded at the beginning, we have restarted the kernel prior to this execution.
+Practical Implementation
+Click on the link below to go to Google COLAB
+Click HERE
 
 --- Slide 16 ---
 
-Pandas Vs  cuDF.Pandas
-It is clear that Pandas has taken 7.01 seconds for the same task while cuDF Pandas has taken 1.3 seconds
-
---- Slide 17 ---
-
-Pandas Vs  cuDF.Pandas
-It is clear that Pandas has taken 884 milli-seconds for the same task while cuDF Pandas has taken only  27.2milli-seconds
-
---- Slide 18 ---
-
-Pandas Vs  cuDF.Pandas
-It is clear that Pandas has taken 8.51 seconds for the same task while cuDF Pandas has taken 297 milli-seconds
-
---- Slide 19 ---
-
-Quiz TimeAnalyze Violations by Day of the Week and Vehicle Type
-
---- Slide 20 ---
-
-Quiz Time- Solution1. Analyze Violations by Day of the Week and Vehicle Type
-
---- Slide 21 ---
-
-Quiz Time2. Find the Top 5 Most Common Parking Violations
-
---- Slide 22 ---
-
-Quiz Time- Solution2. Find the Top 5 Most Common Parking Violations
-
---- Slide 23 ---
-
-Quiz Time3. Identify States with the Highest Number of Violations
-
---- Slide 24 ---
-
-Quiz Time4. Find the Monthly Trend of Parking Violations
-
---- Slide 25 ---
-
-Quiz Time- Solution4. Find the Monthly Trend of Parking Violations
-
---- Slide 26 ---
-
-Quiz Time5.Find the Most Common Violation for Each Vehicle Type
-
---- Slide 27 ---
-
-Quiz Time- Solution5.Find the Most Common Violation for Each Vehicle Type
-
---- Slide 28 ---
-
-RECAP
-GPU-Accelerated DataFrames – cuDF is a Pandas-like DataFrame library that runs on NVIDIA GPUs, enabling high-speed data processing.
-
-Pandas-Compatible API – cuDF supports most Pandas functions (read_parquet(), groupby(), merge(), etc.), making it easy to transition from CPU-based Pandas workflows.
-
- Efficient Large-Scale Data Processing – cuDF is optimized for millions to billions of rows, outperforming Pandas in data manipulation, filtering, and aggregation.
-
-Best Use Cases for cuDF – Ideal for big data processing, ETL (Extract, Transform, Load) tasks, and data preparation before feeding into deep learning models.
-
---- Slide 29 ---
-
-Practical Implementation
-Go To Google Colab
-
---- Slide 30 ---
-
 الشراكات العالمية
 
---- Slide 31 ---
+--- Slide 17 ---
 
 شــــــكــــرًا لكــــــم
 THANK YOU
 
-
-### 04
+### 07
 
 --- Slide 1 ---
 
@@ -892,164 +1447,103 @@ Scalable Data Science
 
 --- Slide 2 ---
 
-cuDF: Understsanding performance
-Correct the code
+Data visualization
+With Seaborn and Matplotlib
 By: Dr. Afshan Hashmi
 
 --- Slide 3 ---
 
 Course Objectives:
-Learners will be able to identify the performance issue
-Learners will be able to Fix the issue in the code
+Learn the fundamentals of data visualization using Matplotlib and Seaborn.
+Create static, animated, and interactive plots for data analysis.
+Utilize Seaborn for statistical and enhanced visualizations.
+Customize plots with themes, colors, and annotations.
 
 --- Slide 4 ---
 
-Avoiding Unnecessary to_pandas() Calls
+Matplotlib and Seaborn for Data Visualization
+Data visualization is crucial in scalable data science for understanding trends, distributions, and relationships. 
 
-Question: The following code converts a cuDF DataFrame to Pandas unnecessarily, causing performance issues. Correct the code to improve performance.
-import cudf
-
-df = cudf.DataFrame({'a': [1, 2, 3, 4], 'b': [5, 6, 7, 8]})
-
-# Inefficient approach
-df_pandas = df.to_pandas()
-df_pandas['c'] = df_pandas['a'] + df_pandas['b']
-df = cudf.DataFrame.from_pandas(df_pandas)
-
-print(df)
-Hint: Perform operations directly on the cuDF DataFrame.
+Matplotliband Seaborn are two powerful Python libraries that provide extensive functionalities for creating insightful and high-quality visualizations.
 
 --- Slide 5 ---
 
-1. Avoiding Unnecessary to_pandas() Calls- Corrected code
-By performing the addition directly on the cuDF DataFrame, we avoid converting it to Pandas, thus improving performance.
-import cudf
-
-df = cudf.DataFrame({'a': [1, 2, 3, 4], 'b': [5, 6, 7, 8]})
-
-# Correct approach: Perform operations directly on the cuDF DataFrame
-df['c'] = df['a'] + df['b']
-
-print(df)
+Matplotlib
+Introduction to Matplotlib: Matplotlib is a fundamental library for creating static, animated, and interactive visualizations. It provides fine-grained control over plots, making it highly customizable.
+Key Features:
+Supports a wide range of plot types (line, bar, scatter, etc.).
+Highly customizable (labels, colors, themes, annotations).
+Integrates well with Jupyter Notebooks and other Python libraries.
 
 --- Slide 6 ---
 
-2. Replacing apply() with Vectorized Operations
-
-Question: The function applied in apply() is not GPU-optimized, forcing execution on the CPU. Modify the code to use vectorized operations.
-Hint: Avoid apply() and use built-in cuDF vectorized operations.
-import cudf
-
-df = cudf.DataFrame({'a': [1, 2, 3, 4], 'b': [5, 6, 7, 8]})
-
-# Inefficient approach
-df['c'] = df.apply(lambda row: row['a'] + row['b'], axis=1)
-
-print(df)
+Using Matplotlib
 
 --- Slide 7 ---
 
-2. Replacing apply() with Vectorized Operations- Corrected code
-This approach avoids the use of apply() and leverages cuDF's built-in vectorized operations, which are much more efficient.
-import cudf
-
-df = cudf.DataFrame({'a': [1, 2, 3, 4], 'b': [5, 6, 7, 8]})
-
-# Correct approach: Use vectorized operations
-df['c'] = df['a'] + df['b']
-
-print(df)
+Seaborn
+Creating Plots with Seaborn
+Purpose: Seaborn is built on top of Matplotlib and provides a high-level interface for creating advanced statistical plots.
+Key Features:
+Simplifies the creation of complex visualizations (e.g., heatmaps, pair plots).
+Enhances Matplotlib graphs with better default styles and color palettes.
 
 --- Slide 8 ---
 
-3. Incorrect cuDF GroupBy Operation
-
-Question: The following code attempts to use a Pandas-style aggregation on a cuDF DataFrame but fails. Correct it to work efficiently with cuDF.
-Hint: apply() is not GPU-optimized for groupby. Use a built-in cuDF aggregation instead.
-import cudf
-
-df = cudf.DataFrame({'category': ['A', 'B', 'A', 'B'], 'values': [10, 20, 30, 40]})
-
-# Incorrect approach
-df_grouped = df.groupby('category').apply(lambda x: x['values'].sum())
-
-print(df_grouped)
+Using Seaborn
 
 --- Slide 9 ---
 
-3. Incorrect cuDF GroupBy Operation-Corrected code
-Instead of using apply(), which is not optimized for groupby operations, we use the built-in sum() method for grouping and aggregation in cuDF..
-import cudf
-
-df = cudf.DataFrame({'category': ['A', 'B', 'A', 'B'], 'values': [10, 20, 30, 40]})
-
-# Correct approach: Use a cuDF aggregation instead of apply()
-df_grouped = df.groupby('category')['values'].sum()
-
-print(df_grouped)
+Customizing Visuals
+Customizing plots makes them more readable and visually appealing. You can modify labels, colors, themes, and annotations in both Matplotlib and Seaborn.
 
 --- Slide 10 ---
 
-4. Fixing Third-Party Library Compatibility Issue
-
-Question: The following code tries to use Plotly directly with a cuDF DataFrame, which is not compatible. Modify it so that it works correctly.
-import cudf
-import plotly.express as px
-
-df = cudf.DataFrame({'x': [1, 2, 3, 4], 'y': [10, 20, 30, 40]})
-
-# Incorrect approach
-fig = px.scatter(df, x='x', y='y')
-fig.show()
-Hint: Convert cuDF DataFrame to Pandas before passing it to Plotly.
+Line and Bar Plots
+Used to visualize trends over time and compare categorical data.
 
 --- Slide 11 ---
 
-4. Fixing Third-Party Library Compatibility Issue-Corrected Code
-import cudf
-import plotly.express as px
-
-df = cudf.DataFrame({'x': [1, 2, 3, 4], 'y': [10, 20, 30, 40]})
-
-# Correct approach: Convert cuDF DataFrame to Pandas before passing to Plotly
-df_pandas = df.to_pandas()
-fig = px.scatter(df_pandas, x='x', y='y')
-fig.show()
-Since Plotly does not support cuDF DataFrames directly, we convert it to Pandas for visualization.
+Scatter and Box Plots
+Scatter plots show relationships between two variables.
+Example: Scatter Plot with Regression Line
 
 --- Slide 12 ---
 
-5. Debugging Performance Issues in cuDF
-
-Question: The following code processes a large cuDF DataFrame but runs unexpectedly slow. Identify and fix the performance issue.
-Hint: Identify which function is causing CPU execution and replace it with a GPU-optimized alternative.
-import cudf
-
-df = cudf.DataFrame({'a': range(1, 1000001), 'b': range(1000001, 2000001)})
-
-# Inefficient approach
-df['c'] = df.apply(lambda row: row['a'] * 2 + row['b'] * 3, axis=1)
-
-print(df.head())
+Box Plots
+Box plots help analyze the distribution and outliers in a dataset.
 
 --- Slide 13 ---
 
-5. Debugging Performance Issues in cuDF-Corrected Code
-import cudf
-
-df = cudf.DataFrame({'a': range(1, 1000001), 'b': range(1000001, 2000001)})
-
-# Correct approach: Use vectorized operations instead of apply
-df['c'] = df['a'] * 2 + df['b'] * 3
-
-print(df.head())
-Here, we replace apply() with vectorized operations (df['a'] * 2 + df['b'] * 3), which are GPU-accelerated, ensuring that the operations run on the GPU for optimal performance.
+Heatmaps visualize correlations in datasets.
 
 --- Slide 14 ---
 
+Pair plots show pairwise relationships in multi-variable data.
+
+--- Slide 15 ---
+
+Conclusion
+Matplotlib is great for fine-grained control over plots.
+
+Seaborn simplifies statistical visualizations with beautiful themes.
+
+Customization improves readability and storytelling in data science.
+
+Different visualization types (scatter, box, heatmaps) provide insights into trends, distributions, and relationships.
+
+These techniques are scalable, meaning they work efficiently with both small and large datasets.
+
+--- Slide 16 ---
+
+Practical Implementation
+Click on the link below to go to Google COLAB
+https://colab.research.google.com/drive/1Z9sV8qnk7--__x8OcKO1adtFJz82f4Bx
+
+--- Slide 17 ---
+
 شــــــكــــرًا لكــــــم
 THANK YOU
-
 
 ### 08
 
@@ -1710,7 +2204,6 @@ AWS "Cost Optimization for ML Workloads" Guide
 شــــــكــــرًا لكــــــم
 THANK YOU
 
-
 ### 09
 
 --- Slide 1 ---
@@ -1948,125 +2441,7 @@ PySpark Examples GitHub Repo
 شــــــكــــرًا لكــــــم
 THANK YOU
 
-
-### 13
-
---- Slide 1 ---
-
-أكـــــاديميــــة طــــويـــق
-Scalable Data Science
-
---- Slide 2 ---
-
-cuDF: Understsanding performance and visualization
-Analyzing Performance by profiling utilities
-By: Dr. Afshan Hashmi
-
---- Slide 3 ---
-
-Course Objectives:
-To introduce the fundamentals of cudf.pandas and its role in accelerating data processing using GPUs.
-To equip learners with profiling techniques for optimizing performance and identifying GPU vs. CPU execution in data workflows.
-To explore data visualization techniques using third-party libraries like Plotly with cudf.pandas.
-
---- Slide 4 ---
-
-Numba: Just-In-Time (JIT) Compilation for Speeding Up Python Code
-Numba is a Python library that accelerates code execution using JIT compilation.
-
-Converts Python code into machine code at runtime for improved performance.
-
-It is particularly useful for speeding up numerical computations without requiring extensive rewrites of Python code.
-
-Numba works well with NumPy, allowing array operations to be executed much faster.
-
-Key Features:
-Easy to use with minimal code changes.
-Supports CPU and GPU acceleration.
-Compatible with NumPy, SciPy, and other Python libraries.
-
---- Slide 5 ---
-
-Why Use Numba?
-Benefits:
-Speed: Dramatically improves performance of numerical computations.
-Simplicity: Requires only a decorator to optimize functions.
-Flexibility: Works with existing Python code and libraries.
-Use Cases:
-Scientific computing.
-Data analysis.
-Machine learning and deep learning.
-
---- Slide 6 ---
-
-How JIT Compilation Works
-JIT Compilation Explained
-Traditional Python code is interpreted line-by-line, causing slower execution.
-Numba compiles functions into machine code just before execution, leading to significant speedups.
-Uses LLVM (Low-Level Virtual Machine) for optimizing execution.
-
---- Slide 7 ---
-
-How Numba Works
-
---- Slide 8 ---
-
-Performance with & without numba
-Without Numba: The function runs in pure Python, which is slower due to interpreter overhead.
-With Numba: The function is compiled to machine code, resulting in significantly faster execution.
-
---- Slide 9 ---
-
-Numba Modes
-1. nopython Mode:
-Ensures the function is fully compiled to machine code.
-No Python objects are allowed.
-Example:
-
-
-2. object Mode:
-Allows Python objects but is slower.
-Used as a fallback when no python mode fails.
-
---- Slide 10 ---
-
-Limitations of Numba
-Challenges:
-
-Works best with numerical computations.
-Limited support for non-NumPy Python features.
-Requires careful handling of data types.
-
-When Not to Use:
-
-For non-numerical or highly dynamic Python code.
-
---- Slide 11 ---
-
-Summary
-Numba accelerates Python code using JIT compilation.
-Works best with loops and numerical computations.
-NumPy operations are highly optimized with Numba.
-Simple to use: Just add @jit(nopython=True) decorator.
-Helps in high-performance computing, scientific computing, and machine learning workloads.
-
---- Slide 12 ---
-
-Practical Implementation
-Click on the link below to go to Google COLAB
-https://colab.research.google.com/drive/10_sbDJlV6zeSHAnHY_EWTf9t488Vn0Hz#scrollTo=210h8e44YxPQ
-
---- Slide 13 ---
-
-الشراكات العالمية
-
---- Slide 14 ---
-
-شــــــكــــرًا لكــــــم
-THANK YOU
-
-
-### 06
+### 10
 
 --- Slide 1 ---
 
@@ -2075,596 +2450,175 @@ Scalable Data Science
 
 --- Slide 2 ---
 
-cuML: open-source GPU-accelerated machine learning library
+cuDF: GPU-accelerated Data Manipulation
+Overview and Comparison with Pandas
 By: Dr. Afshan Hashmi
 
 --- Slide 3 ---
 
 Course Objectives:
-
-Understand GPU-Accelerated Machine Learning – Learn how to leverage RAPIDS cuML for high-performance machine learning on large datasets, comparing it with traditional CPU-based approaches.
-
-Implement Efficient ML Models – Develop and optimize machine learning models using cuML, including regression, classification, and clustering, to achieve faster training and inference times.
-
-Apply cuML to Real-World Problems – Gain hands-on experience in applying GPU-accelerated ML techniques to practical use cases such as financial modeling, image recognition, and natural language processing.
+This course aims to equip learners with GPU-accelerated data analysis skills using cuDF, Pandas. Students will learn how to efficiently manipulate, clean, and analyze large datasets
+Course Learning Outcomes:
+1. Understand GPU-accelerated computing and how cuDF differs from Pandas for big data processing.2. Perform efficient data analysis using cuDF, including data cleaning, aggregation, and transformation.
 
 --- Slide 4 ---
 
-Introduction to cuML(RAPIDS Machine Learning Library)
-What is cuML?
-cuML is an open-source GPU-accelerated machine learning library developed by NVIDIA as part of the RAPIDS AI framework. It provides highly optimized implementations of common machine learning algorithms using CUDA.
-
-Why Use cuML?
-
-Faster Computation: Leverages GPUs for parallel execution, significantly reducing training time.
-
-Compatible with scikit-learn: Provides a similar API, making it easy to transition from CPU-based models.
-
-Seamless Integration: Works well with cuDF (GPU-accelerated pandas) and other RAPIDS libraries.
-cuML
-Rapids Machine Learning Library
+Introduction to cuDF
+What is cuDF?
+cuDF is a GPU DataFrame library for loading, joining, aggregating, filtering, and otherwise manipulating data.
+GPU-accelerated library for data manipulation.
+Part of the RAPIDS ecosystem.
+Why use cuDF?
+Leverage GPU power for faster data processing.
+Designed for large datasets.
 
 --- Slide 5 ---
 
-cuML-Supported Algorithms
-cuML provides GPU-accelerated implementations of various machine learning algorithms, including:
-
-Linear Models: Linear Regression, Ridge Regression, Lasso Regression
-
-Clustering: K-Means, DBSCAN
-
-Dimensionality Reduction: PCA, t-SNE, Truncated SVD
-
-Tree-based Models: Random Forest, Decision Trees
-
-Other Models: Nearest Neighbors, Support Vector Machines, Gaussian Mixture Models
+Key Features of cuDF
+GPU-accelerated DataFrame operations.
+Similar API to Pandas for ease of use.
+Seamless integration with other RAPIDS libraries (cuML, cuGraph).
+Support for CSV, Parquet, and ORC file formats.
 
 --- Slide 6 ---
 
-Real-World Applications of cuML
-Finance: Risk modeling, fraud detection, stock price prediction
-Healthcare: Genomic analysis, patient diagnosis predictions
-Retail: Customer segmentation, demand forecasting
-Cybersecurity: Anomaly detection in network traffic
-This Photo by Unknown Author is licensed under CC BY-SA-NC
+cuDF vs Pandas
+Performance Comparison:
+cuDF is faster for large datasets due to GPU acceleration.
+Pandas is better for small datasets (CPU overhead).
+API Similarity:
+cuDF mimics Pandas API for easy adoption.
+Memory Management:
+cuDF uses GPU memory; Pandas uses CPU memory.
 
 --- Slide 7 ---
 
-Importing cuML and Dependencies
-cudf: A GPU-accelerated DataFrame library similar to pandas, optimized for NVIDIA GPUs.
-cuml.linear_model.LinearRegression: GPU-accelerated linear regression model.
-cuml.cluster.KMeans: GPU-accelerated K-Means clustering algorithm.
-numpy and pandas: Used for handling arrays and data processing before converting them into GPU-optimized structures.
-This setup ensures that machine learning workflows leverage GPU acceleration instead of CPU-based operations.
+Set Up:Running with an NVIDIA GPU
+NVIDIA® T4 GPU accelerates diverse cloud workloads, including high-performance computing, deep learning training and inference, machine learning, data analytics, and graphics.
 
 --- Slide 8 ---
 
-cuML vs. Scikit-Learn Speed Comparison
-Uses cudf.DataFrame and cudf.Series to transfer data to the GPU.
-
-
-Measures and prints the execution time for both implementations.
-
-
-Demonstrates the potential speedup of cuML over scikit-learn for large datasets.
+Data Analysis Using Pandas
+Dataset used:
+https://data.rapids.ai/datasets/nyc_parking/nyc_parking_violations_2022.parquet
 
 --- Slide 9 ---
 
-GPU-Accelerated K-Means Clustering
-Implements GPU-based K-Means clustering, which is significantly faster than CPU-based implementations.
-
-Uses cudf.DataFrame to store data in a GPU-compatible format.
-
-Computes cluster centers efficiently using GPU-accelerated processing.
-
-Helps in segmentation tasks, such as customer grouping in retail or anomaly detection.
+Data Analysis Using Pandas
 
 --- Slide 10 ---
 
-GPU-Accelerated Principal Component Analysis
-Implements GPU-accelerated PCA, which reduces dimensionality faster than traditional PCA methods.
-
-Uses cudf.DataFrame for efficient GPU memory handling
-Helps in feature extraction and compression in large datasets.
-
-Essential for preprocessing high-dimensional datasets in computer vision, bioinformatics, and NLP.
+Data Analysis Using Pandas
+To find the most common parking violation per U.S. state, based on vehicle registration, we used Pandas. We analyzed a dataset with state and violation data, using GroupBy and value_counts to determine the top offense for each state.
+Method chaining is used  to combine a series of operations into a single statement
 
 --- Slide 11 ---
 
-Integrating cuML with Deep Learning (TensorFlow/PyTorch)
-Shows how cuML can work alongside deep learning frameworks like PyTorch.
-
-Moves data to GPU using .cuda(), but transfers it to CPU (.cpu().numpy()) before using cuML (since cuML does not support PyTorch tensors directly).
-
-Enables hybrid machine learning and deep learning workflows, useful in reinforcement learning, AI-powered security, and fraud detection.
+Most common parking violation per U.S. state, based on vehicle registration
 
 --- Slide 12 ---
 
-Project : Predicting House Prices using cuML
-Steps:
-Load the dataset (California housing dataset from sklearn).
-Preprocess the data and move it to cuDF for GPU processing.
-Train a Linear Regression model using cuML.
-Compare performance with Scikit-learn (CPU-based).
-Evaluate the model's performance (MSE & Training Time).
-For Full code click here
+Identifying the vehicle body types that most commonly receive parking violations is a key area of analysis
+Output
 
 --- Slide 13 ---
 
-Advantages and Limitations of cuML
-Advantages:
-
-Massively Parallel Computation: Ideal for large datasets.
-
-Easy Transition from scikit-learn: Similar API.
-
-Optimized for NVIDIA GPUs: Provides huge speedups.
-
-Limitations:
-
-Requires NVIDIA GPU: Not useful for CPU-only environments.
-
-Memory Constraints: GPU memory is limited compared to CPU RAM.
-
-Limited Algorithm Support: Some ML models are not yet implemented in cuML.
+To find out the parking violation across the day of the week
+A dictionary is created to map numerical weekday values (0-6) to their corresponding names.
+The "Issue Date" column is converted to a datetime format (datetime64[ms]), enabling date-based operations.
+.dt.weekday extracts the day of the week as an integer (0-6).
+.map(weekday_names) converts this integer into the corresponding weekday name (e.g., 0 -> "Monday").
+The data is grouped by "issue_weekday" (day of the week).
+The number of violations ("Summons Number") is counted for each weekday.
+.sort_values() sorts the results in ascending order to show which day had the fewest to the most violations.
 
 --- Slide 14 ---
 
-Comparison of cuML with Scikit-learn
+OUTPUT
+A noticeable decrease in parking violations occurs during weekends, likely due to reduced weekday traffic in New York City.
 
 --- Slide 15 ---
 
-Practical Implementation
-Click on the link below to go to Google COLAB
-Click HERE
+Starting with  cuDF.Pandas
+To demonstrate the performance benefits of cudf.pandas, we will re-execute the previously used Pandas code.
+
+ To accurately simulate a typical workflow, where cudf.pandas is loaded at the beginning, we have restarted the kernel prior to this execution.
 
 --- Slide 16 ---
 
-الشراكات العالمية
+Pandas Vs  cuDF.Pandas
+It is clear that Pandas has taken 7.01 seconds for the same task while cuDF Pandas has taken 1.3 seconds
 
 --- Slide 17 ---
 
-شــــــكــــرًا لكــــــم
-THANK YOU
-
-
-### 07
-
---- Slide 1 ---
-
-أكـــــاديميــــة طــــويـــق
-Scalable Data Science
-
---- Slide 2 ---
-
-Data visualization
-With Seaborn and Matplotlib
-By: Dr. Afshan Hashmi
-
---- Slide 3 ---
-
-Course Objectives:
-Learn the fundamentals of data visualization using Matplotlib and Seaborn.
-Create static, animated, and interactive plots for data analysis.
-Utilize Seaborn for statistical and enhanced visualizations.
-Customize plots with themes, colors, and annotations.
-
---- Slide 4 ---
-
-Matplotlib and Seaborn for Data Visualization
-Data visualization is crucial in scalable data science for understanding trends, distributions, and relationships. 
-
-Matplotliband Seaborn are two powerful Python libraries that provide extensive functionalities for creating insightful and high-quality visualizations.
-
---- Slide 5 ---
-
-Matplotlib
-Introduction to Matplotlib: Matplotlib is a fundamental library for creating static, animated, and interactive visualizations. It provides fine-grained control over plots, making it highly customizable.
-Key Features:
-Supports a wide range of plot types (line, bar, scatter, etc.).
-Highly customizable (labels, colors, themes, annotations).
-Integrates well with Jupyter Notebooks and other Python libraries.
-
---- Slide 6 ---
-
-Using Matplotlib
-
---- Slide 7 ---
-
-Seaborn
-Creating Plots with Seaborn
-Purpose: Seaborn is built on top of Matplotlib and provides a high-level interface for creating advanced statistical plots.
-Key Features:
-Simplifies the creation of complex visualizations (e.g., heatmaps, pair plots).
-Enhances Matplotlib graphs with better default styles and color palettes.
-
---- Slide 8 ---
-
-Using Seaborn
-
---- Slide 9 ---
-
-Customizing Visuals
-Customizing plots makes them more readable and visually appealing. You can modify labels, colors, themes, and annotations in both Matplotlib and Seaborn.
-
---- Slide 10 ---
-
-Line and Bar Plots
-Used to visualize trends over time and compare categorical data.
-
---- Slide 11 ---
-
-Scatter and Box Plots
-Scatter plots show relationships between two variables.
-Example: Scatter Plot with Regression Line
-
---- Slide 12 ---
-
-Box Plots
-Box plots help analyze the distribution and outliers in a dataset.
-
---- Slide 13 ---
-
-Heatmaps visualize correlations in datasets.
-
---- Slide 14 ---
-
-Pair plots show pairwise relationships in multi-variable data.
-
---- Slide 15 ---
-
-Conclusion
-Matplotlib is great for fine-grained control over plots.
-
-Seaborn simplifies statistical visualizations with beautiful themes.
-
-Customization improves readability and storytelling in data science.
-
-Different visualization types (scatter, box, heatmaps) provide insights into trends, distributions, and relationships.
-
-These techniques are scalable, meaning they work efficiently with both small and large datasets.
-
---- Slide 16 ---
-
-Practical Implementation
-Click on the link below to go to Google COLAB
-https://colab.research.google.com/drive/1Z9sV8qnk7--__x8OcKO1adtFJz82f4Bx
-
---- Slide 17 ---
-
-شــــــكــــرًا لكــــــم
-THANK YOU
-
-
-### 02
-
---- Slide 1 ---
-
-أكـــــاديميــــة طــــويـــق
-Scalable Data Science
-
---- Slide 2 ---
-
-Cloud Collaboration Tools
-By: Dr. Afshan Hashmi
-
---- Slide 3 ---
-
-Course Objectives:
-Understand what cloud collaboration tools are and why they are important.
-Identify popular cloud collaboration platforms and their core features.
-Compare different tools based on functionality, accessibility, and security.
-Demonstrate the use of common cloud collaboration tools through practical examples.
-
---- Slide 4 ---
-
-Introduction to Cloud Collaboration
-What is Cloud Collaboration?
-Cloud Collaboration refers to the practice of using cloud computing technologies that allow multiple people to:
-Work together on documents, files, or projects
-Access and edit content in real-time
-From anywhere with an internet connection
-Instead of storing files on a local device, cloud collaboration platforms store them on remote servers (the cloud), making it easy for teams to collaborate even if they are not in the same location.
-Key Features of Cloud Collaboration:
-Real-time Editing: Multiple users can edit the same document at the same time.
-Automatic Saving & Versioning: Changes are saved automatically, and previous versions are often stored.
-Remote Access: Files can be accessed anytime, anywhere.
-File Sharing: Easy to share with teams or external stakeholders.
-Integrated Communication: Chat, comments, and video calls often integrated into the tools.
-
---- Slide 5 ---
-
-Why Use Cloud Collaboration Tools?
-1. Supports Remote and Hybrid Work Models
-With more people working from home or from different locations, cloud tools ensure everyone stays connected and productive.
-2. Facilitates Teamwork Across Geographic Boundaries
-Teams in different cities or countries can collaborate as if they were in the same room.
-3. Enhances Productivity and Communication
-Instant updates and seamless communication reduce misunderstandings and improve workflow.
-Saves time no need to send files back and forth by email.
-
-Examples of Cloud Collaboration Tools:
-Google Workspace (Docs, Sheets, Drive)
-Microsoft 365 (Word Online, OneDrive, Teams)
-Slack with file sharing
-Trello / Asana for task management
-Zoom / Microsoft Teams for meetings and screen sharing
-
---- Slide 6 ---
-
-Key Features of Cloud Collaboration Tools
-Real-time Editing
-Multiple users can edit the same document or file at the same time.
-Changes appear instantly for everyone.
-Example: Google Docs lets your team write, edit, and see updates live.
-Version Control
-Keeps a history of all changes made to a document.
-You can track who edited what and when.
-Option to revert to previous versions if needed.
- File Sharing
-Share files securely with team members or external collaborators.
-Set permissions: view-only, comment, or edit.
-No need to email attachments just share a link.
-
---- Slide 7 ---
-
-Key Features of Cloud Collaboration Tools
-Commenting & Feedback
-Leave inline comments directly on documents.
-Tag teammates using @mention to notify them.
-Makes feedback clear, organized, and action-oriented.
-Integration
-Works smoothly with other tools like:
-Calendars (e.g., Google Calendar)
-Project management (e.g., Trello, Asana)
-Communication apps (e.g., Slack, Microsoft Teams)
-Keeps everything connected in one place.
-Security
-Strong protection through:
-User permissions (who can see or edit)
-Access control (limit by team, device, or IP)
-Data encryption (to keep content private and secure)
-
---- Slide 8 ---
-
-Common Cloud Collaboration Tools
-Cloud collaboration tools help teams work together in real time, share files, manage tasks, and communicate effectively especially in remote or hybrid work environments.
-Here are some of the most widely used tools categorized by function:
-1. Document Creation & File Sharing
-Google Workspace
-Includes: Google Docs, Sheets, Slides, and Drive.
-Real-time editing, comments, version history.
-Ideal for document collaboration and storage.
-Microsoft 365
-Includes: Word Online, Excel Online, PowerPoint, OneDrive.
-Integrates with Microsoft Teams for smooth collaboration.
-Strong enterprise-level support.
-Dropbox
-File storage and sharing platform.
-Integrates with third-party apps for collaboration.
-Good version control and file recovery.
-
---- Slide 9 ---
-
-Common Cloud Collaboration Tools
-Communication & Messaging
-Slack
-Team messaging app with channels and direct messages.
-File sharing and integration with tools like Google Drive and Trello.
-Real-time collaboration and notification system.
-Microsoft Teams
-Combines chat, video calls, file sharing, and collaboration in one place.
-Deeply integrated with Microsoft 365.
-Useful for team meetings and document co-authoring.
-Zoom
-Video conferencing and screen sharing.
-Useful for online meetings, webinars, and virtual classes.
-Can be integrated with other collaboration tools.
-
---- Slide 10 ---
-
-Common Cloud Collaboration Tools
-Project & Task Management
-Trello
-Visual task management using boards, lists, and cards.
-Great for small teams and simple project tracking.
-Easy drag-and-drop interface.
-Asana
-Task and project management tool.
-Lets you assign tasks, set due dates, and track progress.
-Integrates with email, Slack, Google Drive, etc.
-ClickUp / Monday.com
-All-in-one workspaces for tasks, docs, goals, and timelines.
-Highly customizable workflows for teams.
-
---- Slide 11 ---
-
-Common Cloud Collaboration Tools
-Integrated Platforms
-Notion
-Combines note-taking, docs, databases, and task tracking.
-Customizable and great for team knowledge bases.
-Real-time collaboration with rich media support.
-Airtable
-Like a super-powered spreadsheet.
-Combines database features with a user-friendly interface.
-Good for project planning and content calendars.
-
---- Slide 12 ---
-
-Common Cloud Collaboration Tools
-
---- Slide 13 ---
-
-Key Technologies Behind Cloud Collaboration
-These are the core technologies that make cloud collaboration fast, secure, and seamless.
- A. Real-Time Sync
-Cloud collaboration tools rely on real-time synchronization to ensure all users see the same version of a document instantly.
-Operational Transformation (OT)
-A method used to resolve conflicts when multiple users are editing a document at the same time.
-It ensures that all changes are merged smoothly, so nothing is overwritten.
-Example: Google Docs uses OT to let multiple users type on the same document without issues.
-WebSockets
-A communication protocol that keeps a constant connection between the user’s device and the server.
-Allows instant updates to be sent in both directions no need to refresh the page.
-Used in live chats, collaborative editing, dashboards, etc.
-
---- Slide 14 ---
-
-Key Technologies Behind Cloud Collaboration
-B. Security & Compliance
-Since cloud collaboration involves storing and transferring sensitive data, security is critical.
- Encryption
-AES-256 (Advanced Encryption Standard) is used to protect data at rest (stored data).
-TLS (Transport Layer Security) protects data in transit (data being transferred between devices and servers).
-Access Controls
-Tools implement Role-Based Access Control (RBAC):
-Admin – full control
-Editor – can modify content
-Viewer – read-only access
-Ensures only the right people can see or edit data.
-Compliance Standards
-Tools often follow global standards to protect user privacy and data:
-GDPR – for data protection in the EU
-HIPAA – for health-related data security in the U.S.
-SOC 2 – for service organization controls (audits, privacy, etc.)
-
---- Slide 15 ---
-
-Key Technologies Behind Cloud Collaboration
-C. APIs & Integrations
-APIs and integrations help cloud tools communicate with each other, improving efficiency and automation.
-REST APIs (Representational State Transfer)
-Allow external apps or systems to connect and exchange data.
-Example: Connect Slack with Google Calendar to get meeting reminders in Slack.
-Webhooks
-Used to send real-time alerts between systems when certain events happen.
-Example: A new issue is created in GitHub → a message is sent to your Slack channel automatically.
-
---- Slide 16 ---
-
-Challenges and Considerations in Cloud Collaboration
-While cloud collaboration tools offer many benefits, there are some challenges that teams and organizations must address:
-1. Security Risks
-What it is: Data stored in the cloud can be vulnerable to unauthorized access, breaches, or leaks.
-Why it matters: Sensitive company or customer information may be exposed if proper security measures (like encryption and access control) aren't in place.
-Example: Sharing a file with the wrong permissions can lead to accidental exposure.
-
-2. Internet Dependency
-What it is: Cloud tools rely heavily on internet connectivity.
-Why it matters: If the internet is slow or unavailable, users may lose access to critical documents or live collaboration features.
-Example: During a meeting, poor internet can disrupt file sharing or real-time updates.
-
---- Slide 17 ---
-
-Challenges and Considerations in Cloud Collaboration
-3. Compatibility Issues
-What it is: Different tools or file formats might not work well together.
-Why it matters: Users may face difficulties when collaborating across platforms or with older file versions.
-Example: A document made in Microsoft Word might lose formatting when opened in Google Docs.
-
-4. User Training
-What it is: Employees may need to learn how to use new tools or adapt to cloud-based workflows.
-Why it matters: Without proper training, productivity may drop, and users may resist adopting new systems.
-Example: A team used to emailing files may take time to adjust to using shared online documents.
+Pandas Vs  cuDF.Pandas
+It is clear that Pandas has taken 884 milli-seconds for the same task while cuDF Pandas has taken only  27.2milli-seconds
 
 --- Slide 18 ---
 
-Best Practices for Effective Collaboration
-Effective collaboration using cloud tools requires not just the right platform, but also smart practices to ensure productivity, security, and alignment. Below are key best practices every team should follow:
-
-1. Standardize Tools
-Why it matters: Using too many tools creates confusion, duplicate work, and inefficiencies.
-Best practice:
-Choose one tool per function (e.g., only Asana or Trello for project management).
-Establish an official toolset for communication, file storage, task tracking, etc.
-Example: Use Google Workspace + Trello + Slack for your team, and ensure everyone sticks to them.
+Pandas Vs  cuDF.Pandas
+It is clear that Pandas has taken 8.51 seconds for the same task while cuDF Pandas has taken 297 milli-seconds
 
 --- Slide 19 ---
 
-Best Practices for Effective Collaboration
-2. Set Permissions
-Why it matters: Accidental edits or unauthorized access to sensitive data can be costly.
-Best practice:
-Set view-only, comment, or edit permissions based on role and responsibility.
-Use folder-level controls in tools like Google Drive or OneDrive.
-Example: Project plans can be editable by managers, while interns get view-only access.
-3. Train Teams
-Why it matters: Many powerful features go unused due to lack of knowledge.
-Best practice:
-Provide hands-on training or short video tutorials.
-Highlight features like:
-@mentions for collaboration,
-Version history to recover previous work,
-Shortcuts for productivity.
-Example: Conduct a 15-minute weekly “Tool Tips” session.
+Quiz TimeAnalyze Violations by Day of the Week and Vehicle Type
 
 --- Slide 20 ---
 
-Best Practices for Effective Collaboration
-4. Automate Workflows
-Why it matters: Manual tasks waste time and increase the risk of errors.
-Best practice:
-Use tools like Zapier, Make (Integromat), or Power Automate to connect platforms.
-Automate repetitive tasks, e.g.:
-New form submission → Create a Trello card.
-Slack message → Add to Google Calendar.
-Example: Automatically send a daily standup reminder via Slack at 9:00 a.m.
-
-5. Monitor Usage
-Why it matters: Helps in auditing, troubleshooting, and enforcing accountability.
-Best practice:
-Use built-in audit logs, usage dashboards, and activity history.
-Track who accessed/edited files, and monitor logins and sharing patterns.
-Example: In Google Workspace Admin Console, check Drive activity reports to ensure compliance.
+Quiz Time- Solution1. Analyze Violations by Day of the Week and Vehicle Type
 
 --- Slide 21 ---
 
-Comparison table
+Quiz Time2. Find the Top 5 Most Common Parking Violations
 
 --- Slide 22 ---
 
-Case Studies in Cloud Collaboration
-Real-world examples help demonstrate how cloud collaboration tools solve specific challenges. Here are two case studies:
-A. Remote Software Team
-Tools Used: GitHub + Slack + ZoomChallenge:
-Team members are working remotely across different time zones, making communication and coordination difficult.
-Solution:
-Outcome: Smooth code development, clear communication, and stronger team alignment across time zones.
+Quiz Time- Solution2. Find the Top 5 Most Common Parking Violations
 
 --- Slide 23 ---
 
-Case Studies in Cloud Collaboration
-B. Academic Research Group
-
-Tools Used: Notion + ZoteroChallenge: Researchers need to manage shared papers, deadlines, and citations for collaborative writing and publishing.
-
-Solution:
-Outcome: Organized workflow, centralized research materials, 
-and efficient citation management for academic writing.
-.
+Quiz Time3. Identify States with the Highest Number of Violations
 
 --- Slide 24 ---
 
-Summary
-Cloud collaboration tools revolutionize how teams work and communicate.
-They offer convenience, flexibility, and scalability.
-Choosing the right tool depends on project needs, team size, and integration requirements.
+Quiz Time4. Find the Monthly Trend of Parking Violations
 
 --- Slide 25 ---
 
-Reading and Resources
-Google Workspace: https://workspace.google.com/
-Microsoft 365: https://www.microsoft.com/microsoft-365
-Trello: https://trello.com/
-Slack: https://slack.com/
-Notion: https://www.notion.so/
+Quiz Time- Solution4. Find the Monthly Trend of Parking Violations
 
 --- Slide 26 ---
 
+Quiz Time5.Find the Most Common Violation for Each Vehicle Type
+
+--- Slide 27 ---
+
+Quiz Time- Solution5.Find the Most Common Violation for Each Vehicle Type
+
+--- Slide 28 ---
+
+RECAP
+GPU-Accelerated DataFrames – cuDF is a Pandas-like DataFrame library that runs on NVIDIA GPUs, enabling high-speed data processing.
+
+Pandas-Compatible API – cuDF supports most Pandas functions (read_parquet(), groupby(), merge(), etc.), making it easy to transition from CPU-based Pandas workflows.
+
+ Efficient Large-Scale Data Processing – cuDF is optimized for millions to billions of rows, outperforming Pandas in data manipulation, filtering, and aggregation.
+
+Best Use Cases for cuDF – Ideal for big data processing, ETL (Extract, Transform, Load) tasks, and data preparation before feeding into deep learning models.
+
+--- Slide 29 ---
+
+Practical Implementation
+Go To Google Colab
+
+--- Slide 30 ---
+
+الشراكات العالمية
+
+--- Slide 31 ---
+
 شــــــكــــرًا لكــــــم
 THANK YOU
-
 
 ### 11
 
@@ -2876,8 +2830,7 @@ A hands-on guide for IT professionals designing and deploying scalable cloud arc
 شــــــكــــرًا لكــــــم
 THANK YOU
 
-
-### 01
+### 12
 
 --- Slide 1 ---
 
@@ -2886,249 +2839,429 @@ Scalable Data Science
 
 --- Slide 2 ---
 
-Automated Workflows in the Cloud
+Model Training on Large Datasets
 By: Dr. Afshan Hashmi
 
 --- Slide 3 ---
 
 Course Objectives:
-Define cloud automation and its key components.
-Design workflows using serverless architectures (e.g., AWS Step Functions, Azure Logic Apps).
-Implement CI/CD pipelines for ML models in the cloud.
-Automate data processing with cloud-native tools (e.g., Airflow, Lambda).
-Evaluate cost/performance tradeoffs in workflow automation.
+Understand the challenges of training models on large datasets
+Apply best practices for handling large data efficiently
+Choose the right tools and infrastructure (e.g., distributed computing, cloud-based ML, GPUs)
+Optimize training using batching, sampling, and efficient data loading techniques
 
 --- Slide 4 ---
 
-Introduction to Automation in the Cloud
-What are Automated Workflows?
-Automated workflows are sequences of tasks and processes that are triggered and executed automatically using predefined rules or events in cloud environments.
-They eliminate the need for manual intervention and enhance efficiency, scalability, and reliability.
-Cloud Automation refers to the use of technology (scripts, tools, or services) to perform tasks in cloud environments automatically, with minimal or no human involvement.
-Purpose of Cloud Automation:
-Reduce Human Error
-Automated systems follow exact instructions every time eliminating mistakes that can happen with manual tasks.
-Save Time
-Tasks like server setup, deployments, or monitoring can be completed in seconds or scheduled regularly.
-Improve Scalability & Response Time
-Automatically adjust resources (like adding more servers) based on demand, ensuring smooth performance.
+Introduction to Large-Scale Model Training
+Why Large-Scale Training Matters
+Modern datasets exceed single-machine memory (e.g., TB-scale images, logs)
+Need for faster iteration in production ML systems
+Regulatory/compliance requirements for model reproducibility
+Key Challenges
+When to Scale?
+Dataset > 10GB (in-memory limits)
+Training time > 4 hours on single machine
+Need for frequent retraining (streaming data)
 
 --- Slide 5 ---
 
-Common Examples:
-Note: Tools like AWS CloudFormation, Terraform, Ansible, 
-and CI/CD pipelines (Jenkins, GitHub Actions) play key roles in automating cloud environments.
+Strategies for Efficient Training
+1.Data Sampling and Mini-Batching
+These are techniques used to efficiently train machine learning models, especially when dealing with large datasets that can't fit into memory all at once.
+A. Train on mini-batches instead of full data
+Why?
+Training on the entire dataset (full batch) at once consumes a lot of memory and can be very slow.
+Instead, we split the dataset into mini-batches (small chunks of data) and feed one batch at a time to the model.
+Benefits:
+Lower memory usage.
+More frequent updates to model weights → faster convergence.
+Enables parallelization and efficient GPU usage.
 
 --- Slide 6 ---
 
-Key Components of Cloud Automation
-These components work together to automate tasks in a cloud environment  like an intelligent to-do list that runs itself based on events and conditions.
-
-1. Triggers: Events that start an automated workflow.
-Example: A new file uploaded to cloud storage (like Google Drive or AWS S3) could trigger a workflow to process it.
-
-2. Actions: The specific tasks performed automatically when a trigger occurs.
-Example: After a file is uploaded, an email is sent or a backup is created.
-
-3. Conditions: Logic or rules that determine whether certain actions should be executed.
-Example: If the uploaded file is a PDF, then process it; otherwise, ignore it.
+Strategies for Efficient Training
+B. Use stratified sampling to maintain class balance
+What is it?
+When creating mini-batches, stratified sampling ensures that each batch has the same class distribution as the overall dataset.
+Why is it important?
+Prevents the model from being biased toward majority classes.
+Ensures better generalization and more stable training especially in imbalanced datasets.
+C. Common in TensorFlow and PyTorch: batch_size in DataLoader
+Both TensorFlow and PyTorch use the concept of mini-batches during training.
+You define the batch_size (number of samples per batch) when creating a data loader.
+Efficient training strategies like mini-batching and stratified sampling help manage memory usage, speed up training, and improve model performance,especially when working with large or imbalanced datasets.
 
 --- Slide 7 ---
 
-Key Components of Cloud Automation
-4. APIs & Connectors: Interfaces that connect different services and tools.
-Example: Connecting Google Sheets to Slack or AWS to GitHub using REST APIs, webhooks, or prebuilt connectors.
-5. Orchestration: The coordination of multiple actions across different systems in a defined sequence.
-Example:After code is committed → test the code → deploy it → notify the team.
-Putting It All Together:
-Imagine this automated workflow:
-Trigger: New file uploaded to Dropbox
-Condition: File is a .csv
-Action 1: Parse and analyze the file
-Action 2: Upload results to Google Sheets
-Action 3: Send summary via email
-All coordinated through orchestration
+Strategies for Efficient Training
+2.Data Generators / Streaming
+This strategy is about loading only the data you need, when you need it, instead of loading everything into memory at once — perfect for large datasets.
+Why Use It?
+When your dataset is too large to fit into RAM, you:
+Don’t load the whole dataset into memory.
+Instead, stream data on the fly — this is called lazy loading.
+This technique is commonly implemented through data generators or custom dataset loaders.
+How It Works:
+You write or use a generator function that:
+Loads a small piece of the data (e.g., an image or a batch of rows).
+Processes it (if needed).
+Yields it to the model for training or prediction.
 
 --- Slide 8 ---
 
-Tools for Automating Workflows in the Cloud
-Cloud providers like AWS, Azure, and GCP offer a variety of tools to automate tasks, respond to events, and orchestrate services all without manual intervention.
-Amazon Web Services (AWS)
+Strategies for Efficient Training
+Popular Frameworks & Tools
+TensorFlow – tf.data API
+tf.data.Dataset can load and preprocess data efficiently using generators, lazy loading, and pipelines.
+Example:
+import tensorflow as tf
+
+def generator():
+    for file in image_files:
+        yield load_image(file), load_label(file)
+
+dataset = tf.data.Dataset.from_generator(generator)
+dataset = dataset.batch(32).prefetch(tf.data.AUTOTUNE)
 
 --- Slide 9 ---
 
-Tools for Automating Workflows in the Cloud
-Microsoft Azure
+Strategies for Efficient Training
+PyTorch – Dataset and DataLoader
+Create a custom Dataset class with __getitem__ to load only one item at a time.
+DataLoader then wraps this to handle mini-batches, shuffling, and multiprocessing.
+from torch.utils.data import Dataset, DataLoader
+
+class MyDataset(Dataset):
+    def __init__(self, file_paths):
+        self.file_paths = file_paths
+
+    def __len__(self):
+        return len(self.file_paths)
+
+    def __getitem__(self, idx):
+        data = load_data(self.file_paths[idx])
+        label = load_label(self.file_paths[idx])
+        return data, label
+
+dataset = MyDataset(file_paths)
+loader = DataLoader(dataset, batch_size=32, shuffle=True)
 
 --- Slide 10 ---
 
-Tools for Automating Workflows in the Cloud
-Google Cloud Platform (GCP)
+Strategies for Efficient Training
+Dask – For Large Tabular Data
+Dask DataFrames are like Pandas, but they load and process data in chunks (partitions).
+Ideal for big tabular data that doesn’t fit into memory.
+import dask.dataframe as dd
+
+df = dd.read_csv('large_dataset.csv')
+filtered = df[df['label'] == 1]
+result = filtered.compute()
+Using generators or streaming:
+Saves memory by not loading the full dataset.
+Works great for large image/text/tabular datasets.
+Frameworks like TensorFlow, PyTorch, and Dask provide built-in support for this.
 
 --- Slide 11 ---
 
-Real-World Examples of Cloud Automation
-These examples show how cloud automation can simplify repetitive or time-sensitive tasks across different platforms.
-Example 1: Daily File Backup
-Trigger:Time-based — scheduled every day at 8 PM
-Action:Automatically copy a file or database from the production environment to a backup storage location
-Tools Used:
-AWS Lambda – Executes the backup logic
-S3 – Stores the backup
-CloudWatch – Triggers Lambda on a schedule
- This helps ensure that data is regularly backed up without needing a person to do it manually.
+Strategies for Efficient Training
+3. Using Cloud & Distributed Resources
+When your model or dataset is too large to train efficiently on a single machine (like your laptop), you can turn to cloud platforms and distributed computing to scale up training.
+
+Why Use Cloud and Distributed Resources?
+To train faster by using powerful cloud GPUs or TPUs.
+To scale horizontally (i.e., use multiple machines) for very large datasets or deep learning models.
+To save time and avoid limitations of local hardware.
+
+Popular Cloud Training Platforms
+
+Google Cloud AI Platform
+Offers managed services for training ML models.
+Supports TensorFlow, PyTorch, XGBoost, etc.
+You can train using GPUs/TPUs on the cloud without managing infrastructure.
 
 --- Slide 12 ---
 
-Real-World Examples of Cloud Automation
-Example 2: Slack Notification for New GitHub Issue
+Strategies for Efficient Training
+b). AWS SageMaker
+End-to-end ML service on Amazon Cloud.
+Train, tune, deploy, and monitor models.
+Built-in support for distributed training and pre-built ML containers.
+Key feature: "Bring Your Own Model" or use built-in algorithms.
 
-Trigger:A new issue is opened on a GitHub repository
-Action:Automatically send a message to a specific Slack channel with details of the new issue
- Tools Used:
-Zapier (no-code)
-Or Azure Logic Apps (workflow builder)
-Or GCP Workflows for developers
- This keeps your team in the loop in real time without constantly checking GitHub.
+
+c). Databricks (with Spark + MLlib)
+Ideal for big data + machine learning workflows.
+Combines Apache Spark for distributed data processing with MLlib for scalable ML algorithms.
+Great for tabular data, recommendation systems, etc.
 
 --- Slide 13 ---
 
-Real-World Examples of Cloud Automation
-Example 3: Auto-Scaling EC2 Instances
-
-Trigger:When CPU usage > 80% on current EC2 instances
-Action:Automatically launch a new EC2 instance to handle the load
-Tools Used:
-AWS Auto Scaling – Adjusts the number of instances
-CloudWatch Alarms – Monitors CPU usage and triggers scaling
-This ensures performance under heavy load while saving costs when usage drops.
+Strategies for Efficient Training
+Distributed Training Frameworks
+a. Horovod
+Open-source framework from Uber.
+Allows distributed training across GPUs and nodes.
+Works with TensorFlow, PyTorch, and MXNet.
+Use case: Train deep learning models across many GPUs/nodes in parallel.
+b.  PyTorch DDP (Distributed Data Parallel)
+Native PyTorch module for distributed training.
+Replicates your model across multiple GPUs/machines.
+Each replica handles a portion of the data.
+torch.nn.parallel.DistributedDataParallel(model)
 
 --- Slide 14 ---
 
-Hands-On Exercise: Notify via Email When a File is Uploaded
-Platform: AWS
-Scenario Flow
-File UploadA user uploads a file to an Amazon S3 bucket.
-Trigger LambdaThe file upload triggers an AWS Lambda function through an S3 event.
-Send Email NotificationThe Lambda function uses AWS SNS (Simple Notification Service) to send an email alert.
+Strategies for Efficient Training
+4. Model Checkpointing
+Checkpointing means saving your model’s progress (usually the learned weights) at different stages during training so you don’t lose all your work if something goes wrong (e.g., crash, power loss).
+
+Why is it Important?
+Avoids restarting from the beginning if training is interrupted.
+Helps you resume training from the last saved point.
+You can save the best version of your model (based on validation accuracy or loss).
+Useful for long training jobs that can take hours or days.
+
+What Does a Checkpoint Store?
+Typically includes:
+Model architecture (optional, if not already defined in code)
+Weights/parameters (learned during training)
+Optimizer state (so training resumes smoothly)
 
 --- Slide 15 ---
 
-Hands-On Exercise: Notify via Email When a File is Uploaded
-import json
-import boto3
-def lambda_handler(event, context):
-    # Get uploaded file name from the S3 event
-    s3_info = event['Records'][0]['s3']['object']['key']
-    
-    # Create an SNS client
-    sns = boto3.client('sns')
-    
-    # Send an email via SNS
-    sns.publish(
-        TopicArn='arn:aws:sns:region:acct-id:topic',  # Replace with your SNS topic ARN
-        Message=f'New file uploaded: {s3_info}',
-        Subject='Upload Notification'
-    )
-    
-    return {
-        'statusCode': 200,
-        'body': json.dumps('Notification sent!')
-    }
+Strategies for Efficient Training
+4. Model Checkpointing
+When to Save Checkpoints?
+After every epoch
+After every N batches
+When validation loss improves
+At fixed time intervals
+Examples in Code
+TensorFlow / Keras:
+from tensorflow.keras.callbacks import ModelCheckpoint
+
+checkpoint_cb = ModelCheckpoint("model_checkpoint.h5", save_best_only=True)
+model.fit(X_train, y_train, epochs=10, callbacks=[checkpoint_cb])
+save_best_only=True means it saves only when the model improves on validation set.
 
 --- Slide 16 ---
 
-Hands-On Exercise: Notify via Email When a File is Uploaded
-Explanation of Key Parts
+Strategies for Efficient Training
+4. Model Checkpointing
+PyTorch:
+torch.save(model.state_dict(), 'model_checkpoint.pth')  # to save
+
+model.load_state_dict(torch.load('model_checkpoint.pth’)) # to load
+You can wrap this in a condition like:
+if epoch % 5 == 0:
+    torch.save(model.state_dict(), f'model_epoch_{epoch}.pth')
 
 --- Slide 17 ---
 
-Best Practices for Automated Workflows
-These practices ensure your automated workflows are secure, maintainable, and reliable.
-Use Environment Variables
+Strategies for Efficient Training
+5. Using GPU/TPU Acceleration
 
-What it means: Instead of hardcoding sensitive data (like API keys, database URIs, file paths), use environment variables.
+Training machine learning (especially deep learning) models can be very slow on regular CPUs. GPUs and TPUs are specialized hardware that speed up training significantly by handling computations in parallel.
+What are GPUs and TPUs?
 
-B. Why it matters:
-Keeps your code cleaner
-Makes deployments more flexible across dev, staging, and production
-Enhances security by avoiding hardcoded secrets
+GPU (Graphics Processing Unit) – Designed to handle thousands of parallel computations. Great for deep learning, especially for tasks like matrix multiplication (used heavily in neural networks).
 
-Example: Instead of writing db_password = 'abc123', store it in os.environ['DB_PASSWORD'].
+TPU (Tensor Processing Unit) – Custom hardware developed by Google for fast TensorFlow operations. Even faster for certain tasks like large-scale training and inference.
 
 --- Slide 18 ---
 
-Best Practices for Automated Workflows
-2. Limit Permissions (Least-Privilege Principle)
-What it means: Give your automation only the minimum permissions it needs to function.
-Why it matters:
-Reduces risk if a service or script is compromised
-Prevents accidental changes to critical resources
-Example: A Lambda function that only reads from S3 should not have write or delete permissions.
-
-3. Monitor & Log All Actions
-What it means: Track workflow actions and issues through logging and monitoring services.
-Why it matters:
-Helps in debugging and auditing
-Ensures visibility into system health and workflow status
-Tools:
-AWS: CloudWatch
-GCP: Stackdriver
-Azure: Application Insights
+Strategies for Efficient Training
+5. Using GPU/TPU Acceleration
+Popular Frameworks & Tools for GPU/TPU Use
+cuML (from NVIDIA RAPIDS)
+A GPU-accelerated ML library.
+Offers scikit-learn-like API with much faster performance using CUDA.
+Example:
+from cuml.linear_model import LogisticRegression
+model = LogisticRegression()
+model.fit(X_train, y_train)
+TensorFlow / PyTorch with CUDA
+Both TensorFlow and PyTorch can automatically use the GPU if available.
+PyTorch example:
+device = "cuda" if torch.cuda.is_available() else "cpu"
+model = MyModel().to(device)
+TensorFlow example:
+# Automatically uses GPU if available
+model.fit(X_train, y_train)
 
 --- Slide 19 ---
 
-Best Practices for Automated Workflows
-4. Integrate Error Handling
-What it means: Plan for failures by writing code that can catch and handle errors gracefully.
-Why it matters:
-Avoids broken workflows and silent failures
-Enables retries or alerts when something goes wrong
-Example: Use try-except blocks in Python Lambda functions to catch API failures and log them or trigger alerts.
-
-5. Modularize Logic
-What it means: Break your workflows into small, reusable modules or steps.
-Why it matters:
-Easier to debug, test, and maintain
-Encourages reusability of logic across multiple workflows
-Example: Instead of one large function, have separate ones for validation, transformation, and sending data.
+Strategies for Efficient Training
+Additional Tricks to Speed Up Training
+6. Batch Normalization
+Normalizes inputs to each layer, which stabilizes and accelerates training.
+Helps in faster convergence and can allow higher learning rates.
+Example (Keras):
+from tensorflow.keras.layers import BatchNormalization
+model.add(BatchNormalization())
+7. Mixed Precision Training
+Uses 16-bit (half) precision instead of 32-bit floats.
+Speeds up training and reduces memory usage while maintaining accuracy.
+Especially effective on NVIDIA GPUs with Tensor Cores or TPUs.
+from tensorflow.keras import mixed_precision
+mixed_precision.set_global_policy('mixed_float16')
 
 --- Slide 20 ---
 
-Best Practices for Automated Workflows
+Strategies for Efficient Training
+Additional Tricks to Speed Up Training
+PyTorch Example:
+from torch.cuda.amp import GradScaler, autocast
+scaler = GradScaler()
+for data in dataloader:
+    with autocast():
+        outputs = model(inputs)
+        loss = loss_fn(outputs, targets)
+    scaler.scale(loss).backward()
+    scaler.step(optimizer)
+    scaler.update()
 
 --- Slide 21 ---
 
-Summary
-Cloud-based automated workflows help execute tasks like backups, notifications, and deployments without manual intervention.
-Triggers (e.g., file upload, scheduled time) initiate actions such as sending emails or scaling infrastructure.
-Common cloud services for automation include AWS Lambda, Azure Logic Apps, and Google Cloud Functions.
-These workflows can connect multiple cloud services using APIs or orchestration tools like AWS Step Functions or GCP Workflows.
-Automation improves efficiency, reduces human error, and ensures consistency across processes.
-Best practices include setting up monitoring, logging, error handling, and using the principle of least privilege for security.
-Tools like Zapier and IFTTT offer no-code automation for connecting third-party services easily.
+Memory-Efficient Data Type
+When working with large datasets, every byte matters. Using smaller data types can significantly reduce memory usage which speeds up processing and allows you to train models more efficiently.
+Why Optimize Data Types?
+Lower memory usage
+Faster data loading and processing
+Less strain on RAM or GPU memory
+Helps prevent "out of memory" errors
+
+Common Optimizations:
 
 --- Slide 22 ---
 
-Reading and Resources
-AWS Docs: https://docs.aws.amazon.com/lambda
-Azure Logic Apps: https://learn.microsoft.com/en-us/azure/logic-apps
-GCP Workflows: https://cloud.google.com/workflows/docs
-Automate.io and Zapier (No-code tools)
-"Cloud Automation Cookbook" by Nikit Swaraj (Packt)
-YouTube: Cloud Academy, AWS Tutorials, Microsoft Learn
+Memory-Efficient Data Type
+Reducing Categorical Memory with category
+df['color'] = df['color'].astype('category')
+If you have a column with many repeated string values (like "red", "blue", "green"), converting it to category can save tons of memory.
+Example: Memory Comparison
+# Before
+df.memory_usage(deep=True)
+
+# After downcasting
+df['price'] = pd.to_numeric(df['price'], downcast='float')
+df['count'] = pd.to_numeric(df['count'], downcast='integer')
+
+df.memory_usage(deep=True)
 
 --- Slide 23 ---
 
-الشراكات العالمية
+Memory-Efficient Data Type
+Benefits of changing Data Type
 
 --- Slide 24 ---
+
+Toolkits and Libraries Overview
+
+--- Slide 25 ---
+
+Tool-by-Tool Explanation:
+Dask / Joblib
+Dask: Allows you to work with large tabular datasets by parallelizing operations across CPUs or clusters.
+Joblib: Commonly used to parallelize loops or cache functions in scikit-learn.
+Spark MLlib
+Part of Apache Spark, designed for distributed ML.
+Ideal when working with very large datasets stored in Hadoop or data lakes.
+cuML (NVIDIA RAPIDS)
+GPU-powered version of scikit-learn APIs.
+Speeds up classical ML algorithms (e.g., k-means, PCA, logistic regression) using NVIDIA GPUs.
+TFRecords (TensorFlow)
+A binary file format for storing large datasets (e.g., images, text).
+Used with tf.data for efficient streaming during training.
+PyTorch Lightning
+High-level wrapper over PyTorch.
+Helps you structure your code for clean, scalable, and reproducible training.
+Handles logging, checkpointing, and training loops automatically.
+Petastorm
+Developed by Uber.
+Lets you read large Parquet files efficiently into PyTorch or Spark.
+Supports streaming from remote storage like S3.
+
+--- Slide 26 ---
+
+Tool-by-Tool Explanation:
+Dask / Joblib
+Dask: Allows you to work with large tabular datasets by parallelizing operations across CPUs or clusters.
+Joblib: Commonly used to parallelize loops or cache functions in scikit-learn.
+Spark MLlib
+Part of Apache Spark, designed for distributed ML.
+Ideal when working with very large datasets stored in Hadoop or data lakes.
+cuML (NVIDIA RAPIDS)
+GPU-powered version of scikit-learn APIs.
+Speeds up classical ML algorithms (e.g., k-means, PCA, logistic regression) using NVIDIA GPUs.
+TFRecords (TensorFlow)
+A binary file format for storing large datasets (e.g., images, text).
+Used with tf.data for efficient streaming during training.
+PyTorch Lightning
+High-level wrapper over PyTorch.
+Helps you structure your code for clean, scalable, and reproducible training.
+Handles logging, checkpointing, and training loops automatically.
+Petastorm
+Developed by Uber.
+Lets you read large Parquet files efficiently into PyTorch or Spark.
+Supports streaming from remote storage like S3.
+
+--- Slide 27 ---
+
+Case Studies & Benchmarks
+Case Study 1: Recommendation Systems at Netflix
+Scale: 100TB+ user interaction data
+Solution: Spark ALS with model sharding
+Outcome: 8x faster training vs. single-node
+
+Case Study 2: Computer Vision at Tesla
+Scale: Millions of auto-labeled images
+Solution: PyTorch + Horovod on GPU cluster
+Trick: Gradient compression for cross-region sync
+Performance Benchmarks
+
+--- Slide 28 ---
+
+Challenges & Future Trends
+Current Challenges
+Straggler Problem: Slow workers delay synchronization
+Data Skew: Uneven partition sizes hurt parallelism
+Debugging Complexity: Hard to trace distributed failures
+
+Emerging Solutions
+Zero Redundancy Optimizer (ZeRO): Memory optimization
+Serverless ML: AWS SageMaker, Google Vertex AI
+Quantum ML: Early experiments with QPUs
+
+--- Slide 29 ---
+
+Summary
+Efficient training = smart data handling + parallelism + resource optimization
+Tools like Dask, Spark, cuML, and cloud platforms are essential
+Don’t load full data into memory—stream, batch, or partition it
+Evaluate models iteratively with checkpoints and logging
+
+--- Slide 30 ---
+
+Resources & Further Reading
+Dask ML Docs
+cuML GitHub
+Spark MLlib Guide
+Efficient Data Loading with PyTorch
+"Designing Machine Learning Systems" - Chip Huyen
+"Distributed Machine Learning Patterns" - Yuan Tang
+
+--- Slide 31 ---
+
+الشراكات العالمية
+
+--- Slide 32 ---
 
 شــــــكــــرًا لكــــــم
 THANK YOU
 
-
-### 15
+### 13
 
 --- Slide 1 ---
 
@@ -3150,408 +3283,99 @@ To explore data visualization techniques using third-party libraries like Plotly
 
 --- Slide 4 ---
 
-Understanding the Basics
-When dealing with large datasets, processing speed is crucial. That's where GPUs (Graphics Processing Units) come in, as they're designed for parallel processing, which significantly accelerates data manipulation. However, not all operations can be performed on a GPU. This is where cudf.pandas and its profiling utilities become very useful. Here's a breakdown:
+Numba: Just-In-Time (JIT) Compilation for Speeding Up Python Code
+Numba is a Python library that accelerates code execution using JIT compilation.
 
-pandas: pandas is a popular Python library for data manipulation and analysis, primarily designed for CPU processing.
+Converts Python code into machine code at runtime for improved performance.
 
-cuDF: cuDF is a GPU-accelerated DataFrame library, designed to perform similar operations as pandas but on a GPU, leading to much faster processing for large datasets.
+It is particularly useful for speeding up numerical computations without requiring extensive rewrites of Python code.
 
-3.   cudf.pandas: cudf.pandas acts as an accelerator for pandas. It attempts to execute pandas-like operations on the GPU whenever possible, and if an operation isn't supported by the GPU, it falls back to the CPU.
+Numba works well with NumPy, allowing array operations to be executed much faster.
+
+Key Features:
+Easy to use with minimal code changes.
+Supports CPU and GPU acceleration.
+Compatible with NumPy, SciPy, and other Python libraries.
 
 --- Slide 5 ---
 
-Understanding Performance in cudf.pandas
-cudf.pandas provides profiling utilities to help you analyze the performance of your code when working with GPU-accelerated data frames. 
-
-These tools help determine which parts of your code ran on the GPU (which is faster for large data processing) and which parts still ran on the CPU (which may be a bottleneck).
+Why Use Numba?
+Benefits:
+Speed: Dramatically improves performance of numerical computations.
+Simplicity: Requires only a decorator to optimize functions.
+Flexibility: Works with existing Python code and libraries.
+Use Cases:
+Scientific computing.
+Data analysis.
+Machine learning and deep learning.
 
 --- Slide 6 ---
 
-Why Profiling is Important:
-Identifying Bottlenecks:
-If parts of your code are still running on the CPU, those sections can become performance bottlenecks, slowing down the overall process.
-The profiling utilities help you pinpoint these CPU-bound sections.
-Optimizing Performance:
-By knowing which parts of your code are using the GPU and which are using the CPU, you can optimize your code to maximize GPU utilization.
-This may involve rewriting certain operations to be more GPU-friendly or minimizing data transfers between the CPU and GPU.
-Understanding Execution:
-The profiler gives you a clear picture of how your code is being executed, which is valuable for understanding and improving its performance.
+How JIT Compilation Works
+JIT Compilation Explained
+Traditional Python code is interpreted line-by-line, causing slower execution.
+Numba compiles functions into machine code just before execution, leading to significant speedups.
+Uses LLVM (Low-Level Virtual Machine) for optimizing execution.
 
 --- Slide 7 ---
 
-The Goal: Accelerating pandas with GPU Power
-Core Functionality:
-At its heart, cudf.pandas aims to leverage the parallel processing capabilities of GPUs to drastically speed up data manipulation tasks that are traditionally handled by the pandas library on CPUs.
-
-It acts as a bridge, attempting to translate your familiar pandas code into equivalent operations that can be executed on the GPU.
-
-Performance Gains:
-For large datasets, GPU acceleration can result in significant performance improvements, often orders of magnitude faster than CPU-based processing.
-
-The largest gains are seen in operations that can be performed in parallel.
+How Numba Works
 
 --- Slide 8 ---
 
-The Insight: Profiling for Performance Analysis
-Understanding Execution Flow:
-The profiling tools within cudf.pandas provide crucial insights into how your code is actually being executed.
-They reveal which portions of your data processing pipeline are being handled by the GPU and which are falling back to the CPU.
-
-Identifying Bottlenecks:
-By highlighting CPU-bound operations, the profiler helps you pinpoint potential performance bottlenecks.
-These bottlenecks can arise from operations that are not yet supported on the GPU or from inefficient data transfers between the CPU and GPU.
-Measuring Success:
-The tools allow you to measure how effectively the GPU is being utilized. 
-This gives you concrete data to understand the performance gains you are receiving.
+Performance with & without numba
+Without Numba: The function runs in pure Python, which is slower due to interpreter overhead.
+With Numba: The function is compiled to machine code, resulting in significantly faster execution.
 
 --- Slide 9 ---
 
-The Action: Optimization and Efficiency
-Targeted Optimization:
-Armed with the information from the profiler, you can strategically optimize your code to maximize GPU utilization.
-This may involve restructuring data manipulations, using GPU-compatible functions, or minimizing data transfers.
-Workflow Enhancement:
-By optimizing your code for GPU acceleration, you can significantly improve the efficiency of your data processing workflows.
-This translates to faster processing times, reduced resource consumption, and improved overall productivity.
-Maximizing Potential:
-For anyone working with large datasets and seeking to maximize the performance of their cudf.pandas workflows, the profiling utilities are indispensable. They provide the necessary visibility and insights to unlock the full potential of GPU acceleration.
+Numba Modes
+1. nopython Mode:
+Ensures the function is fully compiled to machine code.
+No Python objects are allowed.
+Example:
+
+
+2. object Mode:
+Allows Python objects but is slower.
+Used as a fallback when no python mode fails.
 
 --- Slide 10 ---
 
-Profiling with cudf.pandas
-Profiling utilities allow you to analyze execution time and resource usage helping  in optimizing code by identifying CPU-bound operations.
-Loading the Extension
-To use profiling features, the cudf.pandas extension must be loaded.
+Limitations of Numba
+Challenges:
 
+Works best with numerical computations.
+Limited support for non-NumPy Python features.
+Requires careful handling of data types.
 
+When Not to Use:
 
-
-Colab Note
-If running in Google Colab, the first time you use the profiler, it may take more than 10 seconds due to Colab's debugger interacting with Python’s sys.settrace function.
-If it runs slow initially, run the cell again, and it should work fine.
+For non-numerical or highly dynamic Python code.
 
 --- Slide 11 ---
 
-Profiling per function
-Pandas.profile gives the detail about each function
+Summary
+Numba accelerates Python code using JIT compilation.
+Works best with loops and numerical computations.
+NumPy operations are highly optimized with Numba.
+Simple to use: Just add @jit(nopython=True) decorator.
+Helps in high-performance computing, scientific computing, and machine learning workloads.
 
 --- Slide 12 ---
-
-Profiling per line
-Pandas.line.profile gives the detail about each line of code
-
---- Slide 13 ---
-
-Using Third-Party Libraries with cudf.pandas
-The cudf.pandas module in RAPIDS supports interoperability with third-party Python libraries like Plotly, Matplotlib, Seaborn, and Scikit-learn. 
-
-This means you can pass cuDF DataFrames (which are optimized for GPU processing) to these libraries just like you would with standard Pandas DataFrames.
-
---- Slide 14 ---
-
-Visualization with Plotly.express
-
---- Slide 15 ---
-
-Visualizing which states have more pickup trucks as compared to other vehicles?
-
---- Slide 16 ---
-
-Top 10 Most Common Violations
-
---- Slide 17 ---
-
-Visualisation of Top 10 Most Common Violations
-
---- Slide 18 ---
-
-Visualisation of Traffic violation by state
-
---- Slide 19 ---
-
-Recap
-Understanding cudf.pandas – It enables Pandas-like operations while leveraging GPU acceleration for faster data processing.
-Third-Party Library Compatibility – cudf.pandas allows seamless integration with libraries like Plotly but requires converting cuDF DataFrames to Pandas before visualization.
-Profiling with cudf.pandas.profile – Profiling tools help identify whether operations run on the CPU or GPU, allowing for optimization.
-Optimizing Performance – When using GPU-accelerated pandas libraries, functions like apply() can sometimes result in CPU execution if the applied function is not GPU-compatible. In such cases, if possible, replacing apply() with equivalent vectorized GPU operations can lead to significant performance improvements.
-GPU vs. CPU Execution – Operations like groupby(), mean(), and arithmetic calculations are GPU-optimized, while functions like apply() may require manual optimization.
-Reducing to_pandas() Calls – Avoid unnecessary conversions from cuDF to Pandas to prevent performance bottlenecks in large datasets.
-Best Practices for cuDF Optimization – Use built-in cuDF functions, avoid explicit loops, and prefer vectorized operations for efficient data processing.
-Debugging Performance Issues – Profiling reports help pinpoint slow operations, guiding developers to replace inefficient CPU-based functions with GPU-accelerated alternatives.
-
---- Slide 20 ---
 
 Practical Implementation
 Click on the link below to go to Google COLAB
-https://colab.research.google.com/drive/1T_IhHxkapwa6vTlOompAo5oHzCYFXDmM - scrollTo=pyVNtGUhtFs5
-
---- Slide 21 ---
-
-شــــــكــــرًا لكــــــم
-THANK YOU
-
-
-### 03
-
---- Slide 1 ---
-
-أكـــــاديميــــة طــــويـــق
-Scalable Data Science
-
---- Slide 2 ---
-
-Unit 5: Cloud Infrastructure & Production Deployment
-Cloud Storage Fundamentals & Running Your First Cloud Analysis
-By: Dr. Afshan Hashmi
-
---- Slide 3 ---
-
-Course Objectives:
-
-Define cloud storage and its core components.
-Compare different cloud storage types (object, block, file).
-Explain key cloud storage features (durability, availability, scalability).
-Evaluate use cases for AWS S3, Azure Blob Storage, and Google Cloud Storage.
-Set up a cloud-based analysis environment
-Execute a basic data analysis workflow in the cloud
-Compare cloud vs. local analysis performance
-Optimize cloud resources for cost-effective analysis
-Interpret and visualize cloud analysis results
-
---- Slide 4 ---
-
-Introduction to Cloud Storage
-What is Cloud Storage?
-Cloud storage is a service model in which data is maintained, managed, backed up remotely, and made available to users over a network (typically the internet).
-Explanation in simple terms:Instead of saving your files on a USB stick or your computer's hard drive, you save them on the internet, where they’re stored on remote servers and accessed via the web.
-Key Characteristics:
-Scalability: Grow storage on demand.
-Durability: Data redundancy (e.g., 99.999999999% durability in AWS S3).
-Accessibility: Available globally via APIs or web interfaces.
-Pay-as-you-go: Only pay for what you use.
-Analogy:"Like a virtual hard drive accessible from anywhere."
-
---- Slide 5 ---
-
-How Does Cloud Storage Work?
-Data is Sent to Data Centers Using the InternetWhen you upload a file (like a photo or document), it travels through the internet to a remote server (computer) located in a data center  a secure facility filled with powerful servers and storage systems.
-
-Stored in Virtualized Pools of StorageOnce it arrives, your data is stored in what’s called a "virtualized storage pool" which means it's stored across many physical machines, but you see it as one unified storage space. Think of it like a virtual hard drive spread across many computers.
-Accessed Using Web Interfaces, APIs, or AppsYou can access your data through:
-Web interfaces (like Google Drive or Dropbox on a browser)
-Mobile or desktop apps
-APIs (Application Programming Interfaces) if you're integrating it with other software systems or applications.
-Managed and Maintained by Cloud Service ProvidersThe infrastructure servers, security, backups, updates  is handled by companies like Amazon Web Services (AWS), Microsoft Azure, or Google Cloud.You don’t need to worry about hardware failures, power, or maintenance they take care of all that.
-
---- Slide 6 ---
-
-Types of Cloud Storage
-Simple Analogy:
-Object storage = warehouse (you store items with tags).
-File storage = filing cabinet.
-Block storage = Lego blocks (fast and flexible).
-
---- Slide 7 ---
-
-Benefits of Cloud Storage
-Accessibility – Access Files from Anywhere
-As long as you have an internet connection, you can access your files from any device, anywhere in the world.
-Example: You can open your Google Docs or Dropbox files from your laptop, tablet, or phone  even while traveling.
-Scalability – Easily Increase Storage as Needed
-Need more space? Just click a few buttons  no need to buy hardware.
-Cloud storage grows with you, making it ideal for both individuals and large businesses.
-Durability & Redundancy – Data is Often Replicated Across Locations
-Cloud providers copy your data across multiple data centers to prevent loss.
-Even if one server crashes or there’s a natural disaster in one area, your data remains safe and available.
-Cost-Effective – Pay Only for What You Use
-No need to buy expensive hard drives upfront.
-You pay monthly or yearly based on your actual usage  storage space, bandwidth, etc.
-Automatic Backups – Data is Regularly Backed Up by the Provider
-Most providers automatically back up your files behind the scenes.
-This reduces the risk of losing important documents due to accidental deletion or system failure.
-
---- Slide 8 ---
-
-Core Features of Cloud Storage
-1. Durability
-Durability means how well your data is protected from being lost or corrupted.
-Cloud storage providers (like AWS, Google Cloud) use multiple copies across multiple data centers to make sure your files are safe.
-
-Example: AWS S3 offers 99.999999999% durability (called “11 nines”)That’s like losing only 1 file every 10 million stored for 10,000 years!
-
-2. Availability
-Availability refers to how often the cloud service is accessible and running without interruption.
-It’s measured as a percentage of uptime per year.
-Example: AWS S3 Standard offers 99.99% availability,which means less than 1 hour of downtime per year (~53 minutes).
-
---- Slide 9 ---
-
-Core Features of Cloud Storage
-3. Storage Classes
-Cloud providers offer different classes of storage depending on how often you need to access your data:
-Example:In AWS S3, this is like:
-S3 Standard (Hot)
-S3 Standard-IA (Cold)
-S3 Glacier / Glacier Deep Archive (Archive)
-
---- Slide 10 ---
-
-Limitations of Cloud Storage
-Requires Internet – No Access Without a Stable Connection
-Cloud storage depends on an internet connection.
-If you're in an area with poor or no internet (like during a power outage or while traveling in remote regions), you may not be able to access your files.
-Ongoing Costs – Subscription or Pay-as-You-Go Model
-Unlike buying a physical hard drive once, cloud storage typically follows a monthly or annual subscription model.
-Costs can add up over time, especially for large storage needs or frequent access to data.
-Security Concerns – Risk of Data Breaches
-If not properly secured, cloud-stored data can be vulnerable to hacking, unauthorized access, or data leaks.
-Users must rely on the provider’s security protocols and also take steps like enabling multi-factor authentication and using strong passwords.
- Latency – Slower Access for Large Files Compared to Local Storage
-Uploading or downloading large files from the cloud can be slower than accessing files saved directly on your device.
-This is especially noticeable when working with high-resolution videos, large datasets, or 3D files.
-
---- Slide 11 ---
-
-Real-World Use Cases of Cloud Storage
-Personal Use: Google Drive
-What it is: A cloud-based storage service by Google.
-How it's used: People use Google Drive to save documents, photos, videos, and other files.
-Why it's useful: Files can be accessed from any device (phone, tablet, laptop) with internet access. It also allows for easy sharing and collaboration on documents in real time.
-
-Business Use: Dropbox Business
-What it is: A cloud storage solution tailored for teams and companies.
-How it's used: Teams can share and manage files across different departments and locations.
-Why it's useful: It offers advanced features like admin controls, file versioning, and integrations with other productivity tools, improving collaboration and productivity.
-
---- Slide 12 ---
-
-Real-World Use Cases of Cloud Storage
-Backup & Recovery: iCloud for iPhones
-What it is: Apple’s cloud backup service.
-How it's used: Automatically backs up iPhone data such as contacts, messages, app data, and photos.
-Why it's useful: In case the phone is lost, damaged, or replaced, users can quickly restore all their data on a new device.
-
-Web Hosting: Amazon S3
-What it is: Amazon Simple Storage Service (S3), a part of AWS.
-How it's used: Used by developers and companies to store and serve website assets like images, videos, scripts, and other static files.
-Why it's useful: It's highly durable, scalable, and integrates easily with websites and applications. Plus, it allows files to be accessed globally with low latency.
+https://colab.research.google.com/drive/10_sbDJlV6zeSHAnHY_EWTf9t488Vn0Hz#scrollTo=210h8e44YxPQ
 
 --- Slide 13 ---
 
-Key Cloud Storage Providers
+الشراكات العالمية
 
 --- Slide 14 ---
 
-Cloud vs. Traditional Storage (Comparison Table)
-
---- Slide 15 ---
-
-Introduction to Cloud Analysis
-Definition: Performing data processing and analytics using cloud-based resources instead of local machines
-
-Why Cloud Analysis?
-Scalability: Handle datasets too large for local machines
-Flexibility: Access specialized hardware (GPUs, TPUs)
-Collaboration: Share results and environments easily
-
-Common Use Cases:
-Big data processing
-Machine learning model training
-Business intelligence dashboards
-
-Demo: Show a real-world example (e.g., COVID-19 data analysis in the cloud)
-
---- Slide 16 ---
-
-Setting Up Your Cloud Environment
-Option 1: Cloud Notebooks
-Google Colab
-Free GPU access
-Collaborative features
-AWS SageMaker Notebooks
-Integrated with AWS services
-Enterprise-grade security
-Option 2: Virtual Machines
-AWS EC2
-Choose instance types (CPU vs. GPU optimized)
-Google Compute Engine
-Pre-configured data science VMs
-Activity: Students create a free-tier cloud notebook
-
---- Slide 17 ---
-
-Running Your First Analysis
-Sample Workflow: COVID-19 Data Analysis
-Data Ingestion:
-import pandas as pd
-url = "https://covid.ourworldindata.org/data/owid-covid-data.csv"
-df = pd.read_csv(url)
-2. Data Processing:
-# Filter and aggregate data
-latest = df[df['date'] == df['date'].max()]
-summary = latest.groupby('continent')['total_cases'].sum()
-3. Visualization:
-import matplotlib.pyplot as plt
-summary.plot(kind='bar')
-plt.title('Total COVID Cases by Continent')
-plt.show()
-
---- Slide 18 ---
-
-Performance Benchmarking
-Exercise: Compare local vs. cloud runtime
-Run analysis on local machine (time it)
-Run same analysis in cloud notebook (time it)
-Compare results
-
-Sample Results:
-Discussion: When does cloud analysis make sense?
-
---- Slide 19 ---
-
-Cost Optimization
-Cloud Cost Factors:
-Compute time
-Storage
-Data transfer
-
-Money-Saving Tips:
-Use spot instances
-Auto-shutdown unused resources
-Right-size instances
-
-Activity: Estimate costs using AWS/GCP pricing calculators
-
---- Slide 20 ---
-
-Summary:
-Cloud storage lets users store and access data over the internet.
-Comes in object, file, and block storage types.
-Offers flexibility, cost savings, and ease of use but needs internet and security awareness.
-Commonly used in personal, academic, and business settings.
-Cloud analysis enables scalable processing of large datasets using remote resources (GPUs/TPUs), overcoming local hardware limitations.
-Performance benchmarks show 10x+ speedups for big data tasks.
-Monitor resources to avoid over-spending
-Use spot instances for 60-90% cost savings
-
---- Slide 21 ---
-
-Resources & Further Reading
-Free Cloud Credits: AWS Educate, Google Cloud Free Tier
-Datasets: Google Cloud Public Datasets, AWS Open Data
-Data Science on AWS” Authors: Chris Fregly & Antje Barth Publisher: O'Reilly (2021)
-Google Cloud for Data Science Authors: Valliappa Lakshmanan & Jordan Tigani, Publisher: O'Reilly (2022)
-
---- Slide 22 ---
-
-الشراكات العالمية
-
---- Slide 23 ---
-
 شــــــكــــرًا لكــــــم
 THANK YOU
-
 
 ### 14
 
@@ -3873,6 +3697,168 @@ THANK YOU
 
 ## Pdfs
 
+### 15
+
+--- Slide 1 ---
+
+أكـــــاديميــــة طــــويـــق
+Scalable Data Science
+
+--- Slide 2 ---
+
+cuDF: Understsanding performance and visualization
+Analyzing Performance by profiling utilities
+By: Dr. Afshan Hashmi
+
+--- Slide 3 ---
+
+Course Objectives:
+To introduce the fundamentals of cudf.pandas and its role in accelerating data processing using GPUs.
+To equip learners with profiling techniques for optimizing performance and identifying GPU vs. CPU execution in data workflows.
+To explore data visualization techniques using third-party libraries like Plotly with cudf.pandas.
+
+--- Slide 4 ---
+
+Understanding the Basics
+When dealing with large datasets, processing speed is crucial. That's where GPUs (Graphics Processing Units) come in, as they're designed for parallel processing, which significantly accelerates data manipulation. However, not all operations can be performed on a GPU. This is where cudf.pandas and its profiling utilities become very useful. Here's a breakdown:
+
+pandas: pandas is a popular Python library for data manipulation and analysis, primarily designed for CPU processing.
+
+cuDF: cuDF is a GPU-accelerated DataFrame library, designed to perform similar operations as pandas but on a GPU, leading to much faster processing for large datasets.
+
+3.   cudf.pandas: cudf.pandas acts as an accelerator for pandas. It attempts to execute pandas-like operations on the GPU whenever possible, and if an operation isn't supported by the GPU, it falls back to the CPU.
+
+--- Slide 5 ---
+
+Understanding Performance in cudf.pandas
+cudf.pandas provides profiling utilities to help you analyze the performance of your code when working with GPU-accelerated data frames. 
+
+These tools help determine which parts of your code ran on the GPU (which is faster for large data processing) and which parts still ran on the CPU (which may be a bottleneck).
+
+--- Slide 6 ---
+
+Why Profiling is Important:
+Identifying Bottlenecks:
+If parts of your code are still running on the CPU, those sections can become performance bottlenecks, slowing down the overall process.
+The profiling utilities help you pinpoint these CPU-bound sections.
+Optimizing Performance:
+By knowing which parts of your code are using the GPU and which are using the CPU, you can optimize your code to maximize GPU utilization.
+This may involve rewriting certain operations to be more GPU-friendly or minimizing data transfers between the CPU and GPU.
+Understanding Execution:
+The profiler gives you a clear picture of how your code is being executed, which is valuable for understanding and improving its performance.
+
+--- Slide 7 ---
+
+The Goal: Accelerating pandas with GPU Power
+Core Functionality:
+At its heart, cudf.pandas aims to leverage the parallel processing capabilities of GPUs to drastically speed up data manipulation tasks that are traditionally handled by the pandas library on CPUs.
+
+It acts as a bridge, attempting to translate your familiar pandas code into equivalent operations that can be executed on the GPU.
+
+Performance Gains:
+For large datasets, GPU acceleration can result in significant performance improvements, often orders of magnitude faster than CPU-based processing.
+
+The largest gains are seen in operations that can be performed in parallel.
+
+--- Slide 8 ---
+
+The Insight: Profiling for Performance Analysis
+Understanding Execution Flow:
+The profiling tools within cudf.pandas provide crucial insights into how your code is actually being executed.
+They reveal which portions of your data processing pipeline are being handled by the GPU and which are falling back to the CPU.
+
+Identifying Bottlenecks:
+By highlighting CPU-bound operations, the profiler helps you pinpoint potential performance bottlenecks.
+These bottlenecks can arise from operations that are not yet supported on the GPU or from inefficient data transfers between the CPU and GPU.
+Measuring Success:
+The tools allow you to measure how effectively the GPU is being utilized. 
+This gives you concrete data to understand the performance gains you are receiving.
+
+--- Slide 9 ---
+
+The Action: Optimization and Efficiency
+Targeted Optimization:
+Armed with the information from the profiler, you can strategically optimize your code to maximize GPU utilization.
+This may involve restructuring data manipulations, using GPU-compatible functions, or minimizing data transfers.
+Workflow Enhancement:
+By optimizing your code for GPU acceleration, you can significantly improve the efficiency of your data processing workflows.
+This translates to faster processing times, reduced resource consumption, and improved overall productivity.
+Maximizing Potential:
+For anyone working with large datasets and seeking to maximize the performance of their cudf.pandas workflows, the profiling utilities are indispensable. They provide the necessary visibility and insights to unlock the full potential of GPU acceleration.
+
+--- Slide 10 ---
+
+Profiling with cudf.pandas
+Profiling utilities allow you to analyze execution time and resource usage helping  in optimizing code by identifying CPU-bound operations.
+Loading the Extension
+To use profiling features, the cudf.pandas extension must be loaded.
+
+
+
+
+Colab Note
+If running in Google Colab, the first time you use the profiler, it may take more than 10 seconds due to Colab's debugger interacting with Python’s sys.settrace function.
+If it runs slow initially, run the cell again, and it should work fine.
+
+--- Slide 11 ---
+
+Profiling per function
+Pandas.profile gives the detail about each function
+
+--- Slide 12 ---
+
+Profiling per line
+Pandas.line.profile gives the detail about each line of code
+
+--- Slide 13 ---
+
+Using Third-Party Libraries with cudf.pandas
+The cudf.pandas module in RAPIDS supports interoperability with third-party Python libraries like Plotly, Matplotlib, Seaborn, and Scikit-learn. 
+
+This means you can pass cuDF DataFrames (which are optimized for GPU processing) to these libraries just like you would with standard Pandas DataFrames.
+
+--- Slide 14 ---
+
+Visualization with Plotly.express
+
+--- Slide 15 ---
+
+Visualizing which states have more pickup trucks as compared to other vehicles?
+
+--- Slide 16 ---
+
+Top 10 Most Common Violations
+
+--- Slide 17 ---
+
+Visualisation of Top 10 Most Common Violations
+
+--- Slide 18 ---
+
+Visualisation of Traffic violation by state
+
+--- Slide 19 ---
+
+Recap
+Understanding cudf.pandas – It enables Pandas-like operations while leveraging GPU acceleration for faster data processing.
+Third-Party Library Compatibility – cudf.pandas allows seamless integration with libraries like Plotly but requires converting cuDF DataFrames to Pandas before visualization.
+Profiling with cudf.pandas.profile – Profiling tools help identify whether operations run on the CPU or GPU, allowing for optimization.
+Optimizing Performance – When using GPU-accelerated pandas libraries, functions like apply() can sometimes result in CPU execution if the applied function is not GPU-compatible. In such cases, if possible, replacing apply() with equivalent vectorized GPU operations can lead to significant performance improvements.
+GPU vs. CPU Execution – Operations like groupby(), mean(), and arithmetic calculations are GPU-optimized, while functions like apply() may require manual optimization.
+Reducing to_pandas() Calls – Avoid unnecessary conversions from cuDF to Pandas to prevent performance bottlenecks in large datasets.
+Best Practices for cuDF Optimization – Use built-in cuDF functions, avoid explicit loops, and prefer vectorized operations for efficient data processing.
+Debugging Performance Issues – Profiling reports help pinpoint slow operations, guiding developers to replace inefficient CPU-based functions with GPU-accelerated alternatives.
+
+--- Slide 20 ---
+
+Practical Implementation
+Click on the link below to go to Google COLAB
+https://colab.research.google.com/drive/1T_IhHxkapwa6vTlOompAo5oHzCYFXDmM - scrollTo=pyVNtGUhtFs5
+
+--- Slide 21 ---
+
+شــــــكــــرًا لكــــــم
+THANK YOU
 
 ### 16
 
@@ -4102,329 +4088,6 @@ sorts and groups all values by
 key (country)
 Reduce Phase
 calculates the total Final Output
-
-
-### 18
-
---- Page 1 ---
-
-Distributed
-Computing Principles
-
---- Page 2 ---
-
-What is Distributed Computing?
-Computing paradigm where components on networked computers communicate and coordinate to
-achieve a common goal.
-In everyday terms:
-Solving big problems by dividing them among multiple computers that work together
-DISCUSSION 
-Think about it: What systems do you use daily that rely on distributed computing? (Social media, email,
-streaming services, online banking...)Distributed Computing Principles
-Introduction to Distributed Computing
-
---- Page 3 ---
-
-Distributed Computing Principles
-Introduction to Distributed Computing
-
---- Page 4 ---
-
-What is Distributed Computing?
-Computing paradigm where components on networked computers communicate and coordinate to
-achieve a common goal.
-In everyday terms:
-Solving big problems by dividing them among multiple computers that work together
-DISCUSSION 
-Think about it: What systems do you use daily that rely on distributed computing? (Social media, email,
-streaming services, online banking...)Distributed Computing Principles
-Introduction to Distributed Computing
-
---- Page 5 ---
-
-Distributed Computing Principles
-The Evolution of Distributed Computing
-
---- Page 6 ---
-
-Distributed Computing Principles
-Why Distributed Computing Exists
-
---- Page 7 ---
-
-Core Building Blocks
-Nodes & Clusters:
-Node: Individual computer/server in the network
-Cluster: Collection of nodes working together
-Example: Spark cluster with 1 master node, 20 worker nodesDistributed Computing Principles
-Fundamental Concepts in Distributed Systems
-Partitioning & Sharding:
-Dividing data across multiple nodes
-Strategies: range-based, hash-based, directory-based
-Replication
-Creating redundant copies of data
-Types: full replication, partial replication, master-slave,
-peer-to-peer
-
---- Page 8 ---
-
-1. Master-Worker (Master-Slave)
-Central coordinator assigns tasks to workers
-Pros: Simple management, centralized control
-Cons: Single point of failure at master
-Examples: Hadoop MapReduce, traditional RDBMS replication
-2. Peer-to-Peer:
-All nodes have equal roles and responsibilities
-Pros: No single point of failure, high resilience
-Cons: Complex coordination, eventual consistency challenges
-Examples: BitTorrent, blockchain networks, Cassandra
-3. Hybrid Approaches:
-Mixing centralized and decentralized elements
-Examples: Kafka (distributed but with ZooKeeper coordination)
-Distributed Computing Principles
-Three Main Architecture Patterns:
-
---- Page 9 ---
-
-Data Preprocessing
-at Scale
-
---- Page 10 ---
-
-Distributed Computing Principles
-The Data Preprocessing Challenge
-The 80/20 Rule of Data Science
-80% of time spent on data preparation
-20% of time spent on actual analysis and modeling
-What Makes Preprocessing at Scale Different?
-Can't load all data into memory
-Can't manually inspect all records
-Performance bottlenecks are amplified
-New failure modes emerge
-Each operation has cost implications
-
---- Page 11 ---
-
-Distributed Computing Principles
-The Data Science Pipeline at Scale
-Traditional (Small Data) Pipeline:
-Big Data Reality:
-Why can't we simply apply the same preprocessing techniques used for small data to big data scenarios?
-
---- Page 12 ---
-
-Distributed Computing Principles
-Preprocessing Challenges That Scale With Data Volume
-
---- Page 13 ---
-
-Distributed Computing Principles
-Data Validation at Scale: Ensuring Quality Input
-Data Validation Strategies:
-Schema Validation
-Ensuring data adheres to expected structure
-Handling schema drift and evolution
-Tools: Great Expectations, Deequ, tf.data validation
-Statistical Profiling
-Automatically analyzing distributions and patterns
-Identifying potential issues before processing
-Example: Column statistics, correlation analysis
-Anomaly Detection
-Finding unusual patterns or outliers
-Prevents corrupted data from affecting downstream analysis
-Methods: Statistical tests, clustering, isolation forests
-
-
-### 19
-
---- Page 1 ---
-
-Introduction To GPU Acceleration Basics
-Understanding CPU vs. GPU Architecture
-The Central Processing Unit (CPU)
-Key Characteristics:
-Few powerful cores (typically 4-64)
-Optimized for sequential processing
-Large cache memory
-Complex control units for branch prediction
-Designed for low-latency operations
-General-purpose processing
-
---- Page 2 ---
-
-Introduction To GPU Acceleration Basics
-Understanding CPU vs. GPU Architecture
-The Graphics Processing Unit (GPU)
-Key Characteristics:
-Many simple cores (thousands)
-Optimized for parallel processing
-Smaller cache per core
-Simpler control units
-Designed for high-throughput operations
-Specialized for mathematical operations
-
---- Page 3 ---
-
-Introduction To GPU Acceleration Basics
-CPU vs. GPU: Core Architecture Comparison
-
---- Page 4 ---
-
-Introduction To GPU Acceleration Basics
-When to Use CPU vs. GPU
-CPU Excels At:
-Tasks requiring complex decision-making
-Sequential processes with many branches
-Operations on small datasets that fit in cache
-Tasks with unpredictable memory access patterns
-Single-threaded applicationsGPU Excels At:
-Highly parallel computations
-Mathematically intensive operations
-Working with large datasets
-Regular, predictable memory access patterns
-SIMD (Single Instruction, Multiple Data) operations
-
---- Page 5 ---
-
-Introduction To GPU Acceleration Basics
-The Evolution of GPU Computing
-1990s - Early GPUs:
-Dedicated hardware for rendering graphics
-Fixed function pipeline
-Limited to graphics applications
-Early 2000s - Programmable Shaders:
-Introduction of programmable elements
-Still primarily for graphics
-2006-2007 - GPGPU Emerges:
-General-Purpose computing on GPUs
-NVIDIA introduces CUDA
-AMD introduces Stream (later OpenCL)2010s - AI Renaissance:
-GPUs become essential for deep learning
-NVIDIA's cuDNN library
-Specialized hardware (Tensor Cores)
-2020s - Specialized Computing:
-AI-optimized GPU architectures
-Multi-GPU systems
-GPU acceleration in cloud computing
-
---- Page 6 ---
-
-Introduction To GPU Acceleration Basics
-GPU Computing Performance Growth
-CPU performance growth slowed to ~1.1x per year
-GPU performance continues to grow at ~1.5x per year
-By 2025, GPUs projected to be 1000x faster than when first introduced for computing
-
---- Page 7 ---
-
-Introduction To GPU Acceleration Basics
-Modern GPU Architecture
-Key Components:
-Streaming Multiprocessors (SMs): The basic processing blocks
-CUDA Cores: Individual processing units within SMs
-Tensor Cores: Specialized for matrix multiplication (AI workloads)
-Memory Hierarchy:
-Global Memory (VRAM):
-Main large storage accessible by all components
-Highest capacity but slowest access
-Shared Memory:
-Fast memory shared between threads in the same block
-Enables thread communication and serves as programmable cache
-L1/L2 Cache:
-Automatic buffer storage that reduces memory access times
-L1 is private to each SM; L2 is shared across the GPU
-Registers:
-Ultra-fast storage for individual thread variables
-Fastest but very limited capacity; private to each thread
-
---- Page 8 ---
-
-Introduction To GPU Acceleration Basics
-CUDA Programming Model
-CUDA (Compute Unified Device Architecture):
-Parallel computing platform and API by NVIDIA
-Allows developers to use GPUs for general-purpose processing
-C/C++ language extensions
-Provides both low-level and high-level APIs
-Key Concepts:
-Host (CPU) and Device (GPU)
-Kernel functions
-Thread hierarchy
-Memory hierarchy
-CUDA Thread Hierarchy:
-Thread: Individual execution unit 
-Block: Group of threads that can communicate via shared memory 
-Grid: Collection of blocks that execute the same kernel
-
---- Page 9 ---
-
-Introduction To GPU Acceleration Basics
-Why Use GPU Acceleration in Data Science?
-Speed: 10-100x faster for suitable algorithms
-Scalability: Process larger datasets
-Energy Efficiency: More computations per watt
-Cost Effectiveness: Cheaper than CPU clusters for many workloads
-Real-time Analytics: Enable interactive analysis of large datasets
-
---- Page 10 ---
-
-Introduction To GPU Acceleration Basics
-Common Algorithms Accelerated by GPUs
-Machine Learning:
-Linear/Logistic Regression
-Gradient Boosting Machines (XGBoost, LightGBM)
-Neural Networks and Deep Learning
-Support Vector Machines
-K-Means Clustering
-
---- Page 11 ---
-
-Introduction To GPU Acceleration Basics
-Python GPU Ecosystem Overview
-Low-level: CUDA Python, PyCUDA
-Array computation: CuPy, PyTorch, TensorFlow
-Data processing: RAPIDS (cuDF, cuML)
-Specialized: H2O4GPU, Numba, JAX
-Distributed: Dask-CUDA, RAPIDS + Dask
-
---- Page 12 ---
-
-Introduction To GPU Acceleration Basics
-Practical Considerations for GPU Computing
-Entry-level (Development & Testing):
-NVIDIA GTX/RTX Consumer Cards (e.g., RTX 3080, RTX 4090)
-8-24 GB VRAM
-$700-$2,000
-Professional (Data Science Workstations):
-NVIDIA RTX A-series or previous Quadro series
-16-48 GB VRAM
-$2,000-$6,000
-High-Performance (Server/Cloud):
-NVIDIA Tesla/A100/H100
-40-80 GB VRAM
-$8,000-$30,000+
-
---- Page 13 ---
-
-Hands-On Code
-GPU Acceleration Libraries for Python
-
---- Page 14 ---
-
-Activity: Checking Your Hardware
-Open your laptops and follow these instructions based on your operating system:"
-For Mac Users:
-Click the Apple menu and select "About This Mac" 1.
-You'll see a summary of your CPU 2.
-Click "System Report..." then "Graphics/Displays" for GPU details 3.
-For Windows Users:
-Press Win + X and select "Device Manager"
-Expand "Display adapters" to see your GPU(s)
-Expand "Processors" to see your CPU
-For more detailed information:
-Type "dxdiag" in the search bar and run it
-Check the "System" tab for CPU info and "Display" tab for GPU details
-
 
 ### 17
 
@@ -5053,3 +4716,322 @@ And many more functions: hist, scatter, …
 Introduction to Data Science
 Resources
 
+### 18
+
+--- Page 1 ---
+
+Distributed
+Computing Principles
+
+--- Page 2 ---
+
+What is Distributed Computing?
+Computing paradigm where components on networked computers communicate and coordinate to
+achieve a common goal.
+In everyday terms:
+Solving big problems by dividing them among multiple computers that work together
+DISCUSSION 
+Think about it: What systems do you use daily that rely on distributed computing? (Social media, email,
+streaming services, online banking...)Distributed Computing Principles
+Introduction to Distributed Computing
+
+--- Page 3 ---
+
+Distributed Computing Principles
+Introduction to Distributed Computing
+
+--- Page 4 ---
+
+What is Distributed Computing?
+Computing paradigm where components on networked computers communicate and coordinate to
+achieve a common goal.
+In everyday terms:
+Solving big problems by dividing them among multiple computers that work together
+DISCUSSION 
+Think about it: What systems do you use daily that rely on distributed computing? (Social media, email,
+streaming services, online banking...)Distributed Computing Principles
+Introduction to Distributed Computing
+
+--- Page 5 ---
+
+Distributed Computing Principles
+The Evolution of Distributed Computing
+
+--- Page 6 ---
+
+Distributed Computing Principles
+Why Distributed Computing Exists
+
+--- Page 7 ---
+
+Core Building Blocks
+Nodes & Clusters:
+Node: Individual computer/server in the network
+Cluster: Collection of nodes working together
+Example: Spark cluster with 1 master node, 20 worker nodesDistributed Computing Principles
+Fundamental Concepts in Distributed Systems
+Partitioning & Sharding:
+Dividing data across multiple nodes
+Strategies: range-based, hash-based, directory-based
+Replication
+Creating redundant copies of data
+Types: full replication, partial replication, master-slave,
+peer-to-peer
+
+--- Page 8 ---
+
+1. Master-Worker (Master-Slave)
+Central coordinator assigns tasks to workers
+Pros: Simple management, centralized control
+Cons: Single point of failure at master
+Examples: Hadoop MapReduce, traditional RDBMS replication
+2. Peer-to-Peer:
+All nodes have equal roles and responsibilities
+Pros: No single point of failure, high resilience
+Cons: Complex coordination, eventual consistency challenges
+Examples: BitTorrent, blockchain networks, Cassandra
+3. Hybrid Approaches:
+Mixing centralized and decentralized elements
+Examples: Kafka (distributed but with ZooKeeper coordination)
+Distributed Computing Principles
+Three Main Architecture Patterns:
+
+--- Page 9 ---
+
+Data Preprocessing
+at Scale
+
+--- Page 10 ---
+
+Distributed Computing Principles
+The Data Preprocessing Challenge
+The 80/20 Rule of Data Science
+80% of time spent on data preparation
+20% of time spent on actual analysis and modeling
+What Makes Preprocessing at Scale Different?
+Can't load all data into memory
+Can't manually inspect all records
+Performance bottlenecks are amplified
+New failure modes emerge
+Each operation has cost implications
+
+--- Page 11 ---
+
+Distributed Computing Principles
+The Data Science Pipeline at Scale
+Traditional (Small Data) Pipeline:
+Big Data Reality:
+Why can't we simply apply the same preprocessing techniques used for small data to big data scenarios?
+
+--- Page 12 ---
+
+Distributed Computing Principles
+Preprocessing Challenges That Scale With Data Volume
+
+--- Page 13 ---
+
+Distributed Computing Principles
+Data Validation at Scale: Ensuring Quality Input
+Data Validation Strategies:
+Schema Validation
+Ensuring data adheres to expected structure
+Handling schema drift and evolution
+Tools: Great Expectations, Deequ, tf.data validation
+Statistical Profiling
+Automatically analyzing distributions and patterns
+Identifying potential issues before processing
+Example: Column statistics, correlation analysis
+Anomaly Detection
+Finding unusual patterns or outliers
+Prevents corrupted data from affecting downstream analysis
+Methods: Statistical tests, clustering, isolation forests
+
+### 19
+
+--- Page 1 ---
+
+Introduction To GPU Acceleration Basics
+Understanding CPU vs. GPU Architecture
+The Central Processing Unit (CPU)
+Key Characteristics:
+Few powerful cores (typically 4-64)
+Optimized for sequential processing
+Large cache memory
+Complex control units for branch prediction
+Designed for low-latency operations
+General-purpose processing
+
+--- Page 2 ---
+
+Introduction To GPU Acceleration Basics
+Understanding CPU vs. GPU Architecture
+The Graphics Processing Unit (GPU)
+Key Characteristics:
+Many simple cores (thousands)
+Optimized for parallel processing
+Smaller cache per core
+Simpler control units
+Designed for high-throughput operations
+Specialized for mathematical operations
+
+--- Page 3 ---
+
+Introduction To GPU Acceleration Basics
+CPU vs. GPU: Core Architecture Comparison
+
+--- Page 4 ---
+
+Introduction To GPU Acceleration Basics
+When to Use CPU vs. GPU
+CPU Excels At:
+Tasks requiring complex decision-making
+Sequential processes with many branches
+Operations on small datasets that fit in cache
+Tasks with unpredictable memory access patterns
+Single-threaded applicationsGPU Excels At:
+Highly parallel computations
+Mathematically intensive operations
+Working with large datasets
+Regular, predictable memory access patterns
+SIMD (Single Instruction, Multiple Data) operations
+
+--- Page 5 ---
+
+Introduction To GPU Acceleration Basics
+The Evolution of GPU Computing
+1990s - Early GPUs:
+Dedicated hardware for rendering graphics
+Fixed function pipeline
+Limited to graphics applications
+Early 2000s - Programmable Shaders:
+Introduction of programmable elements
+Still primarily for graphics
+2006-2007 - GPGPU Emerges:
+General-Purpose computing on GPUs
+NVIDIA introduces CUDA
+AMD introduces Stream (later OpenCL)2010s - AI Renaissance:
+GPUs become essential for deep learning
+NVIDIA's cuDNN library
+Specialized hardware (Tensor Cores)
+2020s - Specialized Computing:
+AI-optimized GPU architectures
+Multi-GPU systems
+GPU acceleration in cloud computing
+
+--- Page 6 ---
+
+Introduction To GPU Acceleration Basics
+GPU Computing Performance Growth
+CPU performance growth slowed to ~1.1x per year
+GPU performance continues to grow at ~1.5x per year
+By 2025, GPUs projected to be 1000x faster than when first introduced for computing
+
+--- Page 7 ---
+
+Introduction To GPU Acceleration Basics
+Modern GPU Architecture
+Key Components:
+Streaming Multiprocessors (SMs): The basic processing blocks
+CUDA Cores: Individual processing units within SMs
+Tensor Cores: Specialized for matrix multiplication (AI workloads)
+Memory Hierarchy:
+Global Memory (VRAM):
+Main large storage accessible by all components
+Highest capacity but slowest access
+Shared Memory:
+Fast memory shared between threads in the same block
+Enables thread communication and serves as programmable cache
+L1/L2 Cache:
+Automatic buffer storage that reduces memory access times
+L1 is private to each SM; L2 is shared across the GPU
+Registers:
+Ultra-fast storage for individual thread variables
+Fastest but very limited capacity; private to each thread
+
+--- Page 8 ---
+
+Introduction To GPU Acceleration Basics
+CUDA Programming Model
+CUDA (Compute Unified Device Architecture):
+Parallel computing platform and API by NVIDIA
+Allows developers to use GPUs for general-purpose processing
+C/C++ language extensions
+Provides both low-level and high-level APIs
+Key Concepts:
+Host (CPU) and Device (GPU)
+Kernel functions
+Thread hierarchy
+Memory hierarchy
+CUDA Thread Hierarchy:
+Thread: Individual execution unit 
+Block: Group of threads that can communicate via shared memory 
+Grid: Collection of blocks that execute the same kernel
+
+--- Page 9 ---
+
+Introduction To GPU Acceleration Basics
+Why Use GPU Acceleration in Data Science?
+Speed: 10-100x faster for suitable algorithms
+Scalability: Process larger datasets
+Energy Efficiency: More computations per watt
+Cost Effectiveness: Cheaper than CPU clusters for many workloads
+Real-time Analytics: Enable interactive analysis of large datasets
+
+--- Page 10 ---
+
+Introduction To GPU Acceleration Basics
+Common Algorithms Accelerated by GPUs
+Machine Learning:
+Linear/Logistic Regression
+Gradient Boosting Machines (XGBoost, LightGBM)
+Neural Networks and Deep Learning
+Support Vector Machines
+K-Means Clustering
+
+--- Page 11 ---
+
+Introduction To GPU Acceleration Basics
+Python GPU Ecosystem Overview
+Low-level: CUDA Python, PyCUDA
+Array computation: CuPy, PyTorch, TensorFlow
+Data processing: RAPIDS (cuDF, cuML)
+Specialized: H2O4GPU, Numba, JAX
+Distributed: Dask-CUDA, RAPIDS + Dask
+
+--- Page 12 ---
+
+Introduction To GPU Acceleration Basics
+Practical Considerations for GPU Computing
+Entry-level (Development & Testing):
+NVIDIA GTX/RTX Consumer Cards (e.g., RTX 3080, RTX 4090)
+8-24 GB VRAM
+$700-$2,000
+Professional (Data Science Workstations):
+NVIDIA RTX A-series or previous Quadro series
+16-48 GB VRAM
+$2,000-$6,000
+High-Performance (Server/Cloud):
+NVIDIA Tesla/A100/H100
+40-80 GB VRAM
+$8,000-$30,000+
+
+--- Page 13 ---
+
+Hands-On Code
+GPU Acceleration Libraries for Python
+
+--- Page 14 ---
+
+Activity: Checking Your Hardware
+Open your laptops and follow these instructions based on your operating system:"
+For Mac Users:
+Click the Apple menu and select "About This Mac" 1.
+You'll see a summary of your CPU 2.
+Click "System Report..." then "Graphics/Displays" for GPU details 3.
+For Windows Users:
+Press Win + X and select "Device Manager"
+Expand "Display adapters" to see your GPU(s)
+Expand "Processors" to see your CPU
+For more detailed information:
+Type "dxdiag" in the search bar and run it
+Check the "System" tab for CPU info and "Display" tab for GPU details
