@@ -151,6 +151,19 @@ This course connects Python programming fundamentals with core AI concepts. Each
 
 ---
 
+## 📄 Course Summary | ملخص الدورة
+
+**Quick Reference:** `COURSE_SUMMARY.md` contains a comprehensive text summary of all course materials (PDFs/PPTX files).  
+**مرجع سريع:** يحتوي `COURSE_SUMMARY.md` على ملخص نصي شامل لجميع مواد الدورة (ملفات PDF/PPTX).
+
+This summary allows you to:
+- Read course content without opening PDF/PPTX files
+- Search through all materials quickly
+- Review key concepts in text format
+- Use as a study guide
+
+---
+
 ## Learning Path | مسار التعلم
 
 ```

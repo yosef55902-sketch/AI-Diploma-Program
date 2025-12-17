@@ -71,6 +71,7 @@ Course 01/
 ├── README.md                        📖 This file
 ├── START_HERE.md                    ⭐ READ THIS FIRST!
 ├── STUDENT_PROGRESS_CHECKLIST.md    ✅ Track progress
+├── COURSE_SUMMARY.md                📄 Text summary of all course materials
 │
 ├── unit1-ai-foundations/            📚 Unit 1: AI Foundations
 │   ├── README.md
@@ -147,6 +148,19 @@ Course 01/
 - Multi-layer perceptrons
 - Activation functions
 - Simple classification with neural networks
+
+---
+
+## 📄 Course Summary | ملخص الدورة
+
+**Quick Reference:** `COURSE_SUMMARY.md` contains a comprehensive text summary of all course materials (PDFs/PPTX files).  
+**مرجع سريع:** يحتوي `COURSE_SUMMARY.md` على ملخص نصي شامل لجميع مواد الدورة (ملفات PDF/PPTX).
+
+This summary allows you to:
+- Read course content without opening PDF/PPTX files
+- Search through all materials quickly
+- Review key concepts in text format
+- Use as a study guide
 
 ---
 
